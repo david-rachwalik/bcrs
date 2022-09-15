@@ -9,7 +9,7 @@
 // require statements
 const express = require('express');
 const User = require('../models/user');
-// const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
 // const RoleSchema = require('../schemas/user-role');
@@ -179,6 +179,64 @@ router.put('/:id', async (req, res) => {
       e.message,
     );
     res.status(500).send(updateUserCatchErrorResponse.toObject());
+  }
+});
+
+/**************
+ *  createUser API
+ * *******************************/
+router.post('/', async (req, res) => {
+  try {
+    /* encrypts password*/
+    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+    /* assign default role of standard */
+    standardRole = {
+      role: 'standard',
+    };
+
+    // Initializes User Object
+    let newUser = {
+      userName: req.body.userName,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      email: req.body.email,
+      role: standardRole,
+    };
+
+    /* Creates a user using post method */
+    User.create(newUser, function (err, user) {
+      /* error handler */
+      if (err) {
+        console.log(err);
+        const createUserMongodbErrorResponse = new ErrorResponse(
+          500,
+          'Internal Server Error',
+          err,
+        );
+        res.status(500).send(createUserMongodbErrorResponse.toObject());
+      } else {
+        /* if successful post user json object */
+        console.log(user);
+        const createUserResponse = new BaseResponse(
+          200,
+          'Query Successful',
+          user,
+        );
+        res.json(createUserResponse.toObject());
+      }
+    });
+  } catch (e) {
+    /* catch server error and returns error message */
+    console.log(e);
+    const createCatchUserErrorResponse = new ErrorResponse(
+      500,
+      'Internal Server Error',
+      e.message,
+    );
+    res.status(500).send(createCatchUserErrorResponse.toObject());
   }
 });
 
