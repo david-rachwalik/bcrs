@@ -75,5 +75,112 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * updateUser
+ * @openapi
+ * /api/users/{id}:
+ *   put:
+ *     tags:
+ *       - Users
+ *     name: updateUser
+ *     description: API to update a user
+ *     summary: updates a user
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - firstName
+ *               - lastName
+ *               - phoneNumber
+ *               - address
+ *               - email
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: User updated successfully
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
+ */
+
+// updateUser API
+router.put('/:id', async (req, res) => {
+  // finds users by ID
+  try {
+    // updates user or returns appropriate error message
+    // eslint-disable-next-line func-names
+    User.findOne({ _id: req.params.id }, function (err, user) {
+      if (err) {
+        console.log(err);
+        const updateUserMongodbErrorResponse = new ErrorResponse(
+          500,
+          'Internal server error',
+          err,
+        );
+        res.status(500).send(updateUserMongodbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        // sets the required fields
+        user.set({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          phoneNumber: req.body.phoneNumber,
+          address: req.body.address,
+          email: req.body.email,
+        });
+        // saves the updated fields
+        // eslint-disable-next-line func-names, no-shadow
+        user.save(function (err, savedUser) {
+          if (err) {
+            console.log(err);
+            const saveUserMongoDbErrorResponse = new ErrorResponse(
+              500,
+              'Internal server error',
+              err,
+            );
+            res.status(500).send(saveUserMongoDbErrorResponse.toObject());
+          } else {
+            console.log(savedUser);
+            const saveUserResponse = new BaseResponse(
+              200,
+              'Query successful',
+              savedUser,
+            );
+            res.json(saveUserResponse.toObject());
+          }
+        });
+      }
+    });
+  } catch (e) {
+    // returns Internal Server Error ErrorResponse
+    console.log(e);
+    const updateUserCatchErrorResponse = new ErrorResponse(
+      500,
+      'Internal server error',
+      e.message,
+    );
+    res.status(500).send(updateUserCatchErrorResponse.toObject());
+  }
+});
+
 // exports the module
 module.exports = router;
