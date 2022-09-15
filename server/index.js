@@ -1,3 +1,12 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 1)
+; Author: Professor Krasso
+; Date: 15 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+*/
+
 /**
  * Require statements
  */
@@ -8,6 +17,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const app = express(); // Express variable.
+
+// swagger require statements
+const swaggerUiExpress = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
 /**
  * Routes
@@ -23,6 +36,27 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
+
+// openAPI options
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: "Bob's Computer Repair Shop",
+      version: '1.0.0',
+    },
+  },
+  apis: [`${__dirname}/routes/*.js`],
+};
+
+const openapiSpecifications = swaggerJsdoc(options);
+
+// tells the app to use swagger /api-docs
+app.use(
+  '/api-docs',
+  swaggerUiExpress.serve,
+  swaggerUiExpress.setup(openapiSpecifications),
+);
 
 // default server port value.
 const PORT = process.env.PORT || 3000;
