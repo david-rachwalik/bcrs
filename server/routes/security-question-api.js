@@ -75,7 +75,7 @@ router.post('/', async (req, res) => {
             .status(500)
             .send(createSecurityQuestionMongodbErrorResponse.toObject());
         } else {
-          // creates new security question and logs the query succesful  base response
+          // creates new security question and logs the query successful  base response
           console.log(securityQuestion);
           const createSecurityQuestionResponse = new BaseResponse(
             200,

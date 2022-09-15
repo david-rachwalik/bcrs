@@ -12,7 +12,7 @@
  */
 const express = require('express');
 // const http = require('http');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
 
@@ -34,6 +34,7 @@ const SecurityQuestionsApi = require('./routes/security-question-api');
  */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
@@ -81,8 +82,8 @@ mongoose
 /**
  * APIs
  */
-app.use('./api/users', UserApi);
-app.use('./api/session', SessionApi);
+app.use('/api/users', UserApi);
+app.use('/api/session', SessionApi);
 app.use('/api/security-questions', SecurityQuestionsApi);
 
 // Wire-up the Express server.
