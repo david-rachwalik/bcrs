@@ -6,3 +6,11 @@
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 */
+// require statements
+const express = require('express');
+
+// configurations
+const router = express.Router();
+
+// exports the module
+module.exports = router;
