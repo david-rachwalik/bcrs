@@ -31,10 +31,12 @@ mongoose
     console.log('Connection to the database was successful');
   })
   .catch((err) => {
+    // eslint-disable-next-line prefer-template
     console.log('MongoDB Error: ' + err.message);
   });
 
 // Wire-up the Express server.
 app.listen(PORT, () => {
+  // eslint-disable-next-line prefer-template
   console.log('Application started and listening on PORT: ' + PORT);
 });
