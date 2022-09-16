@@ -12,11 +12,16 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
+const logResponse = require('../services/log-response');
 // const RoleSchema = require('../schemas/user-role');
 
 // configurations
 const router = express.Router();
 const saltRounds = 10; // default salt rounds for hashing algorithm
+
+// -------- API --------
+
+// operations: findAll, findById, createUser, updateUser,
 
 /**
  * findAll
@@ -72,6 +77,48 @@ router.get('/', async (req, res) => {
       e.message,
     );
     res.status(500).send(findAllCatchErrorResponse.toObject());
+  }
+});
+
+/**
+ * findById
+ * @openapi
+ * /api/users/{id}:
+ *   get:
+ *     tags:
+ *       - Users
+ *     summary: return a User document
+ *     description:  API for returning a User document.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: User document id
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: User document.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
+ */
+router.get('/:id', async (req, res) => {
+  try {
+    User.findOne({ _id: req.params.id }, (err, user) => {
+      if (err) {
+        const response = logResponse(501, err);
+        res.status(501).send(response);
+      } else {
+        // Successfully found document
+        const response = logResponse(200, user);
+        res.json(response);
+      }
+    });
+  } catch (err) {
+    const response = logResponse(500, err);
+    res.status(500).send(response);
   }
 });
 
