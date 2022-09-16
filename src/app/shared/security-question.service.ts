@@ -22,4 +22,8 @@ export class SecurityQuestionService {
   findAllSecurityQuestions(): Observable<any> {
     return this.http.get('/api/security-questions');
   }
+
+  deleteSecurityQuestion(recordId: string) {
+    throw new Error('Method not implemented.');
+  }
 }

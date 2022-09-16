@@ -1,20 +1,22 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 1)
+; Author: Professor Krasso
+; Date: 16 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+*/
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
-
-/**
- * Angular material imports
- */
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
@@ -22,6 +24,20 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+/**
+ * Angular material imports
+ */
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -35,7 +51,8 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent,
+    DeleteRecordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +61,13 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatTableModule,
+    MatInputModule,
+    MatCardModule,
+    MatMenuModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
