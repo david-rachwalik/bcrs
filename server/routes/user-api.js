@@ -16,7 +16,7 @@ const ErrorResponse = require('../services/error-response');
 
 // configurations
 const router = express.Router();
-// const saltRounds = 10; //default salt rounds for hashing algorithm
+const saltRounds = 10; // default salt rounds for hashing algorithm
 
 /**
  * findAll
