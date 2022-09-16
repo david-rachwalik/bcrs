@@ -18,6 +18,8 @@ const router = express.Router();
 
 // -------- API --------
 
+// operations: findById, deleteSecurityQuestions
+
 /**
  * findById
  * @openapi
@@ -25,8 +27,8 @@ const router = express.Router();
  *   get:
  *     tags:
  *       - Security Questions
- *     summary: return an SecurityQuestion document
- *     description:  API for returning an SecurityQuestion document.
+ *     summary: return a SecurityQuestion document
+ *     description:  API for returning a SecurityQuestion document.
  *     parameters:
  *       - name: id
  *         in: path
@@ -52,6 +54,51 @@ router.get('/:id', async (req, res) => {
           res.status(501).send(response);
         } else {
           // Successfully found document
+          const response = logResponse(200, securityQuestion);
+          res.json(response);
+        }
+      },
+    );
+  } catch (err) {
+    const response = logResponse(500, err);
+    res.status(500).send(response);
+  }
+});
+
+/**
+ * deleteSecurityQuestions
+ * @openapi
+ * /api/security-questions/{id}:
+ *   delete:
+ *     tags:
+ *       - Security Questions
+ *     summary: remove a SecurityQuestion document
+ *     description: API for deleting a SecurityQuestion document.
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: SecurityQuestion document id
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: SecurityQuestion document.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
+ */
+router.delete('/:id', async (req, res) => {
+  try {
+    SecurityQuestion.findByIdAndDelete(
+      { _id: req.params.id },
+      (err, securityQuestion) => {
+        if (err) {
+          const response = logResponse(501, err);
+          res.status(501).send(response);
+        } else {
+          // Successfully deleted document
           const response = logResponse(200, securityQuestion);
           res.json(response);
         }
