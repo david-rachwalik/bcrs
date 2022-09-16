@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SecurityQuestionService } from '../../shared/security-question.service';
 import { SecurityQuestion } from '../../shared/security-question.interface';
 
+
 @Component({
   selector: 'app-security-question-list',
   templateUrl: './security-question-list.component.html',
