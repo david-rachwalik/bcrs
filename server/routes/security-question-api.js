@@ -73,17 +73,10 @@ router.get('/:id', async (req, res) => {
  * /api/security-questions:
  *   post:
  *     tags:
- *       - Security Question
+ *       - Security Questions
  *     name: createSecurityQuestion
  *     description:  API for creating a new security question
  *     summary: creates a new security question
- *     parameters:
- *       - text: securityQuestion
- *         in: path
- *         required: true
- *         description: security question
- *         schema:
- *           type: string
  *     requestBody:
  *       content:
  *         application/json:
