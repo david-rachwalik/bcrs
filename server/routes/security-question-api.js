@@ -12,13 +12,15 @@
 const express = require('express');
 const SecurityQuestion = require('../models/security-question');
 const logResponse = require('../services/log-response');
+const BaseResponse = require('../services/base-response');
+const ErrorResponse = require('../services/error-response');
 
 // configurations
 const router = express.Router();
 
 // -------- API --------
 
-// operations: findById, deleteSecurityQuestions
+// operations: findById, createSecurityQuestion, deleteSecurityQuestions
 
 /**
  * findById
@@ -62,6 +64,87 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     const response = logResponse(500, err);
     res.status(500).send(response);
+  }
+});
+
+/**
+ * createSecurityQuestion
+ * @openapi
+ * /api/security-questions:
+ *   post:
+ *     tags:
+ *       - Security Question
+ *     name: createSecurityQuestion
+ *     description:  API for creating a new security question
+ *     summary: creates a new security question
+ *     parameters:
+ *       - text: securityQuestion
+ *         in: path
+ *         required: true
+ *         description: security question
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - text
+ *             properties:
+ *               text:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Security question creation successful
+ *       '500':
+ *         description: Server exception
+ *       '501':
+ *         description: MongoDB exception
+ */
+
+router.post('/', async (req, res) => {
+  try {
+    const newSecurityQuestion = {
+      text: req.body.text,
+    };
+    // creates a new Security Question or returns an appropriate error
+    SecurityQuestion.create(
+      newSecurityQuestion,
+      // eslint-disable-next-line func-names
+      function (err, securityQuestion) {
+        if (err) {
+          // Internal Server Error error response
+          console.log(err);
+          const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(
+            500,
+            'Internal server error',
+            err,
+          );
+          res
+            .status(500)
+            .send(createSecurityQuestionMongodbErrorResponse.toObject());
+        } else {
+          // creates new security question and logs the query succesful  base response
+          console.log(securityQuestion);
+          const createSecurityQuestionResponse = new BaseResponse(
+            200,
+            'Query successful',
+            securityQuestion,
+          );
+          res.json(createSecurityQuestionResponse.toObject());
+        }
+      },
+    );
+  } catch (e) {
+    // returns Internal Server Error ErrorResponse
+    console.log(e);
+    const createSecurityQuestionCatchErrorResponse = new ErrorResponse(
+      500,
+      'Internal server error',
+      e.message,
+    );
+    res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
   }
 });
 
