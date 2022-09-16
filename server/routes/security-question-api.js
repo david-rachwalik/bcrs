@@ -4,100 +4,64 @@
 ; Author: Professor Krasso
 ; Date: 15 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+; Description:  API routes for SecurityQuestion documents
 ;===========================================
 */
 
 // require statements
 const express = require('express');
-// const SecurityQuestion = require('../models/security-question');
-// const ErrorResponse = require('../services/error-response');
-// const BaseResponse = require('../services/base-response');
+const SecurityQuestion = require('../models/security-question');
+const logResponse = require('../services/log-response');
 
 // configurations
 const router = express.Router();
 
+// -------- API --------
+
 /**
- * createSecurityQuestion
+ * findById
  * @openapi
- * /api/security-questions:
- *   post:
+ * /api/security-questions/{id}:
+ *   get:
  *     tags:
- *       - Security Question
- *     name: createSecurityQuestion
- *     description:  API for creating a new security question
- *     summary: creates a new security question
+ *       - Security Questions
+ *     summary: return an SecurityQuestion document
+ *     description:  API for returning an SecurityQuestion document.
  *     parameters:
- *       - text: securityQuestion
+ *       - name: id
  *         in: path
  *         required: true
- *         description: security question
+ *         description: SecurityQuestion document id
  *         schema:
  *           type: string
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - text
- *             properties:
- *               text:
- *                 type: string
  *     responses:
  *       '200':
- *         description: Security question creation successful
+ *         description: SecurityQuestion document.
  *       '500':
- *         description: Server exception
+ *         description: Server Exception.
  *       '501':
- *         description: MongoDB exception
+ *         description: MongoDB Exception.
  */
-
-/*
-router.post('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const newSecurityQuestion = {
-      text: req.body.text,
-    };
-    // creates a new Security Question or returns an appropriate error
-    SecurityQuestion.create(
-      newSecurityQuestion,
-      // eslint-disable-next-line func-names
-      function (err, securityQuestion) {
+    SecurityQuestion.findOne(
+      { _id: req.params.id },
+      (err, securityQuestion) => {
         if (err) {
-          // Internal Server Error error response
-          console.log(err);
-          const createSecurityQuestionMongodbErrorResponse = new ErrorResponse(
-            500,
-            'Internal server error',
-            err,
-          );
-          res
-            .status(500)
-            .send(createSecurityQuestionMongodbErrorResponse.toObject());
+          const response = logResponse(501, err);
+          res.status(501).send(response);
         } else {
-          // creates new security question and logs the query successful  base response
-          console.log(securityQuestion);
-          const createSecurityQuestionResponse = new BaseResponse(
-            200,
-            'Query successful',
-            securityQuestion,
-          );
-          res.json(createSecurityQuestionResponse.toObject());
+          // Successfully found document
+          const response = logResponse(200, securityQuestion);
+          res.json(response);
         }
       },
     );
-  } catch (e) {
-    // returns Internal Server Error ErrorResponse
-    console.log(e);
-    const createSecurityQuestionCatchErrorResponse = new ErrorResponse(
-      500,
-      'Internal server error',
-      e.message,
-    );
-    res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
+  } catch (err) {
+    const response = logResponse(500, err);
+    res.status(500).send(response);
   }
 });
-*/
 
 // exports the module
 module.exports = router;
