@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AuthGuard } from './shared/auth.guard';
+// import { AuthGuard } from './shared/auth.guard';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
@@ -55,7 +55,7 @@ const routes: Routes = [
         component: SecurityQuestionCreateComponent,
       },
     ],
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'session',
