@@ -76,7 +76,7 @@ router.get('/:id', async (req, res) => {
  *       - Security Questions
  *     name: createSecurityQuestion
  *     description:  API for creating a new security question
- *     summary: creates a new security question
+ *     summary: creates a new SecurityQuestion document
  *     requestBody:
  *       content:
  *         application/json:
