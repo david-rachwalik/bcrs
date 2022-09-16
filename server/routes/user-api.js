@@ -185,6 +185,49 @@ router.put('/:id', async (req, res) => {
 /**************
  *  createUser API
  * *******************************/
+
+/**
+ * createUser
+ * @openapi
+ * /api/users:
+ *   post:
+ *     tags:
+ *       - Users
+ *     name: createUser
+ *     description: Adds a new user
+ *     summary: Adds a new user to users collection
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userName:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               role:
+ *                 type: object
+ *                 properties:
+ *                   role:
+ *                     type: string
+ *     responses:
+ *       '200':
+ *         description: Successful Post
+ *       '500':
+ *         description: Server exception
+ * */
 router.post('/', async (req, res) => {
   try {
     /* encrypts password*/
