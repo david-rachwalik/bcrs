@@ -18,14 +18,12 @@ class BaseResponse {
   // toObject function returns BaseResponse data as object
   toObject() {
     return {
-      // eslint-disable-next-line prettier/prettier
-      'httpCode': this.httpCode,
-      // eslint-disable-next-line prettier/prettier
-      'message': this.message,
-      // eslint-disable-next-line prettier/prettier
-      'data': this.data,
-      // eslint-disable-next-line prettier/prettier
-      'timestamp': new Date().toLocaleDateString(),
+      httpCode: this.httpCode,
+      message: this.message,
+      data: this.data,
+      // timestamp: new Date().toLocaleDateString(),
+      // https://www.w3schools.com/jsref/jsref_obj_date.asp
+      timestamp: new Date().toLocaleString(),
     };
   }
 }
