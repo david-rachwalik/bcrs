@@ -20,7 +20,59 @@ const router = express.Router();
 
 // -------- API --------
 
-// operations: findById, createSecurityQuestion, deleteSecurityQuestions
+// operations: findAll, findById, createSecurityQuestion, deleteSecurityQuestions
+
+/**
+ * findAll
+ * @openapi
+ * /api/security-questions:
+ *   get:
+ *     tags:
+ *       - Security Questions
+ *     description:  API for returning all Security QUestions
+ *     summary: returns all user security question
+ *     responses:
+ *       '200':
+ *         description: List of security questions
+ *       '500':
+ *         description: Server exception
+ *       '501':
+ *         description: MongoDB exception
+ * */
+router.get('/', async (req, res) => {
+  try {
+    SecurityQuestion.find({})
+      .where('isDisabled')
+      .equals(false)
+      .exec(function (err, securityQuestion) {
+        if (err) {
+          console.log(err);
+          const findAllMongodbErrorResponse = new ErrorResponse(
+            500,
+            'Internal Server Error',
+            err,
+          );
+          res.status(500).send(findAllMongodbErrorResponse.toObject());
+        } else {
+          console.log(securityQuestion);
+          const findAllResponse = new BaseResponse(
+            200,
+            'Query Successful',
+            securityQuestion,
+          );
+          res.json(findAllResponse.toObject());
+        }
+      });
+  } catch (e) {
+    console.log(e);
+    const findAllCatchErrorResponse = new ErrorResponse(
+      500,
+      'Internal Server Error',
+      e.message,
+    );
+    res.status(500).send(findAllCatchErrorResponse.toObject());
+  }
+});
 
 /**
  * findById
