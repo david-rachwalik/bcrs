@@ -41,11 +41,13 @@ const router = express.Router();
  * */
 router.get('/', async (req, res) => {
   try {
+    /* finds all security questions if isDisabled key is set to false */
     SecurityQuestion.find({})
       .where('isDisabled')
       .equals(false)
       .exec(function (err, securityQuestion) {
         if (err) {
+          /* handles server error */
           console.log(err);
           const findAllMongodbErrorResponse = new ErrorResponse(
             500,
@@ -54,6 +56,7 @@ router.get('/', async (req, res) => {
           );
           res.status(500).send(findAllMongodbErrorResponse.toObject());
         } else {
+          /* returns all sq with isDisabled set to false */
           console.log(securityQuestion);
           const findAllResponse = new BaseResponse(
             200,
@@ -64,6 +67,7 @@ router.get('/', async (req, res) => {
         }
       });
   } catch (e) {
+    /* Handles error if try fails */
     console.log(e);
     const findAllCatchErrorResponse = new ErrorResponse(
       500,
@@ -275,23 +279,27 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     SecurityQuestion.findOne(
-      { _id: req.params.id },
+      { _id: req.params.id }, // search for SQ by _id
       function (err, securityQuestion) {
         if (err) {
+          /* Handles server error */
           const updateSecurityQuestionMongodbError = logResponse(500, err);
           res.status(500).send(updateSecurityQuestionMongodbError);
         } else {
+          /* log SQ  */
           console.log(securityQuestion);
-
+          /* sets security question from parameter  */
           securityQuestion.set({
             text: req.body.text,
           });
 
           securityQuestion.save(function (err, savedSecurityQuestion) {
             if (err) {
+              /* if cannot save handle error */
               const savedSecurityQuesResponse = logResponse(500, err);
               res.status(500).send(savedSecurityQuesResponse);
             } else {
+              /* updates SQ  with new text */
               const updateSecQuesResponse = logResponse(
                 200,
                 savedSecurityQuestion,
@@ -303,6 +311,7 @@ router.put('/:id', async (req, res) => {
       },
     );
   } catch (e) {
+    /* handles server error if try fails */
     console.log(e);
     const updateSecurityQuestionCatchErrorResponse = new ErrorResponse(
       500,
