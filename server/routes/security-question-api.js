@@ -20,7 +20,7 @@ const router = express.Router();
 
 // -------- API --------
 
-// operations: findAll, findById, createSecurityQuestion, deleteSecurityQuestions
+// operations: findAll, findById, createSecurityQuestion, deleteSecurityQuestions, updateSecurityQuestion
 
 /**
  * findAll
@@ -235,6 +235,81 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     const response = logResponse(500, err);
     res.status(500).send(response);
+  }
+});
+
+/**UpdateSecurity Questions
+ * @openapi
+ * /api/security-questions/{id}:
+ *   put:
+ *     tags:
+ *       - Security Questions
+ *     summary: updates text of a security question
+ *     description: Updates a security question
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: id of a security question
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - text
+ *             properties:
+ *               text:
+ *                 type: string
+ *
+ *     responses:
+ *       '200':
+ *         description: SecurityQuestion document.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
+ * */
+router.put('/:id', async (req, res) => {
+  try {
+    SecurityQuestion.findOne(
+      { _id: req.params.id },
+      function (err, securityQuestion) {
+        if (err) {
+          const updateSecurityQuestionMongodbError = logResponse(500, err);
+          res.status(500).send(updateSecurityQuestionMongodbError);
+        } else {
+          console.log(securityQuestion);
+
+          securityQuestion.set({
+            text: req.body.text,
+          });
+
+          securityQuestion.save(function (err, savedSecurityQuestion) {
+            if (err) {
+              const savedSecurityQuesResponse = logResponse(500, err);
+              res.status(500).send(savedSecurityQuesResponse);
+            } else {
+              const updateSecQuesResponse = logResponse(
+                200,
+                savedSecurityQuestion,
+              );
+              res.json(updateSecQuesResponse);
+            }
+          });
+        }
+      },
+    );
+  } catch (e) {
+    console.log(e);
+    const updateSecurityQuestionCatchErrorResponse = new ErrorResponse(
+      500,
+      'Internal Server Error',
+      e.message,
+    );
+    res.status(500).send(updateSecurityQuestionCatchErrorResponse.toObject());
   }
 });
 
