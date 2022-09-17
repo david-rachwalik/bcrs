@@ -11,16 +11,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-// import { SecurityQuestion } from './security-question.interface';
+import { SecurityQuestion } from './security-question.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SecurityQuestionService {
-  constructor(private http: HttpClient) {}
+  constructor (private http: HttpClient) { }
 
   findAllSecurityQuestions(): Observable<any> {
     return this.http.get('/api/security-questions');
+  }
+
+  createSecurityQuestion(newSecurityQUestion: SecurityQuestion): Observable<any> {
+    return this.http.post('api/security-questions', {
+      text: newSecurityQUestion.text
+    });
   }
 
   deleteSecurityQuestion(recordId: string) {
