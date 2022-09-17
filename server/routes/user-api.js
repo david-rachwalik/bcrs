@@ -330,5 +330,59 @@ router.post('/', async (req, res) => {
   }
 });
 
+/**Delete User
+ * @openapi
+ * /api/users/{id}:
+ *   delete:
+ *     tags:
+ *       - Users
+ *     name: deleteUser
+ *     description: API to flag a user as disabled
+ *     summary: sets user as disabled
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: deleted user by setting isDisabled to true.
+ *       '500':
+ *         description: Server Exception.
+ */
+router.delete('/:id', async (req, res) => {
+  try {
+    User.findOne({ _id: req.params.id }, function (err, user) {
+      /* Handles MongoDB error */
+      if (err) {
+        const deleteUserMongodbErrResponse = logResponse(500, err);
+        res.status(500).send(deleteUserMongodbErrResponse);
+      } else {
+        /* if successful set disabled key to true */
+        user.set({
+          isDisabled: true,
+        });
+
+        /* updates the database with new value   */
+        user.save(function (err, savedUser) {
+          if (err) {
+            /* handles error */
+            const saveUserMongodbErrRes = logResponse(500, err);
+            res.json(saveUserMongodbErrRes);
+          } else {
+            /* makes the update */
+            const saveUserResponse = logResponse(200, savedUser);
+            res.json(saveUserResponse);
+          }
+        });
+      }
+    });
+  } catch (err) {
+    /* try catch handler */
+    const deleteUserCatchResponse = logResponse(500, err);
+    res.status(500).send(deleteUserCatchResponse);
+  }
+});
 // exports the module
 module.exports = router;
