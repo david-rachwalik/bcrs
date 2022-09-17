@@ -2,6 +2,10 @@
 // http://mcg.mbitson.com (Output Format: Angular JS 2 - Material 2)
 // https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 
+//Lato Font https://fonts.google.com/specimen/Lato?query=lato#styles
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+$lato-font: 'Lato', sans-serif;
+
 // Based on hex #1a472a	- rgb(26,71,42)
 $md-slytherin-dark-green: (
   50: #e4e9e5,

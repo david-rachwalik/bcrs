@@ -6,33 +6,36 @@
       until the last minute to begin working on your tasks.
     </span>
   </h1>
-  <div fxFlex fxLayout="row" fxLayoutGap="80px" fxFlexAlign="center">
+  <!-- Sub Navigation BEGIN -->
+  <div fxFlex fxLayout="row" fxLayoutGap="100px" fxLayoutAlign="space-evenly stretch">
 
-    <mat-card class="sub-nav-card mat-elevation-z2" routerLink="/users">
+    <mat-card fxFlex="17" class="sub-nav-card mat-elevation-z2" routerLink="/users">
       <mat-card-content class="sub-nav-title">
         User Configuration
       </mat-card-content>
     </mat-card>
 
 
-    <mat-card class="sub-nav-card mat-elevation-z2" routerLink="/security-questions">
+    <mat-card fxFlex="17" class="sub-nav-card mat-elevation-z2" routerLink="/">
+      <mat-card-content class="sub-nav-title">
+        Role Configuration
+      </mat-card-content>
+    </mat-card>
+
+
+    <mat-card fxFlex="17" class="sub-nav-card mat-elevation-z2" routerLink="/security-questions">
       <mat-card-content class="sub-nav-title">
         Manage Security Questions
       </mat-card-content>
     </mat-card>
 
 
-    <mat-card class="sub-nav-card mat-elevation-z2" routerLink="/">
-      <mat-card-content class="sub-nav-title">
-        Role Configuration
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="mat-elevation-z2">
+    <mat-card fxFlex="17" class="mat-elevation-z2">
       <mat-card-content>
         Number of Users
       </mat-card-content>
     </mat-card>
+    <!-- END Sub navigation -->
   </div>
 
 </div>

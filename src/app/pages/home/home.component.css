@@ -13,13 +13,11 @@
 }
 
 .sub-nav-card {
-  width: 280px;
-  padding: 2rem 3rem;
+  padding: 2.5rem 2rem;
   text-align: center;
 }
 .sub-nav-title {
   font-size: 16px;
-  font-weight: 500;
 }
 .sub-nav-card:hover {
   cursor: pointer;

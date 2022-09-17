@@ -1,7 +1,6 @@
 @use 'sass:map';
 @import '../../../styles/themes/slytherin-palette';
 .logo {
-  margin-left: 1rem;
   height: 95%;
 }
 
@@ -15,11 +14,12 @@
 
 .navbar-link {
   font-size: 24px;
-  font-weight: lighter;
+  font-weight: 300;
+  font-family: $lato-font;
 }
 
 .sidenav {
-  width: 17rem;
+  width: 14rem;
   color: map.get($md-slytherin-dark-green, 'contrast', 300);
   background-color: map.get($md-slytherin-dark-green, 400);
 }
@@ -30,7 +30,7 @@
 }
 
 .main-content {
-  padding-left: 30px;
+  padding: 2rem;
 }
 
 /* Footer */
