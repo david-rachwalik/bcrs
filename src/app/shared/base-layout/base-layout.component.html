@@ -1,35 +1,43 @@
-<div fxLayout="column">
+<mat-toolbar>
+  <!-- logo -->
+  <button class="logo" routerLink="/" mat-button> <img class="logo" src="../../../assets/bcrs.png" alt=""></button>
+</mat-toolbar>
 
-  <!-- navigation -->
-  <nav fxFlex>
-    <mat-toolbar color="primary">
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <!-- navigation -->
+    <nav fxFlex>
       <!-- navbar container -->
-      <div class="navbar-container">
-        <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+      <div fxLayout="column" class="navbar-container">
+
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" mat-button>About</button>
       </div>
 
-    </mat-toolbar>
-  </nav>
 
-  <!-- main content -->
-  <div fxFlex>
-    <main class="main-content" fxFlex="100%;">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content class="main">
+    <div fxLayout="column">
+      <!-- main content -->
+      <div fxFlex>
+        <main class="main-content" fxFlex="100%;">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
 
-  <!-- footer -->
-  <div fxFlex>
-    <footer class="footer">
-      <mat-toolbar color="accent" class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - nodebucket - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
-      </mat-toolbar>
-    </footer>
-  </div>
-</div>
+      <!-- footer -->
+      <div fxFlex>
+        <footer class="footer">
+          <mat-toolbar color="accent" class="footer-content">
+            <p>
+              &copy; {{year | date: 'yyyy'}} - Bobs Computer Repair Shop - <a href="https://www.bellevue.edu/"
+                class="bu-link" target="_blank">Bellevue University</a>
+            </p>
+          </mat-toolbar>
+        </footer>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

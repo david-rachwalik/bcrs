@@ -41,6 +41,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+/* PrimeNG imports */
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -74,9 +78,11 @@ import { CookieService } from 'ngx-cookie-service';
     MatFormFieldModule,
     RouterModule,
     HttpClientModule,
+    ButtonModule,
+    MatSidenavModule
   ],
-  providers: [CookieService],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [ CookieService ],
+  bootstrap: [ AppComponent ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
