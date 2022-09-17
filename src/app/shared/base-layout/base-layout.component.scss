@@ -4,14 +4,11 @@
   margin-left: 1rem;
   height: 95%;
 }
-.main {
-  min-height: calc(100vh - 64px);
+
+.toolbar {
+  background-color: map.get($md-slytherin-dark-green, 'contrast', 300);
 }
-.sidenav {
-  width: 17rem;
-  color: map.get($md-slytherin-dark-green, 'contrast', 300);
-  background-color: map.get($md-slytherin-dark-green, 400);
-}
+
 .navbar-container {
   padding: 5px;
 }
@@ -21,9 +18,22 @@
   font-weight: lighter;
 }
 
+.sidenav {
+  width: 17rem;
+  color: map.get($md-slytherin-dark-green, 'contrast', 300);
+  background-color: map.get($md-slytherin-dark-green, 400);
+}
+
+/* Main Content  */
+.main-container {
+  min-height: calc(100vh - 64px);
+}
+
 .main-content {
   padding-left: 30px;
 }
+
+/* Footer */
 
 .footer {
   bottom: 0;
@@ -44,4 +54,9 @@
 
 .bu-link:hover {
   text-decoration: underline;
+}
+
+/* Overrides */
+.mat-drawer-container {
+  background-color: transparent !important;
 }
