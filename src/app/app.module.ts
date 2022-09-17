@@ -81,7 +81,9 @@ import { TableModule } from 'primeng/table';
     HttpClientModule,
     ButtonModule,
     MatSidenavModule,
-    TableModule
+    TableModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ CookieService ],
   bootstrap: [ AppComponent ],

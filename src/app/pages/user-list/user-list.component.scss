@@ -1,3 +1,16 @@
 :host {
   display: block;
 }
+.table-body {
+  background: white !important;
+  color: black !important;
+}
+.number-users {
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+
+/* Overrides */
+.table-header {
+  background: #2a623d !important;
+}
