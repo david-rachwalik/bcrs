@@ -1,1 +1,74 @@
-<p>user-create works!</p>
+<div fxLayout="column">
+    <mat-card class="mat-elevation-z8">
+        <mat-card-title>Create User</mat-card-title>
+        <br />
+
+        <form [formGroup]="userForm" (ngSubmit)="createUser()" (keydown.enter)="$event.preventDefault()">
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="$any(userForm.controls['userName'])" placeholder="Username" />
+                        <mat-error class="error" *ngIf="userForm.controls['userName'].hasError('required') && userForm.controls['userName'].touched">
+                            Username is a required field.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="password" matInput [formControl]="$any(userForm.controls['password'])" placeholder="Password" />
+                        <mat-error class="error" *ngIf="userForm.controls['password'].hasError('required') && userForm.controls['password'].touched">
+                            Password is a required field.
+                        </mat-error>
+                        <mat-error class="error" *ngIf="userForm.controls['password'].hasError('pattern') && userForm.controls['password'].touched">
+                            Password must be at least 8 characters, contain one letter, and one number.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="$any(userForm.controls['firstName'])" placeholder="First name" />
+                        <mat-error class="error" *ngIf="userForm.controls['firstName'].hasError('required') && userForm.controls['firstName'].touched">
+                            First name is a required field.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="$any(userForm.controls['lastName'])" placeholder="Last name" />
+                        <mat-error class="error" *ngIf="userForm.controls['lastName'].hasError('required') && userForm.controls['lastName'].touched">
+                            Last name is a required field.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="$any(userForm.controls['phoneNumber'])" placeholder="Phone number" />
+                        <mat-error class="error" *ngIf="userForm.controls['phoneNumber'].hasError('required') && userForm.controls['phoneNumber'].touched">
+                            Phone number is a required field.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="$any(userForm.controls['address'])" placeholder="Address" />
+                        <mat-error class="error" *ngIf="userForm.controls['address'].hasError('required') && userForm.controls['address'].touched">
+                            Address is a required field.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="$any(userForm.controls['email'])" placeholder="Email" />
+                        <mat-error class="error" *ngIf="userForm.controls['email'].hasError('required') && userForm.controls['email'].touched">
+                            Email is a required field.
+                        </mat-error>
+                        <mat-error class="error" *ngIf="userForm.controls['email'].hasError('email') && userForm.controls['email'].touched">
+                            Invalid email format.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <br />
+
+            <mat-card-actions align="end">
+                <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+                <button mat-raised-button [disabled]="!userForm.valid" color="accent">Submit</button>
+            </mat-card-actions>
+
+        </form>
+    </mat-card>
+</div>
