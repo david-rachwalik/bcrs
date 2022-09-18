@@ -19,7 +19,6 @@ export class UserDetailsComponent implements OnInit {
 
   constructor (private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService) {
     this.userId = this.route.snapshot.paramMap.get('userId')!;
-    // commented out due to error message? - Type 'string | null' is not assignable to type 'string'
 
     this.userService.findUserById(this.userId).subscribe(res => {
       this.user = res[ 'data' ];
