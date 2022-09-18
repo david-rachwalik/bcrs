@@ -10,43 +10,45 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
-import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 /**
  * Angular material imports
  */
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CookieService } from 'ngx-cookie-service';
 
 /* PrimeNG imports */
 import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,6 @@ import { CardModule } from 'primeng/card';
     UserDetailsComponent,
     UserListComponent,
     DeleteRecordDialogComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -85,10 +86,12 @@ import { CardModule } from 'primeng/card';
     TableModule,
     FormsModule,
     ReactiveFormsModule,
-    CardModule
+    CardModule,
+    MessagesModule,
+    MessageModule,
   ],
-  providers: [ CookieService ],
-  bootstrap: [ AppComponent ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  providers: [CookieService],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
