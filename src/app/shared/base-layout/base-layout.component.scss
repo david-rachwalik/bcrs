@@ -9,21 +9,31 @@
 }
 
 .navbar-container {
-  padding: 5px;
+  margin-top: 8rem;
+  p {
+    color: map.get($md-slytherin-grey, 300);
+  }
 }
 
 .navbar-link {
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   font-family: $lato-font;
+  text-align: left;
+  color: map.get($md-slytherin-grey, 50);
 }
 
 .sidenav {
   width: 14rem;
   color: map.get($md-slytherin-dark-green, 'contrast', 300);
   background-color: map.get($md-slytherin-dark-green, 400);
+  padding-left: 1rem;
 }
-
+.pi,
+mat-icon {
+  font-size: 1.3rem;
+  margin-right: 5px;
+}
 /* Main Content  */
 .main-container {
   min-height: calc(100vh - 64px);

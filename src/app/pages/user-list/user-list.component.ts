@@ -23,4 +23,24 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(userId: string, recordId: string): void {
+    const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
+      data: {
+        recordId,
+        dialogHeader: "Delete Record Dialog",
+        dialogBody: `Are you sure you want to delete user ${recordId}?`
+      },
+      disableClose: true,
+      width: '800px'
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res === 'confirm') {
+        this.UserService.deleteUser(userId).subscribe(res => {
+          console.log('User Deleted');
+          this.users = this.users.filter(u => u._id !== userId);
+        });
+      }
+    });
+  }
 }

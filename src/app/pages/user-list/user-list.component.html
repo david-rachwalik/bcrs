@@ -1,3 +1,11 @@
+<!--
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 1)
+; Author: Professor Krasso
+; Date: 17 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+-->
 <h1>User Configuration</h1><br>
 <div fxLayout="row" fxLayoutAlign="space-between none">
 
@@ -33,7 +41,7 @@
           <button mat-icon-button routerLink="/users/{{user._id}}">
             <mat-icon color="accent">edit</mat-icon>
           </button>
-          <button mat-icon-button>
+          <button mat-icon-button (click)="delete(user._id, user.userName)">
             <mat-icon color="warn">delete</mat-icon>
           </button>
         </td>
