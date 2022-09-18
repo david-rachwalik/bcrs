@@ -11,8 +11,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../../shared/user.interface';
-import { UserService } from '../../shared/user.service';
+import { User } from '../../shared/interfaces/user.interface';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-use-create',

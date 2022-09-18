@@ -10,9 +10,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
-import { SecurityQuestionService } from '../../shared/security-question.service';
-import { SecurityQuestion } from '../../shared/security-question.interface';
-
+import { SecurityQuestion } from '../../shared/interfaces/security-question.interface';
+import { SecurityQuestionService } from '../../shared/services/security-question.service';
 
 @Component({
   selector: 'app-security-question-list',
@@ -54,17 +53,21 @@ export class SecurityQuestionListComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         if (result === 'confirm') {
-          this.securityQuestionService.deleteSecurityQuestion(recordId).subscribe({
-            next: (res: any) => {
-              console.log('Security question deleted');
-              this.securityQuestions = this.securityQuestions.filter(q => q._id !== recordId);
-            }
-          })
+          this.securityQuestionService
+            .deleteSecurityQuestion(recordId)
+            .subscribe({
+              next: (res: any) => {
+                console.log('Security question deleted');
+                this.securityQuestions = this.securityQuestions.filter(
+                  (q) => q._id !== recordId,
+                );
+              },
+            });
         }
       },
       error: (e) => {
         console.log(e);
-      }
+      },
     });
   }
 }

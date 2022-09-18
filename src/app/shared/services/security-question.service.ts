@@ -11,10 +11,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SecurityQuestion } from './security-question.interface';
+import { SecurityQuestion } from '../interfaces/security-question.interface';
 
-import { BaseResponse } from './interfaces/base-response.interface';
-import { ErrorResponse } from './interfaces/error-response.interface';
+import { BaseResponse } from '../interfaces/base-response.interface';
+import { ErrorResponse } from '../interfaces/error-response.interface';
 
 type SecurityQuestionResponse =
   | BaseResponse<SecurityQuestion>

@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Message } from 'primeng/api';
-import { UserService } from '../../shared/user.service';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-signin',
