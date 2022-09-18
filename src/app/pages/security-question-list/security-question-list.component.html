@@ -10,8 +10,13 @@
 <div fxLayout="column">
   <mat-card>
     <mat-card-title>Security Questions Configuration</mat-card-title>
-    <mat-card-subtitle>
-      <button mat-button routerLink="#" color="accent">Create</button>
+    <mat-card-subtitle> <br>
+      <div fxLayout="row">
+        <button mat-raised-button routerLink="/security-questions/create/new" color="primary">Create Security Question
+          <mat-icon>add
+          </mat-icon>
+        </button>
+      </div>
     </mat-card-subtitle>
 
     <br />
@@ -33,7 +38,7 @@
               <mat-icon color="accent">edit</mat-icon>
             </button>
             <button mat-icon-button (click)="delete(element._id)">
-              <mat-icon color="accent">delete</mat-icon>
+              <mat-icon color="warn">delete</mat-icon>
             </button>
           </td>
         </ng-container>
