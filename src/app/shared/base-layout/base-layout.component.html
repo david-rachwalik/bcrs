@@ -10,10 +10,21 @@
       <!-- navbar container -->
       <div fxLayout="column" class="navbar-container">
 
-        <p>Favorites</p>
+        <p>FAVORITES</p>
         <button class="navbar-link" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
           true}" mat-button>
           <mat-icon>dashboard</mat-icon> Dashboard
+        </button>
+        <br><br>
+        <p>MANAGE</p>
+        <button class="navbar-link" routerLink="/users" mat-button [routerLinkActive]="['active']">
+          <mat-icon>people</mat-icon> Users
+        </button>
+        <button class="navbar-link" mat-button [routerLinkActive]="['active']">
+          <mat-icon>polymer</mat-icon> Roles
+        </button>
+        <button class="navbar-link" routerLink="/security-questions" mat-button [routerLinkActive]="['active']">
+          <mat-icon>security</mat-icon> Security
         </button>
         <br><br>
         <p>Pages</p>
@@ -23,7 +34,6 @@
         <button class="navbar-link" mat-button [routerLinkActive]="['active']">
           <mat-icon>near_me</mat-icon>Contact
         </button>
-
       </div>
 
 
