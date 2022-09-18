@@ -35,7 +35,7 @@ export class UserService {
 
   createUser(user: User): Observable<UserResponse> {
     return this.http.post<UserResponse>('/api/users', {
-      username: user.userName,
+      userName: user.userName,
       password: user.password,
       firstName: user.firstName,
       lastName: user.lastName,
