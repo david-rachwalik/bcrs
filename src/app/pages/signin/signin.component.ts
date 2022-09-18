@@ -13,7 +13,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Message } from 'primeng/api';
-import { User } from '../../shared/user.interface';
 import { UserService } from '../../shared/user.service';
 
 @Component({
@@ -22,8 +21,6 @@ import { UserService } from '../../shared/user.service';
   styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
-  // Store signed-in user information
-  user: User = {} as User;
   // Use FormGroup to define valid values and capture input
   signinForm: FormGroup = this.fb.group({
     userName: [null, Validators.compose([Validators.required])],
