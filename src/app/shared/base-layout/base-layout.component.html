@@ -11,15 +11,19 @@
       <div fxLayout="column" class="navbar-container">
 
         <p>Favorites</p>
-        <button class="navbar-link" routerLink="/" mat-button>
-          <mat-icon>dashboard</mat-icon> Admin Dashboard
+        <button class="navbar-link" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+          true}" mat-button>
+          <mat-icon>dashboard</mat-icon> Dashboard
         </button>
         <br><br>
         <p>Pages</p>
-        <button class="navbar-link" mat-button><i class="pi pi-comments"></i> About</button>
-        <button class="navbar-link" mat-button>
+        <button class="navbar-link" mat-button [routerLinkActive]="['active']">
+          <mat-icon>article</mat-icon> About
+        </button>
+        <button class="navbar-link" mat-button [routerLinkActive]="['active']">
           <mat-icon>near_me</mat-icon>Contact
         </button>
+
       </div>
 
 
@@ -37,7 +41,7 @@
       <!-- footer -->
       <div fxFlex>
         <footer class="footer">
-          <mat-toolbar color="accent" class="footer-content">
+          <mat-toolbar class="footer-content">
             <p>
               &copy; {{year | date: 'yyyy'}} - Bobs Computer Repair Shop - <a href="https://www.bellevue.edu/"
                 class="bu-link" target="_blank">Bellevue University</a>
@@ -46,5 +50,6 @@
         </footer>
       </div>
     </div>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

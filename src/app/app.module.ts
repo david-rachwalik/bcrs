@@ -46,6 +46,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 /* PrimeNG imports */
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { TableModule } from 'primeng/table';
     MatSidenavModule,
     TableModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CardModule
   ],
   providers: [ CookieService ],
   bootstrap: [ AppComponent ],
