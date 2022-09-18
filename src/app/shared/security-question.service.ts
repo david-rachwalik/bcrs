@@ -9,28 +9,63 @@
 */
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { SecurityQuestion } from './security-question.interface';
+
+import { BaseResponse } from './interfaces/base-response.interface';
+import { ErrorResponse } from './interfaces/error-response.interface';
+
+type SecurityQuestionResponse =
+  | BaseResponse<SecurityQuestion>
+  | ErrorResponse<SecurityQuestion>;
+type SecurityQuestionsResponse =
+  | BaseResponse<SecurityQuestion[]>
+  | ErrorResponse<SecurityQuestion[]>;
 
 @Injectable({
   providedIn: 'root',
 })
 export class SecurityQuestionService {
-  constructor (private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  findAllSecurityQuestions(): Observable<any> {
-    return this.http.get('/api/security-questions');
+  findAllSecurityQuestions(): Observable<SecurityQuestionsResponse> {
+    return this.http.get<SecurityQuestionsResponse>('/api/security-questions');
   }
 
-  createSecurityQuestion(newSecurityQUestion: SecurityQuestion): Observable<any> {
-    return this.http.post('api/security-questions', {
-      text: newSecurityQUestion.text
+  findSecurityQuestionById(
+    questionId: string,
+  ): Observable<SecurityQuestionResponse> {
+    return this.http.get<SecurityQuestionResponse>(
+      `/api/security-questions/${questionId}`,
+    );
+  }
+
+  createSecurityQuestion(
+    newSecurityQUestion: SecurityQuestion,
+  ): Observable<SecurityQuestionResponse> {
+    return this.http.post<SecurityQuestionResponse>('api/security-questions', {
+      text: newSecurityQUestion.text,
     });
   }
 
-  deleteSecurityQuestion(questionId: string): Observable<any> {
-    return this.http.delete('/api/security-questions/' + questionId);
+  updateSecurityQuestion(
+    questionId: string,
+    updatedSecurityQuestion: SecurityQuestion,
+  ): Observable<SecurityQuestionResponse> {
+    return this.http.put<SecurityQuestionResponse>(
+      `/api/security-questions/${questionId}`,
+      {
+        text: updatedSecurityQuestion.text,
+      },
+    );
   }
 
+  deleteSecurityQuestion(
+    questionId: string,
+  ): Observable<SecurityQuestionResponse> {
+    return this.http.delete<SecurityQuestionResponse>(
+      `/api/security-questions/${questionId}`,
+    );
+  }
 }
