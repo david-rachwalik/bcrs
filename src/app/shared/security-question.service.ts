@@ -29,7 +29,8 @@ export class SecurityQuestionService {
     });
   }
 
-  deleteSecurityQuestion(recordId: string) {
-    throw new Error('Method not implemented.');
+  deleteSecurityQuestion(questionId: string): Observable<any> {
+    return this.http.delete('/api/security-questions/' + questionId);
   }
+
 }
