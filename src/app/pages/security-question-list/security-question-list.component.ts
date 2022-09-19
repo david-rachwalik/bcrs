@@ -7,6 +7,7 @@
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
@@ -38,6 +39,7 @@ export class SecurityQuestionListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // delete function
   delete(recordId: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
@@ -50,6 +52,7 @@ export class SecurityQuestionListComponent implements OnInit {
       width: '800px',
     });
 
+    // confirm delete
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         if (result === 'confirm') {

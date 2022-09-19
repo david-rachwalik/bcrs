@@ -7,9 +7,11 @@
 ;===========================================
 */
 
+// import statements
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// component imports
 import { HomeComponent } from '../pages/home/home.component';
 import { BaseLayoutComponent } from '../shared/base-layout/base-layout.component';
 import { AuthGuard } from '../shared/auth.guard';
@@ -22,6 +24,7 @@ import { UserDetailsComponent } from '../pages/user-details/user-details.compone
 import { UserListComponent } from '../pages/user-list/user-list.component';
 import { AuthLayoutComponent } from '../shared/auth-layout/auth-layout.component';
 
+// routes
 const routes: Routes = [
   {
     path: '',
@@ -56,7 +59,7 @@ const routes: Routes = [
         component: SecurityQuestionCreateComponent,
       },
     ],
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard], // Applies AuthGuard to routes
   },
   {
     path: 'session',

@@ -6,16 +6,18 @@
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 -->
+<!-- user list / user edit page-->
 <div fxLayout="column">
   <mat-card>
     <mat-card-title>User Configuration</mat-card-title><br>
     <mat-card-subtitle>
       <div fxLayout="row" fxLayoutAlign="space-between none">
-
+        <!-- create new user button -->
         <button mat-raised-button routerLink="/users/create/new" color="primary">
           Create New User
           <mat-icon>add</mat-icon>
         </button>
+        <!-- displays total number of registered users in the database-->
         <p> Total Number of users: <span class="number-users">{{users.length}}</span></p>
       </div>
     </mat-card-subtitle>
@@ -43,6 +45,7 @@
           <td>{{user.address}}</td>
           <td>{{user.email}}</td>
           <td>
+            <!-- edit and delete user icons / buttons-->
             <button mat-icon-button routerLink="/users/{{user._id}}">
               <mat-icon color="accent">edit</mat-icon>
             </button>

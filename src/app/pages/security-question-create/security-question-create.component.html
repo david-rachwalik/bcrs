@@ -7,6 +7,7 @@
 ;===========================================
 -->
 
+<!-- create security question form -->
 <div fxLayout="column">
   <mat-card class="mat-elevation-z8">
     <mat-card-title>Create Security Question</mat-card-title>
@@ -15,6 +16,7 @@
       <mat-card-content>
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
+            <!-- form controls enforce required fields -->
             <input matInput [formControl]="$any(form.controls['text'])" placeholder="Question text..."
               (keydown.enter)="create()">
             <mat-error class="error"
@@ -27,6 +29,7 @@
 
       <br>
       <mat-card-actions>
+        <!-- submit button only accessible when form is valid -->
         <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
         <button type="submit" mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
       </mat-card-actions>

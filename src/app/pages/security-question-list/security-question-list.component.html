@@ -7,6 +7,7 @@
 ;===========================================
 -->
 
+<!-- create new security question page -->
 <div fxLayout="column">
   <mat-card>
     <mat-card-title>Security Questions Configuration</mat-card-title>
@@ -21,7 +22,7 @@
 
     <br />
     <mat-card-content *ngIf="securityQuestions">
-
+      <!-- displays a table of security questions from the database -->
       <table mat-table [dataSource]="securityQuestions">
         <ng-container matColumnDef="question">
           <th mat-header-cell *matHeaderCellDef>Question</th>

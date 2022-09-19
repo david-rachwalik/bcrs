@@ -8,6 +8,7 @@
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,8 +33,8 @@ export class UserDetailsComponent implements OnInit {
     private userService: UserService,
   ) {
     this.userId = this.route.snapshot.paramMap.get('userId')!;
-    // commented out due to error message? - Type 'string | null' is not assignable to type 'string'
 
+    // finds and saves the user updates, or returns an error message
     this.userService.findUserById(this.userId).subscribe({
       next: (res) => {
         this.user = res.data;
@@ -61,6 +62,7 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
+  // save user function
   saveUser(): void {
     const updatedUser: User = {
       firstName: this.form.controls['firstName'].value,
@@ -70,6 +72,7 @@ export class UserDetailsComponent implements OnInit {
       email: this.form.controls['email'].value,
     };
 
+    // navigates to the users page after save
     this.userService.updateUser(this.userId, updatedUser).subscribe({
       next: (res: any) => {
         this.router.navigate(['/users']);
@@ -80,6 +83,7 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
+  // navigates to the users page after cancel update
   cancel(): void {
     this.router.navigate(['/users']);
   }

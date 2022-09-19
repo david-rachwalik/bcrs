@@ -8,6 +8,7 @@
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from '../../shared/delete-record-dialog/delete-record-dialog.component';
@@ -35,6 +36,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // delete user function. Displays confirm delete dialog
   delete(userId: string, recordId: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
@@ -46,6 +48,7 @@ export class UserListComponent implements OnInit {
       width: '800px',
     });
 
+    // deletes user after confirmation or displays error message
     dialogRef.afterClosed().subscribe({
       next: (res) => {
         if (res === 'confirm') {

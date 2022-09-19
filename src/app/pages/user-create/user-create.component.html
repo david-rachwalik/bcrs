@@ -7,15 +7,17 @@
 ;===========================================
 -->
 
+<!-- create user component -->
 <div fxLayout="column">
     <mat-card class="mat-elevation-z8">
         <mat-card-title>Create User</mat-card-title>
         <br />
-
+        <!-- create user form -->
         <form [formGroup]="userForm" (ngSubmit)="createUser()" (keydown.enter)="$event.preventDefault()">
             <mat-card-content>
                 <div fxLayout="column" fxLayoutGap="10px">
                     <mat-form-field>
+                        <!-- form controls enforce required fields -->
                         <input type="text" matInput [formControl]="$any(userForm.controls['userName'])" placeholder="Username" />
                         <mat-error class="error" *ngIf="userForm.controls['userName'].hasError('required') && userForm.controls['userName'].touched">
                             Username is a required field.
@@ -72,7 +74,7 @@
                 </div>
             </mat-card-content>
             <br />
-
+            <!-- submit button -->
             <mat-card-actions align="end">
                 <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
                 <button mat-raised-button [disabled]="!userForm.valid" color="accent">Submit</button>

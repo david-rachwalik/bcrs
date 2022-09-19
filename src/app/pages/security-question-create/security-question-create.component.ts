@@ -7,6 +7,7 @@
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,11 +30,13 @@ export class SecurityQuestionCreateComponent implements OnInit {
 
   }
 
+  // creates new security question
   create(): void {
     const newSecurityQuestion: SecurityQuestion = {
       text: this.form.controls[ 'text' ].value,
     };
 
+    // navigates to the security-questions page, or returns error message
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe({
       next: (res: any) => {
         this.router.navigate([ '/security-questions' ]);
@@ -43,6 +46,7 @@ export class SecurityQuestionCreateComponent implements OnInit {
       }
     });
   }
+  // cancels security question creation
   cancel(): void {
     this.router.navigate([ '/security-questions' ]);
   }

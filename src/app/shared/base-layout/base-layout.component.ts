@@ -7,6 +7,7 @@
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -27,6 +28,7 @@ export class BaseLayoutComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  // logout function
   logout(): void {
     this.cookieService.deleteAll();
     this.router.navigate([ '/session/signin' ]);

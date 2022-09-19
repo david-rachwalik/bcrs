@@ -4,6 +4,8 @@
 ; Author: Professor Krasso
 ; Date: 15 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+; Attribution: Schemas
+; URL: https://mongoosejs.com/docs/guide.html
 ;===========================================
 */
 

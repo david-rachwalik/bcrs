@@ -7,11 +7,12 @@
 ;===========================================
 -->
 
+<!-- security question details -->
 <div fxLayout="column">
     <mat-card class="mat-elevation-z8">
         <mat-card-title>Security Question Details</mat-card-title>
         <br />
-
+        <!-- saves security question updates or returns error message-->
         <form [formGroup]="questionForm" (ngSubmit)="saveQuestion()" (keydown.enter)="$event.preventDefault()">
             <mat-card-content>
                 <div fxLayout="column" fxLayoutGap="10px">
@@ -28,6 +29,7 @@
             <br />
 
             <mat-card-actions align="end">
+              <!-- submit and cancel buttons -->
                 <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
                 <button mat-raised-button [disabled]="!questionForm.valid" color="accent">Submit</button>
             </mat-card-actions>

@@ -8,6 +8,7 @@
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -49,6 +50,7 @@ export class UserCreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // createUser function
   createUser(): void {
     const newUser: User = {
       userName: this.userForm.controls['userName'].value,
@@ -71,6 +73,7 @@ export class UserCreateComponent implements OnInit {
     });
   }
 
+  // cancel function
   cancel(): void {
     this.router.navigate(['/users']);
   }

@@ -7,6 +7,8 @@
 ;===========================================
 */
 
+
+// import statements
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -24,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private cookieService: CookieService) {}
 
+  // auth guard allows only logged in users to use app
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
