@@ -10,14 +10,12 @@
 
 // require statements
 const express = require('express');
-// const SecurityQuestion = require('../models/security-question');
 const User = require('../models/user');
 const logResponse = require('../services/log-response');
 const bcrypt = require('bcrypt');
 
 // configurations
 const router = express.Router();
-const saltRounds = 10; //default salt rounds for hashing algorithm
 
 // -------- API --------
 
@@ -63,10 +61,9 @@ router.post('/signin', async (req, res) => {
         // console.log(`User: ${user}`);
         if (user) {
           // Compare values with inputs as unhashed followed by hashed
-          //let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
           let passwordIsValid = bcrypt.compareSync(
             req.body.password,
-            user.password, // unhashed here, hashed in database
+            user.password, // hashed in database
           );
           if (passwordIsValid) {
             // Successfully found document
