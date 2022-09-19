@@ -7,10 +7,13 @@
 ;===========================================
 -->
 
-<mat-toolbar class="toolbar mat-elevation-z3">
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="toolbar mat-elevation-z3">
   <!-- logo -->
   <button class="logo" routerLink="/" mat-button> <img class="logo" src="../../../assets/bcrs.png" alt=""></button>
-  <button mat-raised-button (click)="logout()">Log Out</button> {{sessionName}}
+
+  <div>
+    <span>{{sessionName}}</span> &nbsp;&nbsp; <button mat-raised-button (click)="logout()">Log Out</button>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container class="layout-container">

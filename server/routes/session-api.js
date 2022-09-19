@@ -63,10 +63,10 @@ router.post('/signin', async (req, res) => {
         // console.log(`User: ${user}`);
         if (user) {
           // Compare values with inputs as unhashed followed by hashed
-          let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+          //let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
           let passwordIsValid = bcrypt.compareSync(
+            req.body.password,
             user.password, // unhashed here, hashed in database
-            hashedPassword,
           );
           if (passwordIsValid) {
             // Successfully found document
