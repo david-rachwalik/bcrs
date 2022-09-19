@@ -29,7 +29,7 @@
   font-family: $lato-font;
   text-align: left;
   color: map.get($md-slytherin-grey, 300);
-  padding: 3px 0px 3px 10px;
+  padding: 3px 0px 4px 15px;
 }
 .active {
   background-color: rgba(255, 255, 255, 0.076);
@@ -37,7 +37,7 @@
   &::after {
     content: '';
     position: absolute;
-    top: 28%;
+    top: 30%;
     left: 0;
     display: inline-block;
     width: 5px;
