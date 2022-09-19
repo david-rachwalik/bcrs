@@ -61,7 +61,7 @@
                                 </mat-error>
 
                                 <mat-error class="error" *ngIf="signinForm.controls['password'].hasError('pattern') && signinForm.controls['password'].touched">
-                                    Password must be at least 8 characters, contain one letter, and one number.
+                                    Password must be at least 8 characters and contain one number, one lowercase letter, and one uppercase letter.
                                 </mat-error>
                             </mat-form-field>
 
