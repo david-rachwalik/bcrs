@@ -14,12 +14,21 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
-  styleUrls: ['./base-layout.component.scss'],
+  styleUrls: [ './base-layout.component.scss' ],
 })
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
 
-  constructor() {}
+  sessionName: string;
+  constructor (private router: Router, private cookieService: CookieService) {
+    this.sessionName = this.cookieService.get('sessionuser');
+    console.log(this.sessionName);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  logout(): void {
+    this.cookieService.deleteAll();
+    this.router.navigate([ '/session/signin' ]);
+  }
 }
