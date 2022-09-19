@@ -1,3 +1,12 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 1)
+; Author: David Rachwalik
+; Date: 15 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+*/
+
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
