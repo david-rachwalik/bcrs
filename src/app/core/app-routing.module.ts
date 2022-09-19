@@ -12,7 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from '../pages/home/home.component';
 import { BaseLayoutComponent } from '../shared/base-layout/base-layout.component';
-// import { AuthGuard } from './shared/auth.guard';
+import { AuthGuard } from '../shared/auth.guard';
 import { SecurityQuestionCreateComponent } from '../pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from '../pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from '../pages/security-question-list/security-question-list.component';
@@ -56,7 +56,7 @@ const routes: Routes = [
         component: SecurityQuestionCreateComponent,
       },
     ],
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'session',
