@@ -9,7 +9,26 @@
 
 @use 'sass:map';
 @import '../../../styles/themes/slytherin-palette';
-
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #74d57e;
+  animation: blink 3s infinite;
+}
+.status {
+  font-size: 12px;
+}
 /* Toolbar Styling */
 .logo {
   height: 58px;
@@ -27,7 +46,7 @@
 }
 
 .navbar-container {
-  margin-top: 100px;
+  margin-top: 30px;
   p {
     font-size: small;
     color: map.get($md-slytherin-grey, 100);
