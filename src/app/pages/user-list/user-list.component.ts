@@ -18,11 +18,12 @@ import { UserService } from '../../shared/services/user.service';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss'],
+  styleUrls: [ './user-list.component.scss' ],
 })
 export class UserListComponent implements OnInit {
-  users: User[] = [];
-  constructor(private dialog: MatDialog, private UserService: UserService) {
+  users!: User[];
+  displayedColumns = [ 'userName', 'firstName', 'lastName', 'phoneNumber', "address", 'email', 'functions' ];
+  constructor (private dialog: MatDialog, private UserService: UserService) {
     this.UserService.findAllUsers().subscribe({
       next: (res) => {
         this.users = res.data;
@@ -34,7 +35,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // delete user function. Displays confirm delete dialog
   delete(userId: string, recordId: string): void {

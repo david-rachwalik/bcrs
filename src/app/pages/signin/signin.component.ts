@@ -19,12 +19,12 @@ import { UserService } from '../../shared/services/user.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+  styleUrls: [ './signin.component.scss' ],
 })
 export class SigninComponent implements OnInit {
   // Use FormGroup to define valid values and capture input
   signinForm: FormGroup = this.fb.group({
-    userName: [null, Validators.compose([Validators.required])],
+    userName: [ null, Validators.compose([ Validators.required ]) ],
     password: [
       null,
       Validators.compose([
@@ -35,18 +35,18 @@ export class SigninComponent implements OnInit {
   });
   errorMessages: Message[] = [];
 
-  constructor(
+  constructor (
     private router: Router,
     private cookieService: CookieService,
     private fb: FormBuilder,
     private userService: UserService, // private messageService: MessageService,
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   signin(): void {
-    const userName = this.signinForm.controls['userName'].value;
-    const password = this.signinForm.controls['password'].value;
+    const userName = this.signinForm.controls[ 'userName' ].value;
+    const password = this.signinForm.controls[ 'password' ].value;
 
     this.userService.signinUser(userName, password).subscribe({
       next: (res) => {
@@ -54,7 +54,7 @@ export class SigninComponent implements OnInit {
           console.log(res.data);
           this.cookieService.set('sessionuser', res.data.userName, 1);
           console.log('Session user saved to cookie');
-          this.router.navigate(['/']);
+          this.router.navigate([ '/' ]);
         }
       },
       error: (err) => {

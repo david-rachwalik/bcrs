@@ -9,6 +9,7 @@
 
 @use 'sass:map';
 @import '../../../styles/themes/slytherin-palette';
+/* sidebar online animation */
 @keyframes blink {
   0%,
   100% {
@@ -44,7 +45,7 @@
     font-size: 14px;
   }
 }
-
+/* SideNav  */
 .navbar-container {
   margin-top: 30px;
   p {
@@ -53,7 +54,6 @@
   }
 }
 
-/* SideNav  */
 .navbar-link {
   font-size: 16px;
   font-weight: 400;
@@ -96,6 +96,7 @@
 .sidenav {
   position: fixed;
   width: 195px;
+  box-shadow: 2px 2px 10px #3c634a;
   color: map.get($md-slytherin-dark-green, 'contrast', 300);
   background: linear-gradient(
     160deg,
