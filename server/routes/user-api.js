@@ -281,7 +281,7 @@ router.post('/', async (req, res) => {
     let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
     /* assign default role of standard */
     standardRole = {
-      role: 'standard',
+      text: 'standard',
     };
 
     // Initializes User Object
