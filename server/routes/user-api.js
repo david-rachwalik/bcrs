@@ -384,5 +384,6 @@ router.delete('/:id', async (req, res) => {
     res.status(500).send(deleteUserCatchResponse);
   }
 });
+
 // exports the module
 module.exports = router;
