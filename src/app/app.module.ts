@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+import { AboutComponent } from './pages/about/about.component';
 
 
 // Only import [BrowserModule, BrowserAnimationsModule] once!
@@ -26,7 +27,7 @@ import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form
 // https://dev.to/sanketmaru/import-once-browser-module-1pie
 
 @NgModule({
-  declarations: [AppComponent, ResetPasswordFormComponent, VerifySecurityQuestionsFormComponent, VerifyUsernameFormComponent],
+  declarations: [AppComponent, ResetPasswordFormComponent, VerifySecurityQuestionsFormComponent, VerifyUsernameFormComponent, AboutComponent],
   imports: [
     // Core imports
     BrowserModule,

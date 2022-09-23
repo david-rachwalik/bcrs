@@ -10,6 +10,7 @@
 // import statements
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './pages/about/about.component';
 
 // component imports
 import { HomeComponent } from './pages/home/home.component';
@@ -61,6 +62,10 @@ const routes: Routes = [
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent,
       },
+      {
+        path: 'about',
+        component: AboutComponent
+      }
     ],
     canActivate: [AuthGuard], // Applies AuthGuard to routes
   },
