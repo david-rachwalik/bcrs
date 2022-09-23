@@ -4,9 +4,10 @@
 ; Author: Professor Krasso
 ; Date: 16 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
-; Description:  API routes for SecurityQuestion documents
 ;===========================================
 */
+
+import { SelectedSecurityQuestion } from "./selected-security-question.interface";
 
 export interface User {
   _id?: string;
@@ -17,6 +18,7 @@ export interface User {
   phoneNumber: string;
   address: string;
   email: string;
+  selectedSecurityQuestions?: SelectedSecurityQuestion[];
 }
 
 
