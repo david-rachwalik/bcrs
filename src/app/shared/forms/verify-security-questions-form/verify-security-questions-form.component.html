@@ -1,1 +1,87 @@
-<p>verify-security-questions-form works!</p>
+<!--
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 2)
+; Author: Professor Krasso
+; Date: 23 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+-->
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row style="margin: 48px auto;">
+      <div class="layout-header-container">
+          <p class="layout-header-text">
+              Bob's Computer Repair Shop
+              <br />
+              <mat-icon>build</mat-icon>
+          </p>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-------------------------------------------------------------------------------------->
+
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+
+    <br /><br />
+
+    <mat-card class="mat-elevation-z4 card-container">
+
+      <mat-card-title style="text-align: center;">
+        <h1 class="title">
+          Forgot Password<br />
+          <span class="subtitle">
+            Fields marked with an asterisk (*) are required.
+          </span>
+        </h1>
+      </mat-card-title>
+
+      <br /><br />
+
+      <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+      <form [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #verifySecurityQuestionsForm>
+
+        <mat-card-content fxLayout="column">
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Security Question 1</mat-label>
+
+            <input matInput required formControlName="answerToSecurityQuestion1" />
+
+            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion1'].hasError('required') && form.controls['answerToSecurityQuestion1'].touched">
+              Security Question 1 is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Security Question 2</mat-label>
+
+            <input matInput required formControlName="answerToSecurityQuestion2" />
+
+            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion2'].hasError('required') && form.controls['answerToSecurityQuestion2'].touched">
+              Security Question 2 is a required field.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field fxFlex appearance="fill">
+            <mat-label>Security Question 3</mat-label>
+
+            <input matInput required formControlName="answerToSecurityQuestion3" />
+
+            <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion3'].hasError('required') && form.controls['answerToSecurityQuestion3'].touched">
+              Security Question 3 is a required field.
+            </mat-error>
+          </mat-form-field>
+
+          <br/><br/>
+
+          <div fxFlex fxLayoutAlign="end" class="p5">
+            <button mat-raised-button routerLink="/session/signin" color="accent">Cancel</button> &nbsp;&nbsp;
+            <button mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
+          </div>
+        </mat-card-content>
+      </form>
+    </mat-card>
+  </div>
+</div>

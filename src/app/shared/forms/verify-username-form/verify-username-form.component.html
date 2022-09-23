@@ -27,7 +27,7 @@
 
     <mat-card class="mat-elevation-z4 card-container">
 
-      <mat-card-title>
+      <mat-card-title style="text-align: center;">
         <h1 class="title">
           Forgot Password<br />
           <span class="subtitle">
@@ -56,7 +56,7 @@
           <br/><br/>
 
           <div fxFlex fxLayoutAlign="end" class="p5">
-            <button mat-raised-button routerLink="/session/login" color="accent">Cancel</button> &nbsp;&nbsp;
+            <button mat-raised-button routerLink="/session/signin" color="accent">Cancel</button> &nbsp;&nbsp;
             <button mat-raised-button [disabled]="!form.valid" color="primary">Forgot Password</button>
           </div>
         </mat-card-content>

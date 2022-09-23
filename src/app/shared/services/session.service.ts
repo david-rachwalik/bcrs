@@ -33,7 +33,7 @@ export class SessionService {
   }
 
   verifyUsername(username: string): Observable<any> {
-    return this.http.get('/api/session/verify/users' + username);
+    return this.http.get('/api/session/verify/users/' + username);
   }
 
   verifySecurityQuestions(model: VerifySecurityQuestionModel, username: string): Observable<any> {
