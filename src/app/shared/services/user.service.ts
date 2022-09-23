@@ -59,6 +59,10 @@ export class UserService {
     return this.http.delete<UserResponse>(`/api/users/${userId}`);
   }
 
+  findSelectedSecurityQuestions(username: string): Observable<any> {
+    return this.http.get('/api/users/' + username + '/security-questions');
+  }
+
   signinUser(userName: string, password: string): Observable<UserResponse> {
     return this.http.post<UserResponse>('/api/session/signin', {
       userName,

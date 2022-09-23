@@ -23,6 +23,9 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { AuthGuard } from './shared/auth.guard';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
+import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
+import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
 
 // routes
 const routes: Routes = [
@@ -68,6 +71,18 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent,
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameFormComponent
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsFormComponent
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordFormComponent
       },
     ],
   },
