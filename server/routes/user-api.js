@@ -385,5 +385,49 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+/** findSelectedSecurityQuestions
+ * @openapi
+ * /api/users/{userName}/security-questions:
+ *   get:
+ *     tags:
+ *       - Users
+ *     name: findSelectedSecurityQuestions
+ *     description: API to find security questions of a user using UserName
+ *     summary: finds security questions of a user by user name
+ *     parameters:
+ *       - name: userName
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Returned Security Questions
+ *       '500':
+ *         description: Server Exception.
+ */
+router.get('/:userName/security-questions', async (req, res) => {
+  try {
+    /* express find one using username params */
+    User.findOne({ userName: req.params.userName }, function (err, user) {
+      if (err) {
+        /* handles server error */
+        const findSelectedSecQuestMongoDbErr = logResponse(500, err);
+        res.status(500).send(findSelectedSecQuestMongoDbErr);
+      } else {
+        /* if no error return user with security question as json */
+        const findSelectedSecQuestRes = logResponse(
+          200,
+          user.selectedSecurityQuestions,
+        );
+        res.json(findSelectedSecQuestRes);
+      }
+    });
+  } catch (error) {
+    /* catch error handler */
+    const findSelectedSecurityQuestionCatchErr = logResponse(500, error);
+    res.status(500).send(findSelectedSecurityQuestionCatchErr);
+  }
+});
 // exports the module
 module.exports = router;
