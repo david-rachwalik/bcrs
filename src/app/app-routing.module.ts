@@ -2,7 +2,7 @@
 ============================================
 ; Title: Bob's Computer Repair Shop (Sprint 1)
 ; Author: Professor Krasso
-; Date: 16 September 2022
+; Date: 24 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 */
@@ -10,11 +10,13 @@
 // import statements
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { AboutComponent } from './pages/about/about.component';
 
 // component imports
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
@@ -28,7 +30,6 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
-import { ContactComponent } from './pages/contact/contact.component';
 
 // routes
 const routes: Routes = [
@@ -66,14 +67,14 @@ const routes: Routes = [
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
       },
       {
         path: 'contact',
-        component: ContactComponent
-      }
+        component: ContactComponent,
+      },
     ],
-    canActivate: [ AuthGuard ], // Applies AuthGuard to routes
+    canActivate: [AuthGuard], // Applies AuthGuard to routes
   },
   {
     path: 'session',
@@ -85,26 +86,30 @@ const routes: Routes = [
       },
       {
         path: 'forgot',
-        component: VerifyUsernameFormComponent
+        component: VerifyUsernameFormComponent,
       },
       {
         path: 'verify-security-questions',
-        component: VerifySecurityQuestionsFormComponent
+        component: VerifySecurityQuestionsFormComponent,
       },
       {
         path: 'reset-password',
-        component: ResetPasswordFormComponent
+        component: ResetPasswordFormComponent,
       },
       {
         path: '404',
-        component: NotFoundComponent
-      }
+        component: NotFoundComponent,
+      },
+      {
+        path: '500',
+        component: ErrorComponent,
+      },
     ],
   },
   {
     path: '**',
-    redirectTo: 'session/404'
-  }
+    redirectTo: 'session/404',
+  },
 ];
 
 @NgModule({
@@ -116,6 +121,6 @@ const routes: Routes = [
       relativeLinkResolution: 'legacy',
     }),
   ],
-  exports: [ RouterModule ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

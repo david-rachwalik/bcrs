@@ -15,7 +15,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { AboutComponent } from '../pages/about/about.component';
+import { ContactComponent } from '../pages/contact/contact.component';
+import { ErrorComponent } from '../pages/error/error.component';
 import { HomeComponent } from '../pages/home/home.component';
+import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { SecurityQuestionCreateComponent } from '../pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from '../pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from '../pages/security-question-list/security-question-list.component';
@@ -26,9 +30,10 @@ import { UserListComponent } from '../pages/user-list/user-list.component';
 import { AuthLayoutComponent } from '../shared/auth-layout/auth-layout.component';
 import { BaseLayoutComponent } from '../shared/base-layout/base-layout.component';
 import { DeleteRecordDialogComponent } from '../shared/delete-record-dialog/delete-record-dialog.component';
+import { ResetPasswordFormComponent } from '../shared/forms/reset-password-form/reset-password-form.component';
+import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
 import { MaterialModule } from './material.module';
-import { NotFoundComponent } from '../pages/not-found/not-found.component';
-import { ContactComponent } from '../pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,12 @@ import { ContactComponent } from '../pages/contact/contact.component';
     UserListComponent,
     DeleteRecordDialogComponent,
     NotFoundComponent,
-    ContactComponent
+    ContactComponent,
+    ResetPasswordFormComponent,
+    VerifySecurityQuestionsFormComponent,
+    VerifyUsernameFormComponent,
+    AboutComponent,
+    ErrorComponent,
   ],
   imports: [
     CommonModule,
@@ -55,7 +65,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     CommonModule,
     FlexLayoutModule,
@@ -76,6 +86,11 @@ import { ContactComponent } from '../pages/contact/contact.component';
     UserDetailsComponent,
     UserListComponent,
     DeleteRecordDialogComponent,
+    ResetPasswordFormComponent,
+    VerifySecurityQuestionsFormComponent,
+    VerifyUsernameFormComponent,
+    AboutComponent,
+    ErrorComponent,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}
