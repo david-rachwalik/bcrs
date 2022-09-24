@@ -2,7 +2,7 @@
 ============================================
 ; Title: Bob's Computer Repair Shop (Sprint 1)
 ; Author: David Rachwalik
-; Date: 16 September 2022
+; Date: 23 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ; Description:  API routes for user session
 ;===========================================
@@ -21,6 +21,8 @@ const router = express.Router();
 const saltRounds = 10; // default salt rounds for hashing algorithm
 
 // -------- API --------
+
+// operations: signin, register, resetPassword, verifyUser, verifySecurityQuestions
 
 /**
  * signin
@@ -337,6 +339,101 @@ router.get('/verify/users/:userName', async (req, res) => {
     /* Catch error handler */
     const verifyUserCatchErrorRes = logResponse(500, error);
     res.status(500).send(verifyUserCatchErrorRes);
+  }
+});
+
+/**
+ * verifySecurityQuestions
+ * @openapi
+ * /api/session/verify/users/{userName}/security-questions:
+ *   post:
+ *     tags:
+ *       - Session
+ *     summary: Verify a user's security questions
+ *     description: API for user security question verification
+ *     requestBody:
+ *       required: true
+ *       description: User security question information
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - questionText1
+ *               - questionText2
+ *               - questionText3
+ *               - answerText1
+ *               - answerText2
+ *               - answerText3
+ *             properties:
+ *               questionText1:
+ *                 type: string
+ *               questionText2:
+ *                 type: string
+ *               questionText3:
+ *                 type: string
+ *               answerText1:
+ *                 type: string
+ *               answerText2:
+ *                 type: string
+ *               answerText3:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: User logged in
+ *       '401':
+ *         description: Invalid userName and/or password
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
+ */
+router.post('/verify/users/:userName/security-questions', async (req, res) => {
+  try {
+    User.findOne({ userName: req.body.userName }, (err, user) => {
+      if (err) {
+        const response = logResponse(501, err);
+        res.status(501).send(response);
+      } else {
+        console.log(`User: ${user}`);
+
+        const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(
+          (q) => q.questionText === req.body.questionText1,
+        );
+        const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(
+          (q) => q.questionText === req.body.questionText2,
+        );
+        const selectedSecurityQuestionThree =
+          user.selectedSecurityQuestions.find(
+            (q) => q.questionText === req.body.questionText3,
+          );
+
+        const isValidAnswerOne =
+          selectedSecurityQuestionOne.answerText === req.body.answerText1;
+        const isValidAnswerTwo =
+          selectedSecurityQuestionTwo.answerText === req.body.answerText2;
+        const isValidAnswerThree =
+          selectedSecurityQuestionThree.answerText === req.body.answerText3;
+
+        if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
+          console.log(
+            `User ${user.userName} answered their security questions correctly`,
+          );
+          // Successfully validated security questions
+          const response = logResponse(200, user);
+          res.json(response);
+        } else {
+          console.log(
+            `User ${user.userName} did not answer their security questions correctly`,
+          );
+          const response = logResponse(400, user);
+          res.status(400).send(response);
+        }
+      }
+    });
+  } catch (err) {
+    const response = logResponse(500, err);
+    res.status(500).send(response);
   }
 });
 
