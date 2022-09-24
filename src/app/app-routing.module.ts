@@ -10,6 +10,7 @@
 // import statements
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './pages/about/about.component';
 
 // component imports
@@ -67,7 +68,7 @@ const routes: Routes = [
         component: AboutComponent
       }
     ],
-    canActivate: [AuthGuard], // Applies AuthGuard to routes
+    canActivate: [ AuthGuard ], // Applies AuthGuard to routes
   },
   {
     path: 'session',
@@ -89,6 +90,10 @@ const routes: Routes = [
         path: 'reset-password',
         component: ResetPasswordFormComponent
       },
+      {
+        path: '404',
+        component: NotFoundComponent
+      }
     ],
   },
 ];
@@ -102,6 +107,6 @@ const routes: Routes = [
       relativeLinkResolution: 'legacy',
     }),
   ],
-  exports: [RouterModule],
+  exports: [ RouterModule ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

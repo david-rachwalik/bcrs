@@ -27,6 +27,7 @@ import { AuthLayoutComponent } from '../shared/auth-layout/auth-layout.component
 import { BaseLayoutComponent } from '../shared/base-layout/base-layout.component';
 import { DeleteRecordDialogComponent } from '../shared/delete-record-dialog/delete-record-dialog.component';
 import { MaterialModule } from './material.module';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MaterialModule } from './material.module';
     UserDetailsComponent,
     UserListComponent,
     DeleteRecordDialogComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   exports: [
     CommonModule,
     FlexLayoutModule,
@@ -74,4 +76,4 @@ import { MaterialModule } from './material.module';
     DeleteRecordDialogComponent,
   ],
 })
-export class SharedModule {}
+export class SharedModule { }
