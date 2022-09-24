@@ -42,11 +42,11 @@
 
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
 
-      <form [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #verifySecurityQuestionsForm>
+      <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #usernameForm>
 
         <mat-card-content fxLayout="column">
           <mat-form-field fxFlex appearance="fill">
-            <mat-label>Security Question 1</mat-label>
+            <mat-label>{{ verifySecurityQuestionsModel.question1 }}</mat-label>
 
             <input matInput required formControlName="answerToSecurityQuestion1" />
 
@@ -56,7 +56,7 @@
           </mat-form-field>
 
           <mat-form-field fxFlex appearance="fill">
-            <mat-label>Security Question 2</mat-label>
+            <mat-label>{{ verifySecurityQuestionsModel.question2 }}</mat-label>
 
             <input matInput required formControlName="answerToSecurityQuestion2" />
 
@@ -65,7 +65,7 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field fxFlex appearance="fill">
-            <mat-label>Security Question 3</mat-label>
+            <mat-label>{{ verifySecurityQuestionsModel.question3 }}</mat-label>
 
             <input matInput required formControlName="answerToSecurityQuestion3" />
 
@@ -78,7 +78,7 @@
 
           <div fxFlex fxLayoutAlign="end" class="p5">
             <button mat-raised-button routerLink="/session/signin" color="accent">Cancel</button> &nbsp;&nbsp;
-            <button mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
+            <button mat-raised-button [disabled]="!form.valid" color="primary">Verify Security Questions</button>
           </div>
         </mat-card-content>
       </form>
