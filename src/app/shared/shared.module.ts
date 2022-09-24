@@ -28,6 +28,7 @@ import { BaseLayoutComponent } from '../shared/base-layout/base-layout.component
 import { DeleteRecordDialogComponent } from '../shared/delete-record-dialog/delete-record-dialog.component';
 import { MaterialModule } from './material.module';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
+import { ContactComponent } from '../pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NotFoundComponent } from '../pages/not-found/not-found.component';
     UserDetailsComponent,
     UserListComponent,
     DeleteRecordDialogComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,

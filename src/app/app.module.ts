@@ -22,12 +22,13 @@ import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form
 import { AboutComponent } from './pages/about/about.component';
 
 
+
 // Only import [BrowserModule, BrowserAnimationsModule] once!
 // All other shared/feature modules will use [CommonModule]
 // https://dev.to/sanketmaru/import-once-browser-module-1pie
 
 @NgModule({
-  declarations: [AppComponent, ResetPasswordFormComponent, VerifySecurityQuestionsFormComponent, VerifyUsernameFormComponent, AboutComponent],
+  declarations: [ AppComponent, ResetPasswordFormComponent, VerifySecurityQuestionsFormComponent, VerifyUsernameFormComponent, AboutComponent ],
   imports: [
     // Core imports
     BrowserModule,
@@ -37,7 +38,7 @@ import { AboutComponent } from './pages/about/about.component';
     // Shared imports
     SharedModule,
   ],
-  providers: [CookieService],
-  bootstrap: [AppComponent],
+  providers: [ CookieService ],
+  bootstrap: [ AppComponent ],
 })
-export class AppModule {}
+export class AppModule { }

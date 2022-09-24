@@ -28,6 +28,7 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 // routes
 const routes: Routes = [
@@ -66,6 +67,10 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
       }
     ],
     canActivate: [ AuthGuard ], // Applies AuthGuard to routes
@@ -96,6 +101,10 @@ const routes: Routes = [
       }
     ],
   },
+  {
+    path: '**',
+    redirectTo: 'session/404'
+  }
 ];
 
 @NgModule({
