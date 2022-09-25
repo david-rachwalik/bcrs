@@ -54,10 +54,10 @@ mat-card {
     backface-visibility: hidden;
   }
   .card-back {
+    position: absolute;
+    top: -10px;
     transform: rotateY(180deg);
     img {
-      position: absolute;
-      top: -150px;
       width: 100%;
     }
   }
