@@ -11,8 +11,20 @@
   <!-- logo -->
   <button class="logo" routerLink="/" mat-button> <img class="logo" src="../../../assets/bcrs.png" alt=""></button>
 
-  <div>
-    <span>{{sessionName}}</span> &nbsp;&nbsp; <button mat-raised-button (click)="logout()">Log Out</button>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+
+    <button mat-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>person</mat-icon>
+      <mat-menu #profileMenu>
+        <p style="padding:.5rem 1rem;">{{year | date }}</p>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>&nbsp;&nbsp; Log Out
+        </button>
+      </mat-menu>
+      <span>
+        {{sessionName}}
+      </span>
+    </button>
   </div>
 </mat-toolbar>
 
