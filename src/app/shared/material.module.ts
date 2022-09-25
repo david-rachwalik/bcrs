@@ -68,4 +68,4 @@ import { TableModule } from 'primeng/table';
     MessageModule,
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }

@@ -1,3 +1,80 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 1)
+; Author: David Rachwalik
+; Date: 15 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+*/
+@use 'sass:map';
+@import '../../../styles/themes/slytherin-palette';
 :host {
   display: block;
+}
+/* Heading */
+.contact {
+  &-heading {
+    font-size: 2.3rem;
+    padding-top: 3rem;
+    line-height: 45px;
+    font-weight: 600;
+    background: linear-gradient(to left, #a0d674, #3c634a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+  }
+  &-subheading {
+    font-size: 1.1rem;
+    text-align: center;
+    color: #5e6264d3;
+  }
+}
+
+/* Card Design */
+mat-card {
+  margin-top: 4rem;
+  padding: 5rem 3rem 0;
+  height: 17rem;
+  box-shadow: 0px 23px 25px 0 #3c634a, 0 66px 15px 0px #ccc, 0 99px 5px 0px #fff !important;
+  perspective: 1000px;
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  &:hover .card-inner {
+    cursor: pointer;
+    transform: rotateY(180deg);
+  }
+  .card-front,
+  .card-back {
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+    img {
+      position: absolute;
+      top: -150px;
+      width: 100%;
+    }
+  }
+}
+mat-card-subtitle {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  background: linear-gradient(to left, #a0d674, #3c634a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pi {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  background: linear-gradient(to left, #a0d674, #3c634a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
