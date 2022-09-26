@@ -20,6 +20,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { ErrorComponent } from '../pages/error/error.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
+import { RegisterComponent } from '../pages/register/register.component';
 import { SecurityQuestionCreateComponent } from '../pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from '../pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from '../pages/security-question-list/security-question-list.component';
@@ -55,6 +56,7 @@ import { MaterialModule } from './material.module';
     VerifyUsernameFormComponent,
     AboutComponent,
     ErrorComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
@@ -91,6 +93,7 @@ import { MaterialModule } from './material.module';
     VerifyUsernameFormComponent,
     AboutComponent,
     ErrorComponent,
+    RegisterComponent,
   ],
 })
 export class SharedModule {}
