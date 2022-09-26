@@ -414,6 +414,10 @@ router.get('/:userName/security-questions', async (req, res) => {
         /* handles server error */
         const findSelectedSecQuestMongoDbErr = logResponse(500, err);
         res.status(500).send(findSelectedSecQuestMongoDbErr);
+      } else if (!user) {
+        /* if no user found return bad request */
+        const findSelectedSecQuestMongoDbErr = logResponse(400, err);
+        res.status(400).send(findSelectedSecQuestMongoDbErr);
       } else {
         /* if no error return user with security question as json */
         const findSelectedSecQuestRes = logResponse(

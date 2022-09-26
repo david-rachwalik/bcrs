@@ -351,6 +351,12 @@ router.get('/verify/users/:userName', async (req, res) => {
  *       - Session
  *     summary: Verify a user's security questions
  *     description: API for user security question verification
+ *     parameters:
+ *       - name: userName
+ *         in: path
+ *         required: true
+ *         scheme:
+ *           type: string
  *     requestBody:
  *       required: true
  *       description: User security question information
@@ -390,7 +396,8 @@ router.get('/verify/users/:userName', async (req, res) => {
  */
 router.post('/verify/users/:userName/security-questions', async (req, res) => {
   try {
-    User.findOne({ userName: req.body.userName }, (err, user) => {
+    User.findOne({ userName: req.params.userName }, (err, user) => {
+      console.log(user);
       if (err) {
         const response = logResponse(501, err);
         res.status(501).send(response);
