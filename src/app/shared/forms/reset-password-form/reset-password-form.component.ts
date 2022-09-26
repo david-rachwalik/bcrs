@@ -1,3 +1,15 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 2)
+; Author: Professor Krasso
+; Date: 23 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+; Attribution: Forms
+; URL: https://angular.io/guide/forms-overview
+;===========================================
+*/
+
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -27,6 +39,7 @@ export class ResetPasswordFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // updatePassword function updates the password or displays error message
   updatePassword() {
     const password = this.form.controls['password'].value;
 

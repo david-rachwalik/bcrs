@@ -4,9 +4,12 @@
 ; Author: Professor Krasso
 ; Date: 23 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+; Attribution: Forms
+; URL: https://angular.io/guide/forms-overview
 ;===========================================
 */
 
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -21,7 +24,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class VerifyUsernameFormComponent implements OnInit {
 
-  errorMessages: Message[];
+  errorMessages: Message[]; // sets empty message array
 
   form: FormGroup = this.fb.group({
     username: [null, Validators.compose([Validators.required])]
@@ -34,6 +37,7 @@ export class VerifyUsernameFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // verifyUser function utilizes the verifyUsername API. If username is verified, navigates to the verify-security-question form
   verifyUser() {
     const username = this.form.controls['username'].value;
 
@@ -41,7 +45,7 @@ export class VerifyUsernameFormComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.router.navigate(['/session/verify-security-questions'], {queryParams: {username: username}, skipLocationChange: true}); // prevents URL location change
-      },
+      }, // displays appropriate error message
       error: (e) => {
         this.errorMessages = [
           {severity: 'error', summary: 'Error', detail: e.message}

@@ -4,9 +4,12 @@
 ; Author: Professor Krasso
 ; Date: 23 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+; Attribution: Forms
+; URL: https://angular.io/guide/forms-overview
 ;===========================================
 -->
 
+<!--toolbar -->
 <mat-toolbar color="primary">
   <mat-toolbar-row style="margin: 48px auto;">
       <div class="layout-header-container">
@@ -39,7 +42,7 @@
       <br /><br />
 
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
-
+      <!-- form -->
       <form [formGroup]="form" (ngSubmit)="verifyUser()" #usernameForm>
 
         <mat-card-content fxLayout="column">

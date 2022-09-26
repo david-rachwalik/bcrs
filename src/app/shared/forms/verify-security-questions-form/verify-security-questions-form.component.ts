@@ -1,3 +1,15 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 2)
+; Author: Professor Krasso
+; Date: 23 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+; Attribution: Forms
+; URL: https://angular.io/guide/forms-overview
+;===========================================
+*/
+
+// import statements
 import { Component, OnInit } from '@angular/core';
 import { SelectedSecurityQuestion } from '../../interfaces/selected-security-question.interface';
 import { VerifySecurityQuestionModel } from '../../interfaces/verify-security-question.interface';
@@ -20,6 +32,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   username: string;
   errorMessages: Message[];
 
+  // sets FormGroup
   form: FormGroup = this.fb.group({
     answerToSecurityQuestion1: [null, Validators.compose([Validators.required])],
     answerToSecurityQuestion2: [null, Validators.compose([Validators.required])],
@@ -54,6 +67,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // function verifies the security questions or displays appropriate error
   verifySecurityQuestions() {
     this.verifySecurityQuestionsModel.answerToQuestion1 = this.form.controls['answerToSecurityQuestion1'].value;
     this.verifySecurityQuestionsModel.answerToQuestion2 = this.form.controls['answerToSecurityQuestion2'].value;
