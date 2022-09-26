@@ -30,16 +30,16 @@ export class SessionService {
     });
   }
 
-  verifyUsername(username: string): Observable<any> {
-    return this.http.get('/api/session/verify/users/' + username);
+  verifyUsername(userName: string): Observable<any> {
+    return this.http.get('/api/session/verify/users/' + userName);
   }
 
   verifySecurityQuestions(
     model: VerifySecurityQuestionModel,
-    username: string,
+    userName: string,
   ): Observable<any> {
     return this.http.post(
-      '/api/session/verify/users/' + username + '/security-questions',
+      '/api/session/verify/users/' + userName + '/security-questions',
       {
         questionText1: model.question1,
         questionText2: model.question2,
@@ -47,13 +47,12 @@ export class SessionService {
         answerText1: model.answerToQuestion1,
         answerText2: model.answerToQuestion2,
         answerText3: model.answerToQuestion3,
-      },
-    );
+      })
   }
 
-  updatePassword(password: string, username: string): Observable<any> {
+  updatePassword(password: string, userName: string): Observable<any> {
     return this.http.post(
-      '/api/session/users/' + username + '/reset-password',
+      '/api/session/users/' + userName + '/reset-password',
       {
         password,
       },
