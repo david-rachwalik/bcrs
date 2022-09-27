@@ -21,9 +21,12 @@ import { UserService } from '../../shared/services/user.service';
   styleUrls: [ './user-list.component.scss' ],
 })
 export class UserListComponent implements OnInit {
+  /* Local variables */
   users!: User[];
+  /* initialized array for mat table */
   displayedColumns = [ 'userName', 'firstName', 'lastName', 'phoneNumber', "address", 'email', 'functions' ];
   constructor (private dialog: MatDialog, private UserService: UserService) {
+    /* populates users array  */
     this.UserService.findAllUsers().subscribe({
       next: (res) => {
         this.users = res.data;

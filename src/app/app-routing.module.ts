@@ -75,7 +75,7 @@ const routes: Routes = [
         component: ContactComponent,
       },
     ],
-    canActivate: [AuthGuard], // Applies AuthGuard to routes
+    canActivate: [ AuthGuard ], // Applies AuthGuard to routes
   },
   {
     path: 'session',
@@ -126,6 +126,6 @@ const routes: Routes = [
       relativeLinkResolution: 'legacy',
     }),
   ],
-  exports: [RouterModule],
+  exports: [ RouterModule ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
