@@ -47,8 +47,7 @@
                   <mat-label>First name</mat-label>
                   <input matInput required formControlName="firstName" />
 
-                  <mat-error class="error"
-                    *ngIf="contactForm.controls['firstName'].hasError('required') && contactForm.controls['firstName'].touched">
+                  <mat-error class="error" *ngIf="contactForm.controls['firstName'].hasError('required') && contactForm.controls['firstName'].touched">
                     First name is a required field.
                   </mat-error>
                 </mat-form-field>
@@ -59,8 +58,7 @@
                   <mat-label>Last name</mat-label>
                   <input matInput required formControlName="lastName" />
 
-                  <mat-error class="error"
-                    *ngIf="contactForm.controls['lastName'].hasError('required') && contactForm.controls['lastName'].touched">
+                  <mat-error class="error" *ngIf="contactForm.controls['lastName'].hasError('required') && contactForm.controls['lastName'].touched">
                     Last name is a required field.
                   </mat-error>
                 </mat-form-field>
@@ -73,8 +71,7 @@
                   <mat-label>Phone number</mat-label>
                   <input matInput required formControlName="phoneNumber" />
 
-                  <mat-error class="error"
-                    *ngIf="contactForm.controls['phoneNumber'].hasError('required') && contactForm.controls['phoneNumber'].touched">
+                  <mat-error class="error" *ngIf="contactForm.controls['phoneNumber'].hasError('required') && contactForm.controls['phoneNumber'].touched">
                     Phone number is a required field.
                   </mat-error>
                 </mat-form-field>
@@ -85,13 +82,11 @@
                   <mat-label>Email</mat-label>
                   <input matInput required formControlName="email" />
 
-                  <mat-error class="error"
-                    *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched">
+                  <mat-error class="error" *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched">
                     Email is a required field.
                   </mat-error>
 
-                  <mat-error class="error"
-                    *ngIf="contactForm.controls['email'].hasError('pattern') && contactForm.controls['email'].touched">
+                  <mat-error class="error" *ngIf="contactForm.controls['email'].hasError('email') && contactForm.controls['email'].touched">
                     Invalid email format.
                   </mat-error>
                 </mat-form-field>
@@ -104,8 +99,7 @@
                   <mat-label>Address</mat-label>
                   <textarea matInput required formControlName="address"></textarea>
 
-                  <mat-error class="error"
-                    *ngIf="contactForm.controls['address'].hasError('required') && contactForm.controls['address'].touched">
+                  <mat-error class="error" *ngIf="contactForm.controls['address'].hasError('required') && contactForm.controls['address'].touched">
                     Address is a required field.
                   </mat-error>
                 </mat-form-field>
@@ -139,8 +133,7 @@
                     </mat-option>
                   </mat-select>
 
-                  <mat-error class="error"
-                    *ngIf="sqForm.controls['securityQuestion1'].hasError('required') && sqForm.controls['securityQuestion1'].touched">
+                  <mat-error class="error" *ngIf="sqForm.controls['securityQuestion1'].hasError('required') && sqForm.controls['securityQuestion1'].touched">
                     Required field.
                   </mat-error>
                 </mat-form-field>
@@ -170,8 +163,7 @@
                     </mat-option>
                   </mat-select>
 
-                  <mat-error class="error"
-                    *ngIf="sqForm.controls['securityQuestion2'].hasError('required') && sqForm.controls['securityQuestion2'].touched">
+                  <mat-error class="error" *ngIf="sqForm.controls['securityQuestion2'].hasError('required') && sqForm.controls['securityQuestion2'].touched">
                     Required field.
                   </mat-error>
                 </mat-form-field>
@@ -201,8 +193,7 @@
                     </mat-option>
                   </mat-select>
 
-                  <mat-error class="error"
-                    *ngIf="sqForm.controls['securityQuestion3'].hasError('required') && sqForm.controls['securityQuestion3'].touched">
+                  <mat-error class="error" *ngIf="sqForm.controls['securityQuestion3'].hasError('required') && sqForm.controls['securityQuestion3'].touched">
                     Required field.
                   </mat-error>
                 </mat-form-field>
@@ -249,8 +240,7 @@
                     <mat-label>Username</mat-label>
                     <input required matInput formControlName="userName" />
 
-                    <mat-error class="error"
-                      *ngIf="credForm.controls['userName'].hasError('required') && credForm.controls['userName'].touched">
+                    <mat-error class="error" *ngIf="credForm.controls['userName'].hasError('required') && credForm.controls['userName'].touched">
                       Username is a required field.
                     </mat-error>
                   </mat-form-field>
@@ -263,14 +253,12 @@
                     <mat-label>Password</mat-label>
                     <input required matInput formControlName="password" />
 
-                    <mat-error class="error"
-                      *ngIf="credForm.controls['password'].hasError('required') && credForm.controls['password'].touched">
+                    <mat-error class="error" *ngIf="credForm.controls['password'].hasError('required') && credForm.controls['password'].touched">
                       Password is a required field.
                     </mat-error>
 
-                    <mat-error class="error"
-                      *ngIf="credForm.controls['password'].hasError('pattern') && credForm.controls['password'].touched">
-                      Password must be at least 8 characters, contain one letter, and one number.
+                    <mat-error class="error" *ngIf="credForm.controls['password'].hasError('pattern') && credForm.controls['password'].touched">
+                      Password must be at least 8 characters and contain one number, one lowercase letter, and one uppercase letter.
                     </mat-error>
                   </mat-form-field>
                 </mat-list-item>
@@ -280,8 +268,7 @@
               <!-- STEP 03 - action buttons -->
               <div fxLayoutAlign="end">
                 <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp;
-                <button mat-raised-button (click)="register()" [disabled]="!credForm.valid"
-                  color="primary">Register</button>
+                <button mat-raised-button (click)="register()" [disabled]="!credForm.valid" color="primary">Register</button>
               </div>
 
             </div>
