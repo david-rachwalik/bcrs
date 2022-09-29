@@ -143,3 +143,4 @@ router.put('/:roleId', async(req, res) => {
   }
 });
 
+module.exports = router;
