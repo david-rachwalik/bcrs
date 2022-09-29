@@ -29,7 +29,7 @@ const router = express.Router();
  *   get:
  *     tags:
  *       - Security Questions
- *     description:  API for returning all Security QUestions
+ *     description:  API for returning all Security Questions
  *     summary: returns all user security question
  *     responses:
  *       '200':

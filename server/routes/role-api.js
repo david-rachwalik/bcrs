@@ -18,8 +18,22 @@ const BaseResponse = require('../services/base-response');
 const router = express.Router();
 
 /**
- * FindAll
- */
+ * findAll
+ * @openapi
+ * /api/role:
+ *   get:
+ *     tags:
+ *       - Roles
+ *     description:  API for returning all Roles
+ *     summary: returns all user roles
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Server exception
+ *       '501':
+ *         description: MongoDB exception
+ * */
 
 router.get('/', async (req, res) => {
   try
