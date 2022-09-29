@@ -24,8 +24,8 @@ const router = express.Router();
  *   get:
  *     tags:
  *       - Invoices
- *     description:  API for returning all Roles
- *     summary: returns all user roles
+ *     description:  API for returning all purchases by service
+ *     summary: returns all purchases by service
  *     responses:
  *       '200':
  *         description: Query successful
