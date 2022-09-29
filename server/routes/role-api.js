@@ -64,3 +64,82 @@ router.get('/', async (req, res) => {
     res.status(500).send(findAllRolesCatchErrorResponse.toObject());
   }
 });
+
+/** UpdateRole
+ * @openapi
+ * /api/role/{id}:
+ *   put:
+ *     tags:
+ *       - Roles
+ *     summary: updates text of a role
+ *     description: Updates a role
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: id of a role
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - text
+ *             properties:
+ *               text:
+ *                 type: string
+ *
+ *     responses:
+ *       '200':
+ *         description: Query successful.
+ *       '500':
+ *         description: Server Exception.
+ *       '501':
+ *         description: MongoDB Exception.
+ * */
+
+router.put('/:roleId', async(req, res) => {
+  try {
+    Role.findOne({'_id': req.params.roleId}, function(err, role)
+    {
+      if (err)
+      {
+        console.log(err);
+        const updateRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(updateRoleMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(role);
+        role.set({
+          test: req.body.text
+        });
+
+        role.save(function(err, updatedRole)
+        {
+          if (err)
+          {
+            console.log(err);
+            const updatedMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+            res.status(500).send(updatedRoleMongodbErrorResponse.toObject());
+          }
+          else
+          {
+            console.log(updatedRole);
+            const updatedRoleResponse = new BaseResponse('200', 'Query successful', updatedRole);
+            res.json(updatedRoleResponse.toObject());
+          }
+        })
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const updateRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(updatedRoleCatchErrorResponse.toObject());
+  }
+});
+
