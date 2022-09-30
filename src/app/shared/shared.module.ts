@@ -65,7 +65,7 @@ import { ConfirmationService } from 'primeng/api';
     RegisterComponent,
     RoleListComponent,
     RoleDetailsComponent,
-    RoleCreateComponent,
+    RoleCreateComponent
   ],
   imports: [
     CommonModule,
