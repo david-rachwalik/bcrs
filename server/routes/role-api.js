@@ -36,31 +36,36 @@ const router = express.Router();
  * */
 
 router.get('/', async (req, res) => {
-  try
-  {
+  try {
     Role.find({})
-    .where('isDisabled')
-    .equals(false)
-    .exec(function(err, roles)
-    {
-      if (err)
-      {
-        console.log(err);
-        const findAllRolesMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-        res.status(500).send(findAllRolesMongodbErrorResponse.toObject());
-      }
-      else
-      {
-        console.log(roles);
-        const findAllRolesResponse = new BaseResponse('200', 'Query successful', roles);
-        res.json(findAllRolesResponse.toObject());
-      }
-    })
-  }
-  catch (e)
-  {
+      .where('isDisabled')
+      .equals(false)
+      .exec(function (err, roles) {
+        if (err) {
+          console.log(err);
+          const findAllRolesMongodbErrorResponse = new ErrorResponse(
+            '500',
+            'Internal server error',
+            err,
+          );
+          res.status(500).send(findAllRolesMongodbErrorResponse.toObject());
+        } else {
+          console.log(roles);
+          const findAllRolesResponse = new BaseResponse(
+            '200',
+            'Query successful',
+            roles,
+          );
+          res.json(findAllRolesResponse.toObject());
+        }
+      });
+  } catch (e) {
     console.log(e);
-    const findAllRolesCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    const findAllRolesCatchErrorResponse = new ErrorResponse(
+      '500',
+      'Internal server error',
+      e.message,
+    );
     res.status(500).send(findAllRolesCatchErrorResponse.toObject());
   }
 });
@@ -100,47 +105,92 @@ router.get('/', async (req, res) => {
  *         description: MongoDB Exception.
  * */
 
-router.put('/:roleId', async(req, res) => {
+router.put('/:roleId', async (req, res) => {
   try {
-    Role.findOne({'_id': req.params.roleId}, function(err, role)
-    {
-      if (err)
-      {
+    Role.findOne({ _id: req.params.roleId }, function (err, role) {
+      if (err) {
         console.log(err);
-        const updateRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        const updateRoleMongodbErrorResponse = new ErrorResponse(
+          '500',
+          'Internal server error',
+          err,
+        );
         res.status(500).send(updateRoleMongodbErrorResponse.toObject());
-      }
-      else
-      {
+      } else {
         console.log(role);
         role.set({
-          test: req.body.text
+          test: req.body.text,
         });
 
-        role.save(function(err, updatedRole)
-        {
-          if (err)
-          {
+        role.save(function (err, updatedRole) {
+          if (err) {
             console.log(err);
-            const updatedMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+            const updatedMongodbErrorResponse = new ErrorResponse(
+              '500',
+              'Internal server error',
+              err,
+            );
             res.status(500).send(updatedRoleMongodbErrorResponse.toObject());
-          }
-          else
-          {
+          } else {
             console.log(updatedRole);
-            const updatedRoleResponse = new BaseResponse('200', 'Query successful', updatedRole);
+            const updatedRoleResponse = new BaseResponse(
+              '200',
+              'Query successful',
+              updatedRole,
+            );
             res.json(updatedRoleResponse.toObject());
           }
-        })
+        });
       }
-    })
-  }
-  catch (e)
-  {
+    });
+  } catch (e) {
     console.log(e);
-    const updateRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    const updateRoleCatchErrorResponse = new ErrorResponse(
+      '500',
+      'Internal server error',
+      e.message,
+    );
     res.status(500).send(updatedRoleCatchErrorResponse.toObject());
   }
 });
 
+/**
+ * findById
+ * @openapi
+ * /api/role/{id}:
+ *   get:
+ *     tags:
+ *       - Roles
+ *     summary: Finds a role and returns document
+ *     description: Return a role by role Id
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: id of a role
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful.
+ *       '500':
+ *         description: Server Exception.
+ * */
+router.get('/:roleId', async (req, res) => {
+  try {
+    Role.findOne({ _id: req.params.roleId }, function (err, role) {
+      if (err) {
+        const findRoleByIdMongodbErr = logResponse(500, err);
+        res.status(500).send(findRoleByIdMongodbErr);
+      } else {
+        const findRoleByIdResponse = logResponse(200, role);
+        res.json(findRoleByIdResponse);
+      }
+    });
+  } catch (error) {
+    /* catch error handler */
+    const findRoleByIdCatchError = logResponse(500, error);
+    res.status(500).send(findRoleByIdCatchError);
+  }
+});
 module.exports = router;
