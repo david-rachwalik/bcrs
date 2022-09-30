@@ -130,8 +130,8 @@ router.get('/:id', async (req, res) => {
  *     tags:
  *       - Users
  *     name: updateUser
- *     description: API to update a user
- *     summary: updates a user
+ *     description: API to update a user by user Id
+ *     summary: updates a user using user Id
  *     parameters:
  *       - name: id
  *         in: path
@@ -149,6 +149,7 @@ router.get('/:id', async (req, res) => {
  *               - phoneNumber
  *               - address
  *               - email
+ *               - 'role.text'
  *             properties:
  *               firstName:
  *                 type: string
@@ -159,6 +160,8 @@ router.get('/:id', async (req, res) => {
  *               address:
  *                 type: string
  *               email:
+ *                 type: string
+ *               'role.text':
  *                 type: string
  *     responses:
  *       '200':
@@ -193,6 +196,7 @@ router.put('/:id', async (req, res) => {
           phoneNumber: req.body.phoneNumber,
           address: req.body.address,
           email: req.body.email,
+          'role.text': req.body.role,
         });
         // saves the updated fields
         // eslint-disable-next-line func-names, no-shadow
