@@ -1,1 +1,39 @@
-<p>role-details works!</p>
+<!--
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 3)
+; Author: David Rachwalik
+; Date: 30 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+-->
+
+<!-- role details -->
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+      <mat-card-title>Role Details</mat-card-title>
+      <br />
+      <!-- saves role updates or returns error message-->
+      <form [formGroup]="roleForm" (ngSubmit)="saveRole()" (keydown.enter)="$event.preventDefault()">
+          <mat-card-content>
+              <div fxLayout="column" fxLayoutGap="10px">
+                  <mat-form-field>
+                      <input matInput [formControl]="$any(roleForm.controls['text'])" placeholder="Role text..."
+                          (keydown.enter)="saveRole()" />
+
+                      <mat-error class="error" *ngIf="roleForm.controls['text'].hasError('required') && roleForm.controls['text'].touched">
+                          Role is a required field.
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+          </mat-card-content>
+          <br />
+
+          <mat-card-actions align="end">
+            <!-- submit and cancel buttons -->
+              <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+              <button mat-raised-button [disabled]="!roleForm.valid" color="accent">Submit</button>
+          </mat-card-actions>
+      </form>
+
+  </mat-card>
+</div>
