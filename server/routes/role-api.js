@@ -264,4 +264,101 @@ router.get('/:roleId', async (req, res) => {
   }
 });
 
+/**
+ * deleteRole
+ * @openapi
+ * /api/role/{id}:
+ *   delete:
+ *     tags:
+ *       - Roles
+ *     summary: Finds a role and returns document
+ *     description: Return a role by role Id
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: id of a role
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful.
+ *       '400':
+ *         description: Role is already in use and cannot be deleted.
+ *       '500':
+ *         description: Server Exception.
+ */
+router.delete('/:roleId', async (req, res) => {
+  try {
+    Role.findOne({ _id: req.params.roleId }, function (err, role) {
+      if (err) {
+        const deleteRoleMongoDbError = logResponse(500, err);
+        res.status(500).send(deleteRoleMongoDbError);
+      } else {
+        console.log(role);
+
+        User.aggregate(
+          [
+            {
+              $lookup: {
+                from: 'roles',
+                localField: 'role.text',
+                foreignField: 'text',
+                as: 'userRoles',
+              },
+            },
+            {
+              $match: {
+                'userRoles.text': role.text,
+              },
+            },
+          ],
+          function (err, users) {
+            if (err) {
+              const usersMongoDbErrorRes = logResponse(500, err);
+              res.status(500).send(usersMongoDbErrorRes);
+            } else {
+              if (users.length > 0) {
+                console.log(
+                  `Role < ${role.text} > is already in use and cannot be deleted`,
+                );
+                const userRoleAlreadyInUseResponse = new BaseResponse(
+                  400,
+                  `Role ${role.text} is in use.`,
+                  role,
+                );
+                res.status(400).send(userRoleAlreadyInUseResponse.toObject());
+              } else {
+                console.log(
+                  `Role < ${role.text} > is not an active role and can be safely removed`,
+                );
+
+                role.set({
+                  isDisabled: true,
+                });
+
+                role.save(function (err, updatedRole) {
+                  if (err) {
+                    const updatedRoleMongoDbErrorRes = logResponse(500, err);
+                    res.status(500).send(updatedRoleMongoDbErrorRes);
+                  } else {
+                    const roleDeletedResponse = new BaseResponse(
+                      200,
+                      `Role ${role.text} has been removed successfully`,
+                      updatedRole,
+                    );
+                    res.json(roleDeletedResponse.toObject());
+                  }
+                });
+              }
+            }
+          },
+        );
+      }
+    });
+  } catch (error) {
+    const deleteRoleCatchError = logResponse(500, error);
+    res.status(500).send(deleteRoleCatchError);
+  }
+});
 module.exports = router;
