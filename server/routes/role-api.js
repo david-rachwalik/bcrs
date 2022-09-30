@@ -189,7 +189,7 @@ router.put('/:roleId', async (req, res) => {
       } else {
         console.log(role);
         role.set({
-          test: req.body.text,
+          text: req.body.text,
         });
 
         role.save(function (err, updatedRole) {
