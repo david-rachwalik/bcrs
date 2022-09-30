@@ -8,6 +8,7 @@
 ;===========================================
 */
 
+// import statements
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -26,13 +27,14 @@ type SecurityQuestionsResponse =
 @Injectable({
   providedIn: 'root',
 })
+// exports SecurityQuestion service
 export class SecurityQuestionService {
   constructor(private http: HttpClient) {}
-
+  // findAllSecurityQuestions service
   findAllSecurityQuestions(): Observable<SecurityQuestionsResponse> {
     return this.http.get<SecurityQuestionsResponse>('/api/security-questions');
   }
-
+  // findSecurityQuestionById service
   findSecurityQuestionById(
     questionId: string,
   ): Observable<SecurityQuestionResponse> {
@@ -40,7 +42,7 @@ export class SecurityQuestionService {
       `/api/security-questions/${questionId}`,
     );
   }
-
+  // createSecurityQuestion service
   createSecurityQuestion(
     newSecurityQUestion: SecurityQuestion,
   ): Observable<SecurityQuestionResponse> {
@@ -48,7 +50,7 @@ export class SecurityQuestionService {
       text: newSecurityQUestion.text,
     });
   }
-
+  // updateSecurityQuestion service
   updateSecurityQuestion(
     questionId: string,
     updatedSecurityQuestion: SecurityQuestion,
@@ -60,7 +62,7 @@ export class SecurityQuestionService {
       },
     );
   }
-
+  // deleteSecurityQuestion service
   deleteSecurityQuestion(
     questionId: string,
   ): Observable<SecurityQuestionResponse> {
