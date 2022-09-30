@@ -21,7 +21,7 @@ const saltRounds = 10; // default salt rounds for hashing algorithm
 
 // -------- API --------
 
-// operations: findAll, findById, createUser, updateUser,
+// operations: findAll, findById, createUser, updateUser, findUserRole
 
 /**
  * findAll
@@ -437,5 +437,47 @@ router.get('/:userName/security-questions', async (req, res) => {
     res.status(500).send(findSelectedSecurityQuestionCatchErr);
   }
 });
+
+/**
+ * findUserRole
+ * @openapi
+ * /api/users/{userName}/role:
+ *   get:
+ *     tags:
+ *       - Users
+ *     summary: find a User Role document
+ *     description:  API for returning a User Role document.
+ *     parameters:
+ *       - name: userName
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Query successful
+ *       '500':
+ *         description: Server Exception
+ *       '501':
+ *         description: MongoDB Exception
+ */
+router.get('/:userName/role', async (req, res) => {
+  try {
+    User.findOne({ userName: req.params.userName }, (err, user) => {
+      if (err) {
+        const response = logResponse(501, err);
+        res.status(501).send(response);
+      } else {
+        // Successfully found document
+        const response = logResponse(200, user.role);
+        res.json(response);
+      }
+    });
+  } catch (err) {
+    const response = logResponse(500, err);
+    res.status(500).send(response);
+  }
+});
+
 // exports the module
 module.exports = router;
