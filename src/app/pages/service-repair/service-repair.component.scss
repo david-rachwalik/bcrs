@@ -1,3 +1,37 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 1)
+; Author: David Rachwalik
+; Date: 15 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+*/
+
+.main-welcome {
+  margin-top: 30px;
+}
+
+.title {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+}
+
+.sub-nav-card {
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+.sub-nav-title {
+  font-size: 16px;
+}
+.sub-nav-card:hover {
+  cursor: pointer;
+}
+
 :host {
   display: block;
 }
