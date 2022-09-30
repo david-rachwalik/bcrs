@@ -24,6 +24,7 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { ServiceRepairComponent } from './pages/service-repair/service-repair.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
@@ -34,6 +35,7 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+
 
 // routes
 const routes: Routes = [
@@ -88,6 +90,10 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
+      },
+      {
+        path: 'services',
+        component: ServiceRepairComponent,
       },
     ],
     canActivate: [ AuthGuard ], // Applies AuthGuard to routes

@@ -28,7 +28,7 @@ export class RoleService {
   }
   // findRoleById service
   findRoleById(roleId: string): Observable<any> {
-    return this.http.get('/api/role/${roleId}');
+    return this.http.get(`/api/role/${roleId}`);
   }
   // createRole service
   createRole(role: Role): Observable<any> {
@@ -38,17 +38,17 @@ export class RoleService {
   }
   // updateRole service
   updateRole(roleId: string, role: Role): Observable<any> {
-    return this.http.put('/api/role/${roleId}', {
+    return this.http.put(`/api/role/${roleId}`, {
       text:role.text
     });
   }
   // deleteRole service
   deleteRole(roleId: string): Observable<any> {
-    return this.http.delete('/api/role/${roleId}');
+    return this.http.delete(`/api/role/${roleId}`);
   }
   // findUserRole service
   findUserRole(userName: string): Observable<any> {
     console.log('userName from the findUserRole API ' + userName);
-    return this.http.get('/api/users/${userName}/role');
+    return this.http.get(`/api/users/${userName}/role`);
   }
 }

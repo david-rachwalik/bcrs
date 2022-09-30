@@ -19,6 +19,7 @@ import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { ErrorComponent } from '../pages/error/error.component';
 import { HomeComponent } from '../pages/home/home.component';
+import { ServiceRepairComponent } from '../pages/service-repair/service-repair.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { RegisterComponent } from '../pages/register/register.component';
 import { SecurityQuestionCreateComponent } from '../pages/security-question-create/security-question-create.component';
@@ -50,6 +51,7 @@ import { ConfirmationService } from 'primeng/api';
     SecurityQuestionListComponent,
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
+    ServiceRepairComponent,
     SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
@@ -94,6 +96,7 @@ import { ConfirmationService } from 'primeng/api';
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
     SigninComponent,
+    ServiceRepairComponent,
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
