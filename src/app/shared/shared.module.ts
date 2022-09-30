@@ -35,6 +35,12 @@ import { ResetPasswordFormComponent } from '../shared/forms/reset-password-form/
 import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
 import { MaterialModule } from './material.module';
+import { RoleListComponent } from '../pages/role-list/role-list.component';
+import { RoleDetailsComponent } from '../pages/role-details/role-details.component';
+import { RoleCreateComponent } from '../pages/role-create/role-create.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +63,9 @@ import { MaterialModule } from './material.module';
     AboutComponent,
     ErrorComponent,
     RegisterComponent,
+    RoleListComponent,
+    RoleDetailsComponent,
+    RoleCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +75,7 @@ import { MaterialModule } from './material.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ConfirmDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
