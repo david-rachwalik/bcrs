@@ -36,7 +36,7 @@ export class ServiceRepairComponent implements OnInit {
   successMessages: Message[];
 
   constructor(private cookieService: CookieService, private router: Router, private productService: ProductService, private invoiceService: InvoiceService, private dialogRef: MatDialog) {
-
+    // sets all necessary variables
     this.username = this.cookieService.get('sessionuser') ?? '';
     this.products = [];
     this.lineItems = [];
@@ -110,12 +110,14 @@ export class ServiceRepairComponent implements OnInit {
   
   Delete this line */ 
 
+  // reloadProducts function unchecks all products
   reloadProducts() {
     for (let product of this.products) {
       product.checked = false;
     }
   }
 
+  // clearLineItems function sets the lineItems array to empty
   clearLineItems() {
     this.lineItems = [];
   }

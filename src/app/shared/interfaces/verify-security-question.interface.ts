@@ -7,6 +7,7 @@
 ;===========================================
 */
 
+// export VerifySecurityQuestionModel interface
 export interface VerifySecurityQuestionModel {
   question1: string;
   question2: string;

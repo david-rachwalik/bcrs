@@ -6,9 +6,10 @@
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 */
-
+// import statements
 import { SelectedSecurityQuestion } from "./selected-security-question.interface";
 
+// export User interface
 export interface User {
   _id?: string;
   userName?: string;

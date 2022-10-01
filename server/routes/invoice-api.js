@@ -20,7 +20,7 @@ const router = express.Router();
 /**
  * findPurchaseByService
  * @openapi
- * /api/invoices:
+ * /api/purchases-graph:
  *   get:
  *     tags:
  *       - Invoices
@@ -35,9 +35,10 @@ const router = express.Router();
  *         description: MongoDB exception
  * */
 
+// findPurchaseByService API 
 router.get('/purchases-graph', async(req, res) => {
   try
-  {
+  { // sorts and counts the invoice line items, or returns error message
     Invoice.aggregate([
     {
       $unwind: '$lineItems'
@@ -62,7 +63,7 @@ router.get('/purchases-graph', async(req, res) => {
         '_id.title': 1
       }
     }
-  ], function(err, purchaseGraph)
+  ], function(err, purchaseGraph) 
   {
     if (err)
     {
@@ -85,5 +86,6 @@ router.get('/purchases-graph', async(req, res) => {
     res.status(500).send(findPurchasesByServiceCatchErrorResponse.toObject());
   }
 });
+
 
 module.exports = router;

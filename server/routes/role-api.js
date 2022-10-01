@@ -39,8 +39,11 @@ const router = express.Router();
  *       '501':
  *         description: MongoDB exception
  */
+
+// findAll roles API
 router.get('/', async (req, res) => {
   try {
+    // finds all active (non-disabled) roles
     Role.find({})
       .where('isDisabled')
       .equals(false)
@@ -55,6 +58,7 @@ router.get('/', async (req, res) => {
           res.status(500).send(findAllRolesMongodbErrorResponse.toObject());
         } else {
           console.log(roles);
+          // succesful response returns all roles
           const findAllRolesResponse = new BaseResponse(
             '200',
             'Query successful',
@@ -175,8 +179,11 @@ router.post('/', async (req, res) => {
  *       '501':
  *         description: MongoDB Exception.
  */
+
+// updateRole API 
 router.put('/:roleId', async (req, res) => {
-  try {
+  try { 
+    // finds the role by roleId
     Role.findOne({ _id: req.params.roleId }, function (err, role) {
       if (err) {
         console.log(err);
@@ -188,10 +195,11 @@ router.put('/:roleId', async (req, res) => {
         res.status(500).send(updateRoleMongodbErrorResponse.toObject());
       } else {
         console.log(role);
+        // sets the new role text
         role.set({
           text: req.body.text,
         });
-
+        // saves the updated role text
         role.save(function (err, updatedRole) {
           if (err) {
             console.log(err);
@@ -203,6 +211,7 @@ router.put('/:roleId', async (req, res) => {
             res.status(500).send(updatedRoleMongodbErrorResponse.toObject());
           } else {
             console.log(updatedRole);
+            // successful update
             const updatedRoleResponse = new BaseResponse(
               '200',
               'Query successful',

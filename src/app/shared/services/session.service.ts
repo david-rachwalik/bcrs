@@ -8,6 +8,7 @@
 ;===========================================
 */
 
+// import statements
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,6 +26,7 @@ type UserResponse = BaseResponse<User> | ErrorResponse<User>;
 export class SessionService {
   constructor(private http: HttpClient) {}
 
+  // service layer to log a user in 
   login(userName: string, password: string): Observable<UserResponse> {
     return this.http.post<UserResponse>('/api/session/login', {
       userName,
@@ -32,6 +34,7 @@ export class SessionService {
     });
   }
 
+  // service layer to register a new user
   register(user: User): Observable<UserResponse> {
     return this.http.post<UserResponse>('/api/session/register', {
       userName: user.userName,
@@ -45,10 +48,12 @@ export class SessionService {
     });
   }
 
+  // service layer to verify username
   verifyUsername(userName: string): Observable<UserResponse> {
     return this.http.get<UserResponse>(`/api/session/verify/users/${userName}`);
   }
 
+  // service layer to verify security questions
   verifySecurityQuestions(
     model: VerifySecurityQuestionModel,
     userName: string,
@@ -66,6 +71,7 @@ export class SessionService {
     );
   }
 
+  // service layer to update password
   updatePassword(password: string, userName: string): Observable<UserResponse> {
     return this.http.post<UserResponse>(
       `/api/session/users/${userName}/reset-password`,

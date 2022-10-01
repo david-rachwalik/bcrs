@@ -7,9 +7,10 @@
 ; Description: invoice.ts
 ;===========================================
 */
-
+// import statements
 import { LineItem } from './line-item.interface';
 
+// Invoice class
 export class Invoice {
     private username: string;
     private lineItems: LineItem[];
@@ -28,18 +29,19 @@ export class Invoice {
         this.lineItems = [];
     }
 
+    // getUsername service
     getUsername(): string {
         return this.username;
     }
-
+    // setLineItems service
     setLineItems(lineItems: LineItem[]): void {
         this.lineItems = lineItems;
     }
-
+    // getLineItems service
     getLineItems(): LineItem[] {
         return this.lineItems;
     }
-
+    // getLineItemTotal service
     getLineItemTotal(): number {
         let total: number = 0;
 
@@ -48,19 +50,19 @@ export class Invoice {
         }
         return Number(total);
     }
-
+    // getLaborAmount service
     getLaborAmount(): number {
         return Number(this.laborHours) * Number(this.LABOR_RATE);
     }
-
+    // getOrderDate service
     getOrderDate(): string {
         return this.orderDate;
     }
-
+    // getTotal service
     getTotal(): number {
         return Number(this.partsAmount) + Number(this.getLaborAmount()) + Number(this.getLineItemTotal());
     }
-
+    // clear form service
     clear() {
         this.partsAmount = 0;
         this.laborHours = 0;
