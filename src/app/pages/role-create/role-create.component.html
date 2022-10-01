@@ -17,7 +17,7 @@
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field>
             <!-- form controls enforce required fields -->
-            <input matInput [formControl]="$any(form.controls['text'])" placeholder="Question text..."
+            <input matInput [formControl]="$any(form.controls['text'])" placeholder="Role text..."
               (keydown.enter)="create()">
             <mat-error class="error"
               *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched">

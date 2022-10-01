@@ -46,7 +46,7 @@ export class RoleListComponent implements OnInit {
         recordId,
         dialogHeader: 'Delete Record Dialog',
         dialogBody:
-          'Are you sure you want to delete the selected security question?',
+          'Are you sure you want to delete the selected role?',
       },
       disableClose: true,
       width: '800px',
