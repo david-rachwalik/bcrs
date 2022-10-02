@@ -22,7 +22,7 @@ import { SharedModule } from './shared/shared.module';
 // https://dev.to/sanketmaru/import-once-browser-module-1pie
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [ AppComponent ],
   imports: [
     // Core imports
     BrowserModule,
@@ -32,7 +32,7 @@ import { SharedModule } from './shared/shared.module';
     // Shared imports
     SharedModule,
   ],
-  providers: [CookieService],
-  bootstrap: [AppComponent],
+  providers: [ CookieService ],
+  bootstrap: [ AppComponent ],
 })
-export class AppModule {}
+export class AppModule { }

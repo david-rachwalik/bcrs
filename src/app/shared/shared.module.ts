@@ -40,6 +40,7 @@ import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-sec
 import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
 import { InvoiceSummaryDialogComponent } from './invoice-summary-dialog/invoice-summary-dialog.component';
 import { MaterialModule } from './material.module';
+import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MaterialModule } from './material.module';
     RoleDetailsComponent,
     RoleCreateComponent,
     InvoiceSummaryDialogComponent,
+    PurchasesByServiceGraphComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +79,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     ReactiveFormsModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   exports: [
     CommonModule,
     FlexLayoutModule,
@@ -111,6 +113,7 @@ import { MaterialModule } from './material.module';
     RoleDetailsComponent,
     RoleCreateComponent,
     InvoiceSummaryDialogComponent,
+    PurchasesByServiceGraphComponent
   ],
 })
-export class SharedModule {}
+export class SharedModule { }

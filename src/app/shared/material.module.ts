@@ -31,6 +31,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { TableModule } from 'primeng/table';
     MessagesModule,
     MessageModule,
     ConfirmDialogModule,
+    ChartModule
   ],
   exports: [
     // Angular Materials
@@ -78,6 +80,7 @@ import { TableModule } from 'primeng/table';
     MessagesModule,
     MessageModule,
     ConfirmDialogModule,
+    ChartModule
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }

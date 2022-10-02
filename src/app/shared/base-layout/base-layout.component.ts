@@ -11,6 +11,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { Role } from '../interfaces/role.interface';
+import { RoleService } from '../services/role.service';
+
 
 @Component({
   selector: 'app-base-layout',
@@ -19,11 +22,19 @@ import { Router } from '@angular/router';
 })
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
+  role: Role;
 
   sessionName: string;
-  constructor (private router: Router, private cookieService: CookieService) {
+  constructor (private router: Router, private cookieService: CookieService, private roleService: RoleService) {
+    this.role = {} as Role;
     this.sessionName = this.cookieService.get('sessionuser');
     console.log(this.sessionName);
+
+    /* assign role a valiue */
+    this.roleService.findUserRole(this.cookieService.get("sessionuser")).subscribe(res => {
+      this.role = res.data;
+      console.log(this.role);
+    });
   }
 
   ngOnInit(): void { }
