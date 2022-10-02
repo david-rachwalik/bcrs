@@ -18,9 +18,9 @@ import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 import { RoleListComponent } from './pages/role-list/role-list.component';
-import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
@@ -30,12 +30,11 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { AuthGuard } from './shared/auth.guard';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
-
+import { AuthGuard } from './shared/guards/auth.guard';
 
 // routes
 const routes: Routes = [
@@ -73,15 +72,15 @@ const routes: Routes = [
       },
       {
         path: 'roles',
-        component: RoleListComponent
+        component: RoleListComponent,
       },
       {
         path: 'roles/:roleId',
-        component: RoleDetailsComponent
+        component: RoleDetailsComponent,
       },
       {
         path: 'roles/create/new',
-        component: RoleCreateComponent
+        component: RoleCreateComponent,
       },
       {
         path: 'about',
@@ -96,7 +95,7 @@ const routes: Routes = [
         component: ServiceRepairComponent,
       },
     ],
-    canActivate: [ AuthGuard ], // Applies AuthGuard to routes
+    canActivate: [AuthGuard], // Applies AuthGuard to routes
   },
   {
     path: 'session',
@@ -147,6 +146,6 @@ const routes: Routes = [
       relativeLinkResolution: 'legacy',
     }),
   ],
-  exports: [ RouterModule ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

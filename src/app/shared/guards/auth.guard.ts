@@ -7,7 +7,6 @@
 ;===========================================
 */
 
-
 // import statements
 import { Injectable } from '@angular/core';
 import {
@@ -17,8 +16,8 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
