@@ -40,6 +40,7 @@ import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-sec
 import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
 import { InvoiceSummaryDialogComponent } from './invoice-summary-dialog/invoice-summary-dialog.component';
 import { MaterialModule } from './material.module';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 @NgModule({
@@ -78,6 +79,7 @@ import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCheckboxModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   exports: [
@@ -88,6 +90,7 @@ import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     // Components
     HomeComponent,
     AuthLayoutComponent,

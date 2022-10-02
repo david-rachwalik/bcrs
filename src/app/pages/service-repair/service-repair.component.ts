@@ -80,7 +80,7 @@ export class ServiceRepairComponent implements OnInit {
         disableClose: true,
         width: '800px',
       });
-
+      // if select confirm, creates invoice and displays success message
       dialogRef.afterClosed().subscribe((result) => {
         if (result === 'confirm') {
           this.invoiceService
