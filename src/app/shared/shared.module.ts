@@ -38,6 +38,7 @@ import { DeleteRecordDialogComponent } from '../shared/delete-record-dialog/dele
 import { ResetPasswordFormComponent } from '../shared/forms/reset-password-form/reset-password-form.component';
 import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
+import { InvoiceSummaryDialogComponent } from './invoice-summary-dialog/invoice-summary-dialog.component';
 import { MaterialModule } from './material.module';
 
 @NgModule({
@@ -65,6 +66,7 @@ import { MaterialModule } from './material.module';
     RoleListComponent,
     RoleDetailsComponent,
     RoleCreateComponent,
+    InvoiceSummaryDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -108,6 +110,7 @@ import { MaterialModule } from './material.module';
     RoleListComponent,
     RoleDetailsComponent,
     RoleCreateComponent,
+    InvoiceSummaryDialogComponent,
   ],
 })
 export class SharedModule {}
