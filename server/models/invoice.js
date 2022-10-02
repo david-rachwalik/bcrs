@@ -24,5 +24,6 @@ const invoiceSchema = new Schema({
   total: { type: Number },
   orderDate: { type: Date, default: new Date() },
 });
+
 //exports model
-module.exports - mongoose.model('Invoice', invoiceSchema);
+module.exports = mongoose.model('Invoice', invoiceSchema);
