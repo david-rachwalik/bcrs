@@ -2,7 +2,7 @@
 ============================================
 ; Title: Bob's Computer Repair Shop (Sprint 1)
 ; Author: David Rachwalik
-; Date: 15 September 2022
+; Date: 30 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 */
@@ -27,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 /* -------- PrimeNg Materials -------- */
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { TableModule } from 'primeng/table';
@@ -53,6 +54,7 @@ import { TableModule } from 'primeng/table';
     CardModule,
     MessagesModule,
     MessageModule,
+    ConfirmDialogModule,
   ],
   exports: [
     // Angular Materials
@@ -75,6 +77,7 @@ import { TableModule } from 'primeng/table';
     CardModule,
     MessagesModule,
     MessageModule,
+    ConfirmDialogModule,
   ],
 })
 export class MaterialModule {}

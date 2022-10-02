@@ -2,7 +2,7 @@
 ============================================
 ; Title: Bob's Computer Repair Shop (Sprint 1)
 ; Author: David Rachwalik
-; Date: 15 September 2022
+; Date: 30 September 2022
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 */
@@ -19,12 +19,15 @@ import { AboutComponent } from '../pages/about/about.component';
 import { ContactComponent } from '../pages/contact/contact.component';
 import { ErrorComponent } from '../pages/error/error.component';
 import { HomeComponent } from '../pages/home/home.component';
-import { ServiceRepairComponent } from '../pages/service-repair/service-repair.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { RegisterComponent } from '../pages/register/register.component';
+import { RoleCreateComponent } from '../pages/role-create/role-create.component';
+import { RoleDetailsComponent } from '../pages/role-details/role-details.component';
+import { RoleListComponent } from '../pages/role-list/role-list.component';
 import { SecurityQuestionCreateComponent } from '../pages/security-question-create/security-question-create.component';
 import { SecurityQuestionDetailsComponent } from '../pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from '../pages/security-question-list/security-question-list.component';
+import { ServiceRepairComponent } from '../pages/service-repair/service-repair.component';
 import { SigninComponent } from '../pages/signin/signin.component';
 import { UserCreateComponent } from '../pages/user-create/user-create.component';
 import { UserDetailsComponent } from '../pages/user-details/user-details.component';
@@ -36,12 +39,6 @@ import { ResetPasswordFormComponent } from '../shared/forms/reset-password-form/
 import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
 import { MaterialModule } from './material.module';
-import { RoleListComponent } from '../pages/role-list/role-list.component';
-import { RoleDetailsComponent } from '../pages/role-details/role-details.component';
-import { RoleCreateComponent } from '../pages/role-create/role-create.component';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
-
 
 @NgModule({
   declarations: [
@@ -67,7 +64,7 @@ import { ConfirmationService } from 'primeng/api';
     RegisterComponent,
     RoleListComponent,
     RoleDetailsComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -77,7 +74,6 @@ import { ConfirmationService } from 'primeng/api';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ConfirmDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
@@ -95,18 +91,23 @@ import { ConfirmationService } from 'primeng/api';
     SecurityQuestionListComponent,
     SecurityQuestionCreateComponent,
     SecurityQuestionDetailsComponent,
-    SigninComponent,
     ServiceRepairComponent,
+    SigninComponent,
     UserCreateComponent,
     UserDetailsComponent,
     UserListComponent,
     DeleteRecordDialogComponent,
+    NotFoundComponent,
+    ContactComponent,
     ResetPasswordFormComponent,
     VerifySecurityQuestionsFormComponent,
     VerifyUsernameFormComponent,
     AboutComponent,
     ErrorComponent,
     RegisterComponent,
+    RoleListComponent,
+    RoleDetailsComponent,
+    RoleCreateComponent,
   ],
 })
 export class SharedModule {}

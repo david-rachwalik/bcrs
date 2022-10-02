@@ -17,8 +17,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
-
-
 // Only import [BrowserModule, BrowserAnimationsModule] once!
 // All other shared/feature modules will use [CommonModule]
 // https://dev.to/sanketmaru/import-once-browser-module-1pie
