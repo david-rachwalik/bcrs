@@ -47,8 +47,18 @@
 <br> <br>
 <div fxFlexAlign="row" fxLayoutAlign="space-between stretch">
   <mat-card fxFlex="74.4">
-    <h1>Sales</h1> <br> Total Revenue: <h1>${{revenue}}</h1>
-    <p-chart type="pie" [data]="data" height="500" [options]="options2"></p-chart>
+    <div>
+      <h1 fxFlex>Sales</h1>
+      <mat-button-toggle-group #group="matButtonToggleGroup" value="pie" (change)="updateChart($event.value)"
+        aria-label="Font Style">
+        <mat-button-toggle value="pie">Pie</mat-button-toggle>
+        <mat-button-toggle value="doughnut">Doughnut</mat-button-toggle>
+        <mat-button-toggle value="polarArea">Polar Area</mat-button-toggle>
+      </mat-button-toggle-group>
+
+    </div>
+    <br> Total Revenue: <h1>${{revenue}}</h1>
+    <p-chart #chart [type]="chooseGraphType" [data]=" data" height="500" [options]="options2"></p-chart>
   </mat-card>
   <mat-card fxFlex="23" class="services">
     <h1>Current Services We Offer</h1>

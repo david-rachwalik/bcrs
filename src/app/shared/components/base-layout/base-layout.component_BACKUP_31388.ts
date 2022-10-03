@@ -36,6 +36,7 @@ export class BaseLayoutComponent implements OnInit {
     this.sessionName = this.cookieService.get('sessionuser');
     console.log(this.sessionName);
 
+    /* assign role a value */
     /* gets the user role */
     this.roleService
       .findUserRole(this.cookieService.get('sessionuser'))

@@ -18,7 +18,7 @@ import { RoleService } from '../../services';
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
-  styleUrls: [ './base-layout.component.scss' ],
+  styleUrls: ['./base-layout.component.scss'],
 })
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
@@ -26,7 +26,7 @@ export class BaseLayoutComponent implements OnInit {
   isAdmin: boolean;
 
   sessionName: string;
-  constructor (
+  constructor(
     private router: Router,
     private cookieService: CookieService,
     private roleService: RoleService,
@@ -36,7 +36,7 @@ export class BaseLayoutComponent implements OnInit {
     this.sessionName = this.cookieService.get('sessionuser');
     console.log(this.sessionName);
 
-    /* gets the user role */
+    /* assign role a value */
     this.roleService
       .findUserRole(this.cookieService.get('sessionuser'))
       .subscribe((res) => {
@@ -49,11 +49,11 @@ export class BaseLayoutComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   // logout function
   logout(): void {
     this.cookieService.deleteAll();
-    this.router.navigate([ '/session/signin' ]);
+    this.router.navigate(['/session/signin']);
   }
 }

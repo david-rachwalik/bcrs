@@ -23,6 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 /* -------- PrimeNg Materials -------- */
 import { ButtonModule } from 'primeng/button';
@@ -49,6 +50,7 @@ import { ChartModule } from 'primeng/chart';
     MatListModule,
     MatSelectModule,
     MatStepperModule,
+    MatButtonToggleModule,
     // PrimeNg Materials
     ButtonModule,
     TableModule,
@@ -73,6 +75,7 @@ import { ChartModule } from 'primeng/chart';
     MatListModule,
     MatSelectModule,
     MatStepperModule,
+    MatButtonToggleModule,
     // NgPrime Materials
     ButtonModule,
     TableModule,

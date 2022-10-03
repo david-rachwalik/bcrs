@@ -24,10 +24,13 @@
 .sub-nav-card {
   padding: 2.5rem 2rem;
   text-align: center;
+  color: rgb(136, 135, 135);
 }
 .sub-nav-title {
   font-size: 16px;
 }
 .sub-nav-card:hover {
   cursor: pointer;
+  color: rgb(96, 97, 97);
+  box-shadow: 1px 1px 5px rgb(96, 97, 97);
 }

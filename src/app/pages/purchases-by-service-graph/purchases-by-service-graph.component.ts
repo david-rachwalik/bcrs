@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { UIChart } from 'primeng/chart';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 
 @Component({
@@ -7,6 +9,7 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
   styleUrls: [ './purchases-by-service-graph.component.scss' ]
 })
 export class PurchasesByServiceGraphComponent implements OnInit {
+  @ViewChild('chart') chart!: UIChart;
   /* local variables */
   purchases: any;
   data: any;
@@ -16,6 +19,10 @@ export class PurchasesByServiceGraphComponent implements OnInit {
   options: any;
   options2: any;
   revenue: number = 0;
+
+  chooseGraphType: string = 'pie';
+  graphStyleControl = new FormControl('');
+
   constructor (private invoiceService: InvoiceService) {
     this.purchases = {};
     this.data = {};
@@ -42,10 +49,12 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         this.revenue = parseFloat(this.revenue.toFixed(2));
         /* build object literal for PrimeNg Bar Graph */
         this.data = {
+
           labels: this.labels,
           datasets: [
             /* graph object */
             {
+              type: this.chooseGraphType,
               backgroundColor: [
                 '#218B82',
                 '#C47482',
@@ -117,7 +126,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       }
     };
     this.options2 = {
-
+      responsive: true,
       plugins: {
         legend: {
           display: true,
@@ -148,4 +157,72 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
   }
 
+  updateChart(val: any) {
+    console.log(val);
+    this.chooseGraphType = val;
+    this.invoiceService.findPurchasesByServiceGraph().subscribe({
+      next: (res) => {
+        /* build object literal for PrimeNg Bar Graph */
+        this.data = {
+
+          labels: this.labels,
+          datasets: [
+            /* graph object */
+            {
+              type: this.chooseGraphType,
+              backgroundColor: [
+                '#218B82',
+                '#C47482',
+                '#EEBAB2',
+                '#F5F3E7',
+                '#2CCED2',
+                '#E5DB9C',
+                '#E6A57E',
+              ],
+              hoverBackgroundColor: [
+                '#218B82',
+                '#C47482',
+                '#EEBAB2',
+                '#F5F3E7',
+                '#2CCED2',
+                '#E5DB9C',
+                '#E6A57E',
+              ],
+              data: this.itemCount
+            }
+          ]
+        };
+        this.chart.refresh();
+        this.updateOptions();
+        /* verify data object structure matches primeng expected format */
+        console.log('data object graph: ', this.data);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
+  }
+
+  updateOptions() {
+    this.options2 = {
+      plugins: {
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            // This more specific font property overrides the global property
+            font: {
+              size: 16
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          display: false
+        },
+
+      },
+    };
+  }
 }
