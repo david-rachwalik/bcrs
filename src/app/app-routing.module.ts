@@ -46,30 +46,37 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [ RoleGuard ] // RoleGuard - only those with 'admin' privileges can view
       },
       {
         path: 'users',
         component: UserListComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'users/:userId',
         component: UserDetailsComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'users/create/new',
         component: UserCreateComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'security-questions',
         component: SecurityQuestionListComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'security-questions/:questionId',
         component: SecurityQuestionDetailsComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'security-questions/create/new',
         component: SecurityQuestionCreateComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'roles',
@@ -79,10 +86,12 @@ const routes: Routes = [
       {
         path: 'roles/:roleId',
         component: RoleDetailsComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'roles/create/new',
         component: RoleCreateComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'about',
