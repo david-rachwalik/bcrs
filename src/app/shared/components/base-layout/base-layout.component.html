@@ -50,19 +50,17 @@
         </button>
         <br /><br />
 
-        <div *ngIf="isAdmin">
-          <p>MANAGE</p>
-          <button class="navbar-link" routerLink="/users" mat-button [routerLinkActive]="['active']">
-            <mat-icon>people</mat-icon> Users
-          </button>
-          <button class="navbar-link" routerLink="/roles" mat-button [routerLinkActive]="['active']">
-            <mat-icon>polymer</mat-icon> Roles
-          </button>
-          <button class="navbar-link" routerLink="/security-questions" mat-button [routerLinkActive]="['active']">
-            <mat-icon>security</mat-icon> Security
-          </button>
-          <br /><br />
-        </div>
+        <p *ngIf="isAdmin">MANAGE</p>
+        <button *ngIf="isAdmin" class="navbar-link" routerLink="/users" mat-button [routerLinkActive]="['active']">
+          <mat-icon>people</mat-icon> Users
+        </button>
+        <button *ngIf="isAdmin" class="navbar-link" routerLink="/roles" mat-button [routerLinkActive]="['active']">
+          <mat-icon>polymer</mat-icon> Roles
+        </button>
+        <button *ngIf="isAdmin" class="navbar-link" routerLink="/security-questions" mat-button [routerLinkActive]="['active']">
+          <mat-icon>security</mat-icon> Security
+        </button>
+        <br *ngIf="isAdmin" /><br *ngIf="isAdmin" />
 
         <p>PAGES</p>
         <button class="navbar-link" routerLink="/about" mat-button [routerLinkActive]="['active']">
