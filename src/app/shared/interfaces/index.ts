@@ -1,6 +1,5 @@
 export * from './base-response.interface';
 export * from './error-response.interface';
-export * from './invoice';
 export * from './line-item.interface';
 export * from './product.interface';
 export * from './role.interface';

@@ -15,7 +15,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { Message } from 'primeng/api';
 
 import { InvoiceSummaryDialogComponent } from '../../shared/components/invoice-summary-dialog/invoice-summary-dialog.component';
-import { Invoice, LineItem, Product } from '../../shared/interfaces';
+import { LineItem, Product } from '../../shared/interfaces';
+import { Invoice } from '../../shared/models';
 import { InvoiceService, ProductService } from '../../shared/services';
 
 @Component({

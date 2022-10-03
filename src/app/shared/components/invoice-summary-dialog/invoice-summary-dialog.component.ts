@@ -10,7 +10,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Invoice } from '../../interfaces/invoice';
+import { Invoice } from '../../models';
 
 @Component({
   selector: 'app-invoice-summary-dialog',
