@@ -9,14 +9,15 @@
 
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="toolbar mat-elevation-z3">
   <!-- logo -->
-  <button class="logo" routerLink="/" mat-button> <img class="logo" src="../../../assets/bcrs.png" alt=""></button>
+  <button class="logo" routerLink="/" mat-button *ngIf="isAdmin">
+    <img class="logo" src="assets/bcrs.png" alt="">
+  </button>
 
   <div fxLayout="row" fxLayoutAlign="space-between center">
-
     <button mat-button [matMenuTriggerFor]="profileMenu">
       <mat-icon>person</mat-icon>
       <mat-menu #profileMenu>
-        <p style="padding:.5rem 1rem;">{{year | date }}</p>
+        <p style="padding: 0.5rem 1rem;">{{year | date }}</p>
         <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>&nbsp;&nbsp; Log Out
         </button>
@@ -31,34 +32,38 @@
 <mat-sidenav-container class="layout-container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
     <!-- navigation -->
-    <nav fxFlex> <br>
+    <nav fxFlex> <br />
       <div class="status">
         <div class="dot"></div> &nbsp;Online
       </div>
+
       <!-- navbar container -->
       <div fxLayout="column" class="navbar-container">
-
         <p>FAVORITES</p>
         <button class="navbar-link" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
-          true}" mat-button>
+          true}" mat-button *ngIf="isAdmin">
           <mat-icon>dashboard</mat-icon> Dashboard
         </button>
         <button class="navbar-link" routerLink="/services" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
           true}" mat-button>
           <mat-icon>shopping_cart</mat-icon> Services
         </button>
-        <br><br>
-        <p>MANAGE</p>
-        <button class="navbar-link" routerLink="/users" mat-button [routerLinkActive]="['active']">
-          <mat-icon>people</mat-icon> Users
-        </button>
-        <button class="navbar-link" routerLink="/roles" mat-button [routerLinkActive]="['active']">
-          <mat-icon>polymer</mat-icon> Roles
-        </button>
-        <button class="navbar-link" routerLink="/security-questions" mat-button [routerLinkActive]="['active']">
-          <mat-icon>security</mat-icon> Security
-        </button>
-        <br><br>
+        <br /><br />
+
+        <div *ngIf="isAdmin">
+          <p>MANAGE</p>
+          <button class="navbar-link" routerLink="/users" mat-button [routerLinkActive]="['active']">
+            <mat-icon>people</mat-icon> Users
+          </button>
+          <button class="navbar-link" routerLink="/roles" mat-button [routerLinkActive]="['active']">
+            <mat-icon>polymer</mat-icon> Roles
+          </button>
+          <button class="navbar-link" routerLink="/security-questions" mat-button [routerLinkActive]="['active']">
+            <mat-icon>security</mat-icon> Security
+          </button>
+          <br /><br />
+        </div>
+
         <p>PAGES</p>
         <button class="navbar-link" routerLink="/about" mat-button [routerLinkActive]="['active']">
           <mat-icon>article</mat-icon> About
@@ -67,10 +72,9 @@
           <mat-icon>near_me</mat-icon>Contact
         </button>
       </div>
-
-
     </nav>
   </mat-sidenav>
+
   <mat-sidenav-content class="main-container">
     <div fxLayout="column">
       <!-- main content -->
@@ -85,13 +89,13 @@
         <footer class="footer">
           <mat-toolbar class="footer-content">
             <p>
-              &copy; {{year | date: 'yyyy'}} - Bobs Computer Repair Shop - <a href="https://www.bellevue.edu/"
-                class="bu-link" target="_blank">Bellevue University</a>
+              &copy; {{year | date: 'yyyy'}} - Bobs Computer Repair Shop - <a href="https://www.bellevue.edu" class="bu-link" target="_blank">
+                Bellevue University
+              </a>
             </p>
           </mat-toolbar>
         </footer>
       </div>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

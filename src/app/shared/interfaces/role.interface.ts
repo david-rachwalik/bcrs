@@ -7,6 +7,11 @@
 ;===========================================
 */
 
+export enum RoleType {
+  User = 'standard',
+  Admin = 'admin',
+}
+
 // exports the Role interface
 export interface Role {
   _id?: string;

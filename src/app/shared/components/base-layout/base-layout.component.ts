@@ -11,8 +11,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Role } from '../../interfaces/role.interface';
-import { RoleService } from '../../services/role.service';
+
+import { Role, RoleType } from '../../interfaces';
+import { RoleService } from '../../services';
 
 @Component({
   selector: 'app-base-layout',
@@ -22,6 +23,7 @@ import { RoleService } from '../../services/role.service';
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
   role: Role;
+  isAdmin: boolean;
 
   sessionName: string;
   constructor(
@@ -30,15 +32,20 @@ export class BaseLayoutComponent implements OnInit {
     private roleService: RoleService,
   ) {
     this.role = {} as Role;
+    this.isAdmin = false;
     this.sessionName = this.cookieService.get('sessionuser');
     console.log(this.sessionName);
 
-    /* assign role a valiue */
+    /* assign role a value */
     this.roleService
       .findUserRole(this.cookieService.get('sessionuser'))
       .subscribe((res) => {
         this.role = res.data;
         console.log(this.role);
+        // Verify admin status
+        if (this.role.text === RoleType.Admin) {
+          this.isAdmin = true;
+        }
       });
   }
 
