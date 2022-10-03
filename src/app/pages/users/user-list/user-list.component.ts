@@ -34,6 +34,7 @@ export class UserListComponent implements OnInit {
     'functions',
   ];
   constructor(private dialog: MatDialog, private UserService: UserService) {
+    this.users = []; // prevent users from being undefined before async call
     /* populates users array  */
     this.UserService.findAllUsers().subscribe({
       next: (res) => {
