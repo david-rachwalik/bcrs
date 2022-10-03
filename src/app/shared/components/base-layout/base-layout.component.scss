@@ -8,7 +8,7 @@
 */
 
 @use 'sass:map';
-@import '../../../styles/themes/slytherin-palette';
+@import 'themes/slytherin-palette';
 /* sidebar online animation */
 @keyframes blink {
   0%,

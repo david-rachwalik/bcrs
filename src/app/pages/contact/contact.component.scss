@@ -7,7 +7,7 @@
 ;===========================================
 */
 @use 'sass:map';
-@import '../../../styles/themes/slytherin-palette';
+@import 'themes/slytherin-palette';
 :host {
   display: block;
 }
