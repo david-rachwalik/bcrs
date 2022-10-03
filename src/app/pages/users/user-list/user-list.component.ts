@@ -11,9 +11,9 @@
 // import statements
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialogComponent } from '../../shared/components/delete-record-dialog/delete-record-dialog.component';
-import { User } from '../../shared/interfaces/user.interface';
-import { UserService } from '../../shared/services/user.service';
+import { DeleteRecordDialogComponent } from '../../../shared/components/delete-record-dialog/delete-record-dialog.component';
+import { User } from '../../../shared/interfaces/user.interface';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-user-list',
