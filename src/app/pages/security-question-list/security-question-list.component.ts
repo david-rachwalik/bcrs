@@ -10,7 +10,7 @@
 // import statements
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
+import { DeleteRecordDialogComponent } from 'src/app/shared/components/delete-record-dialog/delete-record-dialog.component';
 import { SecurityQuestion } from '../../shared/interfaces/security-question.interface';
 import { SecurityQuestionService } from '../../shared/services/security-question.service';
 

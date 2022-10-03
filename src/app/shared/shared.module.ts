@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 
 import { AboutComponent } from '../pages/about/about.component';
@@ -20,6 +21,7 @@ import { ContactComponent } from '../pages/contact/contact.component';
 import { ErrorComponent } from '../pages/error/error.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
+import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-graph/purchases-by-service-graph.component';
 import { RegisterComponent } from '../pages/register/register.component';
 import { RoleCreateComponent } from '../pages/role-create/role-create.component';
 import { RoleDetailsComponent } from '../pages/role-details/role-details.component';
@@ -32,16 +34,14 @@ import { SigninComponent } from '../pages/signin/signin.component';
 import { UserCreateComponent } from '../pages/user-create/user-create.component';
 import { UserDetailsComponent } from '../pages/user-details/user-details.component';
 import { UserListComponent } from '../pages/user-list/user-list.component';
-import { AuthLayoutComponent } from '../shared/auth-layout/auth-layout.component';
-import { BaseLayoutComponent } from '../shared/base-layout/base-layout.component';
-import { DeleteRecordDialogComponent } from '../shared/delete-record-dialog/delete-record-dialog.component';
-import { ResetPasswordFormComponent } from '../shared/forms/reset-password-form/reset-password-form.component';
-import { VerifySecurityQuestionsFormComponent } from '../shared/forms/verify-security-questions-form/verify-security-questions-form.component';
-import { VerifyUsernameFormComponent } from '../shared/forms/verify-username-form/verify-username-form.component';
-import { InvoiceSummaryDialogComponent } from './invoice-summary-dialog/invoice-summary-dialog.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
+import { BaseLayoutComponent } from './components/base-layout/base-layout.component';
+import { DeleteRecordDialogComponent } from './components/delete-record-dialog/delete-record-dialog.component';
+import { ResetPasswordFormComponent } from './components/forms/reset-password-form/reset-password-form.component';
+import { VerifySecurityQuestionsFormComponent } from './components/forms/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from './components/forms/verify-username-form/verify-username-form.component';
+import { InvoiceSummaryDialogComponent } from './components/invoice-summary-dialog/invoice-summary-dialog.component';
 import { MaterialModule } from './material.module';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,7 @@ import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-
     RoleDetailsComponent,
     RoleCreateComponent,
     InvoiceSummaryDialogComponent,
-    PurchasesByServiceGraphComponent
+    PurchasesByServiceGraphComponent,
   ],
   imports: [
     CommonModule,
@@ -79,9 +79,9 @@ import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [
     CommonModule,
     FlexLayoutModule,
@@ -116,7 +116,7 @@ import { PurchasesByServiceGraphComponent } from '../pages/purchases-by-service-
     RoleDetailsComponent,
     RoleCreateComponent,
     InvoiceSummaryDialogComponent,
-    PurchasesByServiceGraphComponent
+    PurchasesByServiceGraphComponent,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

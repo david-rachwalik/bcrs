@@ -11,21 +11,29 @@
 // import statements
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialogComponent } from '../../shared/delete-record-dialog/delete-record-dialog.component';
+import { DeleteRecordDialogComponent } from '../../shared/components/delete-record-dialog/delete-record-dialog.component';
 import { User } from '../../shared/interfaces/user.interface';
 import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: [ './user-list.component.scss' ],
+  styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
   /* Local variables */
   users!: User[];
   /* initialized array for mat table */
-  displayedColumns = [ 'userName', 'firstName', 'lastName', 'phoneNumber', "address", 'email', 'functions' ];
-  constructor (private dialog: MatDialog, private UserService: UserService) {
+  displayedColumns = [
+    'userName',
+    'firstName',
+    'lastName',
+    'phoneNumber',
+    'address',
+    'email',
+    'functions',
+  ];
+  constructor(private dialog: MatDialog, private UserService: UserService) {
     /* populates users array  */
     this.UserService.findAllUsers().subscribe({
       next: (res) => {
@@ -38,7 +46,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   // delete user function. Displays confirm delete dialog
   delete(userId: string, recordId: string): void {

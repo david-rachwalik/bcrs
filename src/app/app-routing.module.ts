@@ -29,11 +29,11 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
-import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
-import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
-import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+import { AuthLayoutComponent } from './shared/components/auth-layout/auth-layout.component';
+import { BaseLayoutComponent } from './shared/components/base-layout/base-layout.component';
+import { ResetPasswordFormComponent } from './shared/components/forms/reset-password-form/reset-password-form.component';
+import { VerifySecurityQuestionsFormComponent } from './shared/components/forms/verify-security-questions-form/verify-security-questions-form.component';
+import { VerifyUsernameFormComponent } from './shared/components/forms/verify-username-form/verify-username-form.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 // routes

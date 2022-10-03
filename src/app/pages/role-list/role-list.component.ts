@@ -10,7 +10,7 @@
 // import statements
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
+import { DeleteRecordDialogComponent } from 'src/app/shared/components/delete-record-dialog/delete-record-dialog.component';
 import { Role } from 'src/app/shared/interfaces/role.interface';
 import { RoleService } from 'src/app/shared/services/role.service';
 
@@ -23,10 +23,7 @@ export class RoleListComponent implements OnInit {
   roles!: Role[];
   displayedColumns = ['role', 'functions'];
 
-  constructor(
-    private dialog: MatDialog,
-    private roleService: RoleService,
-  ) {
+  constructor(private dialog: MatDialog, private roleService: RoleService) {
     this.roleService.findAllRoles().subscribe(
       (res) => {
         this.roles = res.data;
@@ -45,8 +42,7 @@ export class RoleListComponent implements OnInit {
       data: {
         recordId,
         dialogHeader: 'Delete Record Dialog',
-        dialogBody:
-          'Are you sure you want to delete the selected role?',
+        dialogBody: 'Are you sure you want to delete the selected role?',
       },
       disableClose: true,
       width: '800px',
@@ -56,16 +52,12 @@ export class RoleListComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (result) => {
         if (result === 'confirm') {
-          this.roleService
-            .deleteRole(recordId)
-            .subscribe({
-              next: (res: any) => {
-                console.log('Role deleted');
-                this.roles = this.roles.filter(
-                  (q) => q._id !== recordId,
-                );
-              },
-            });
+          this.roleService.deleteRole(recordId).subscribe({
+            next: (res: any) => {
+              console.log('Role deleted');
+              this.roles = this.roles.filter((q) => q._id !== recordId);
+            },
+          });
         }
       },
       error: (e) => {

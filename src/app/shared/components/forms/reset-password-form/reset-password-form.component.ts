@@ -11,33 +11,43 @@
 
 // import statements
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { SessionService } from '../../services/session.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SessionService } from '../../../services/session.service';
 
 @Component({
   selector: 'app-reset-password-form',
   templateUrl: './reset-password-form.component.html',
-  styleUrls: ['./reset-password-form.component.scss']
+  styleUrls: ['./reset-password-form.component.scss'],
 })
 export class ResetPasswordFormComponent implements OnInit {
-
   isAuthenticated: string;
   username: string;
 
   form: FormGroup = this.fb.group({
-    password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])]
+    password: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$'),
+      ]),
+    ],
   });
 
-  constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cookieService: CookieService, private sessionService: SessionService) {
-    this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated') ?? '';
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder,
+    private cookieService: CookieService,
+    private sessionService: SessionService,
+  ) {
+    this.isAuthenticated =
+      this.route.snapshot.queryParamMap.get('isAuthenticated') ?? '';
     this.username = this.route.snapshot.queryParamMap.get('username') ?? '';
-   }
-
-  ngOnInit(): void {
   }
+
+  ngOnInit(): void {}
 
   // updatePassword function updates the password or displays error message
   updatePassword() {
@@ -50,7 +60,7 @@ export class ResetPasswordFormComponent implements OnInit {
       },
       error: (e) => {
         console.log(e);
-      }
-    })
+      },
+    });
   }
 }

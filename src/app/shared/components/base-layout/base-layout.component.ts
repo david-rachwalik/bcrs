@@ -9,39 +9,44 @@
 
 // import statements
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { Role } from '../interfaces/role.interface';
-import { RoleService } from '../services/role.service';
-
+import { CookieService } from 'ngx-cookie-service';
+import { Role } from '../../interfaces/role.interface';
+import { RoleService } from '../../services/role.service';
 
 @Component({
   selector: 'app-base-layout',
   templateUrl: './base-layout.component.html',
-  styleUrls: [ './base-layout.component.scss' ],
+  styleUrls: ['./base-layout.component.scss'],
 })
 export class BaseLayoutComponent implements OnInit {
   year: number = Date.now();
   role: Role;
 
   sessionName: string;
-  constructor (private router: Router, private cookieService: CookieService, private roleService: RoleService) {
+  constructor(
+    private router: Router,
+    private cookieService: CookieService,
+    private roleService: RoleService,
+  ) {
     this.role = {} as Role;
     this.sessionName = this.cookieService.get('sessionuser');
     console.log(this.sessionName);
 
     /* assign role a valiue */
-    this.roleService.findUserRole(this.cookieService.get("sessionuser")).subscribe(res => {
-      this.role = res.data;
-      console.log(this.role);
-    });
+    this.roleService
+      .findUserRole(this.cookieService.get('sessionuser'))
+      .subscribe((res) => {
+        this.role = res.data;
+        console.log(this.role);
+      });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   // logout function
   logout(): void {
     this.cookieService.deleteAll();
-    this.router.navigate([ '/session/signin' ]);
+    this.router.navigate(['/session/signin']);
   }
 }
