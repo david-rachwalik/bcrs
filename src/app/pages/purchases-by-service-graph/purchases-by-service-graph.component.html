@@ -1,27 +1,66 @@
 <div fxFlexAlign="row wrap" fxLayoutAlign="space-between stretch" class="graphs-container">
-  <mat-card fxFlex="22">
-    <h5>Basic</h5>
-    <p-chart type="line" [data]="basicData" [options]="options"></p-chart>
+  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+    <div fxLayout="column">
+      <mat-card-subtitle>Last Month</mat-card-subtitle>
+      <br>
+      <h1>$44345</h1> <br>
+      <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
+          <mat-icon>arrow_upward</mat-icon> +15% overall revenue
+        </span> </mat-card-footer>
+    </div>
+    <p-chart width="150" height="120" type="bar" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
-  <mat-card fxFlex="22">
-    <h5>Basic</h5>
-    <p-chart type="bar" [data]="basicData" [options]="options"></p-chart>
-
+  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+    <div fxLayout="column">
+      <mat-card-subtitle>Last Week</mat-card-subtitle>
+      <br>
+      <h1>$7345</h1> <br>
+      <mat-card-footer> <span fxLayoutAlign="center center" class="loss">
+          <mat-icon>arrow_downward</mat-icon> -7%
+        </span></mat-card-footer>
+    </div>
+    <p-chart width="150" height="120" type="line" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
-  <mat-card fxFlex="22">
-    <h5>Basic</h5>
-    <p-chart type="bar" [data]="basicData" [options]="options"></p-chart>
-
+  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+    <div fxLayout="column">
+      <mat-card-subtitle>Quarterly</mat-card-subtitle>
+      <br>
+      <h1>$94561</h1> <br>
+      <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
+          <mat-icon>arrow_upward</mat-icon> +95%
+        </span></mat-card-footer>
+    </div>
+    <p-chart width="150" height="120" type="polarArea" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
-  <mat-card fxFlex="22">
-    <h5>Basic</h5>
-    <p-chart type="scatter" [data]="basicData" [options]="options"></p-chart>
-
+  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+    <div fxLayout="column">
+      <mat-card-subtitle>Orders</mat-card-subtitle>
+      <br>
+      <h1>77</h1><br>
+      <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
+          <mat-icon>arrow_upward</mat-icon> +55%
+        </span></mat-card-footer>
+    </div>
+    <p-chart width="160px" height="130px" type="radar" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
 </div>
-<br>
-<div fxFlexAlign="row">
-  <mat-card>
-    <p-chart type="pie" [data]="data" height="500"></p-chart>
+<br> <br>
+<div fxFlexAlign="row" fxLayoutAlign="space-between stretch">
+  <mat-card fxFlex="74.4">
+    <h1>Sales</h1> <br> Total Revenue: ${{revenue}}
+    <p-chart type="pie" [data]="data" height="500" [options]="options2"></p-chart>
+  </mat-card>
+  <mat-card fxFlex="23" class="services">
+    <h1>Current Services We Offer</h1>
+    <mat-list role="list">
+      <mat-list-item role="listitem">- Password Reset ($39.99)</mat-list-item>
+      <mat-list-item role="listitem">- Spyware Removal ($99.90)</mat-list-item>
+      <mat-list-item role="listitem">- RAM Upgrade ($129.99)</mat-list-item>
+      <mat-list-item role="listitem">- Software Installation (49.99)</mat-list-item>
+      <mat-list-item role="listitem">- PC Tune-up ($89.99)</mat-list-item>
+      <mat-list-item role="listitem">- Keyboard Cleaning ($45.00)</mat-list-item>
+      <mat-list-item role="listitem">- Disk Clean-up ($149.99)</mat-list-item> <br>
+      <mat-list-item role="listitem">* Labor (number of hours * $50.00)</mat-list-item>
+    </mat-list>
   </mat-card>
 </div>

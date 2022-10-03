@@ -14,6 +14,8 @@ export class PurchasesByServiceGraphComponent implements OnInit {
   labels: string[];
   basicData: any;
   options: any;
+  options2: any;
+  revenue: number = 0;
   constructor (private invoiceService: InvoiceService) {
     this.purchases = {};
     this.data = {};
@@ -26,7 +28,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       next: (res) => {
         this.purchases = res.data;
 
-        console.log(this.purchases);
+        console.log('purchases', this.purchases);
         for (const item of this.purchases) {
           console.log(item._id);
 
@@ -35,7 +37,9 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
           this.labels.push(title);
           this.itemCount.push(count);
+          this.revenue += item._id.price;
         }
+        console.log(this.revenue);
         /* build object literal for PrimeNg Bar Graph */
         this.data = {
           labels: this.labels,
@@ -76,16 +80,20 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       datasets: [
         {
           label: 'First Dataset',
-          data: [ 65, 59, 80, 81, 56, 55, 40 ],
+          data: [ 65, 59, 80, 81, 56 ],
           fill: false,
-          borderColor: '#3c634a',
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.5)',
+          ],
           tension: .4
         },
         {
           label: 'Second Dataset',
-          data: [ 28, 48, 40, 19, 86, 27, 90 ],
+          data: [ 28, 48, 40, 19, 86 ],
           fill: true,
-          borderColor: '#76CDCD',
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+          ],
           tension: .4
         }
       ]
@@ -105,6 +113,16 @@ export class PurchasesByServiceGraphComponent implements OnInit {
           labels: {
             color: 'rgb(255, 99, 132)'
           }
+        }
+      }
+    };
+    this.options2 = {
+
+      plugins: {
+        legend: {
+          display: true,
+          position: 'left'
+
         }
       }
     };

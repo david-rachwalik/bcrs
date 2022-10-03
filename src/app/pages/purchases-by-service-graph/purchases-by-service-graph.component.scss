@@ -1,5 +1,29 @@
+@use 'sass:map';
+@import 'themes/slytherin-palette';
+
 :host {
   display: block;
 }
-.sales-container {
+.graphs-container {
+  p-chart {
+    margin-left: 10px;
+  }
+  h2,
+  h1,
+  span {
+    color: rgb(135, 135, 135);
+    font-family: 'Lato', sans-serif !important;
+  }
+  span {
+    font-size: 0.7rem;
+  }
+}
+mat-card {
+  padding: 2rem 1rem;
+}
+.gain {
+  color: rgb(21, 172, 129) !important;
+}
+.loss {
+  color: rgb(232, 102, 46) !important;
 }
