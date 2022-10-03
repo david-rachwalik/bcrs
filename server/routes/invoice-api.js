@@ -93,27 +93,31 @@ router.get('/purchases-graph', async (req, res) => {
 /**
  * createInvoice
  * @openapi
- * /api/invoices:
+ * /api/invoices/{userName}:
  *   post:
  *     tags:
  *       - Invoices
  *     summary: creates a new Invoice document
  *     description:  API for creating a new Invoice document.
+ *     parameters:
+ *       - name: userName
+ *         in: path
+ *         required: true
+ *         description: userName of an invoice
+ *         schema:
+ *           type: string
  *     requestBody:
  *       content:
  *         application/json:
  *           schema:
  *             type: object
  *             required:
- *               - userName
  *               - lineItems
  *               - partsAmount
  *               - laborAmount
  *               - lineItemTotal
  *               - total
  *             properties:
- *               userName:
- *                 type: string
  *               lineItems:
  *                 type: array
  *                 items:
@@ -142,15 +146,15 @@ router.get('/purchases-graph', async (req, res) => {
  *       '501':
  *         description: MongoDB exception
  */
-router.post('/', async (req, res) => {
+router.post('/:userName', async (req, res) => {
   try {
     const newInvoice = {
       userName: req.params.userName,
-      lineItems: req.params.lineItems,
-      partsAmount: req.params.partsAmount,
-      laborAmount: req.params.laborAmount,
-      lineItemTotal: req.params.lineItemTotal,
-      total: req.params.total,
+      lineItems: req.body.lineItems,
+      partsAmount: req.body.partsAmount,
+      laborAmount: req.body.laborAmount,
+      lineItemTotal: req.body.lineItemTotal,
+      total: req.body.total,
     };
     // Create a new Invoice document
     Invoice.create(newInvoice, (err, invoice) => {
