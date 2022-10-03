@@ -1,51 +1,68 @@
+<!--
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 2)
+; Author: David Rachwalik
+; Date: 25 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+-->
+
+<!-- START 4 column Row Graphs -->
 <div fxFlexAlign="row wrap" fxLayoutAlign="space-between stretch" class="graphs-container">
+  <!------------- GRAPH 1 ----------- -->
   <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
     <div fxLayout="column">
       <mat-card-subtitle>Last Month</mat-card-subtitle>
       <br>
       <h1>$44,345</h1> <br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
-          <mat-icon>arrow_upward</mat-icon> +15% overall revenue
+          <mat-icon>arrow_upward</mat-icon> +15% Overall Revenue
         </span> </mat-card-footer>
     </div>
     <p-chart width="150" height="120" type="bar" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
+  <!------------- GRAPH 2 ----------- -->
   <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
     <div fxLayout="column">
       <mat-card-subtitle>Last Week</mat-card-subtitle>
       <br>
       <h1>$7,345</h1> <br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="loss">
-          <mat-icon>arrow_downward</mat-icon> -7%
+          <mat-icon>arrow_downward</mat-icon> -7% Average
         </span></mat-card-footer>
     </div>
     <p-chart width="150" height="120" type="line" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
+  <!------------- GRAPH 3 ----------- -->
   <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
     <div fxLayout="column">
       <mat-card-subtitle>Quarterly</mat-card-subtitle>
       <br>
       <h1>$94,561</h1> <br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
-          <mat-icon>arrow_upward</mat-icon> +95%
+          <mat-icon>arrow_upward</mat-icon> +95% Performance
         </span></mat-card-footer>
     </div>
     <p-chart width="150" height="120" type="polarArea" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
+  <!------------- GRAPH 4 ----------- -->
   <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
     <div fxLayout="column">
       <mat-card-subtitle>Orders</mat-card-subtitle>
       <br>
       <h1>77</h1><br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
-          <mat-icon>arrow_upward</mat-icon> +55%
+          <mat-icon>arrow_upward</mat-icon> +55% Per Week
         </span></mat-card-footer>
     </div>
     <p-chart width="160px" height="130px" type="radar" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
 </div>
+<!-- END 4 Column graph -->
 <br> <br>
-<div fxFlexAlign="row" fxLayoutAlign="space-between stretch">
+<!------------- row 2 ----------- -->
+<div class="sales-container" fxFlexAlign="row" fxLayoutAlign="space-between stretch">
+  <!-- BEGIN SALES GRAPH -->
   <mat-card fxFlex="74.4">
     <div>
       <h1 fxFlex>Sales</h1>
@@ -57,19 +74,22 @@
       </mat-button-toggle-group>
 
     </div>
-    <br> Total Revenue: <h1>${{revenue}}</h1>
+    <br><span>Total Revenue: </span>
+    <h1>${{revenue}}</h1>
     <p-chart #chart [type]="chooseGraphType" [data]=" data" height="500" [options]="options2"></p-chart>
   </mat-card>
+  <!-- END SALES GRAPH -->
+  <!-- SERVICES OFFERED CARD -->
   <mat-card fxFlex="23" class="services">
     <h1>Current Services We Offer</h1>
     <mat-list role="list">
+      <mat-list-item role="listitem">- Disk Clean-up ($149.99)</mat-list-item>
+      <mat-list-item role="listitem">- Keyboard Cleaning ($45.00)</mat-list-item>
+      <mat-list-item role="listitem">- PC Tune-up ($89.99)</mat-list-item>
       <mat-list-item role="listitem">- Password Reset ($39.99)</mat-list-item>
-      <mat-list-item role="listitem">- Spyware Removal ($99.90)</mat-list-item>
       <mat-list-item role="listitem">- RAM Upgrade ($129.99)</mat-list-item>
       <mat-list-item role="listitem">- Software Installation (49.99)</mat-list-item>
-      <mat-list-item role="listitem">- PC Tune-up ($89.99)</mat-list-item>
-      <mat-list-item role="listitem">- Keyboard Cleaning ($45.00)</mat-list-item>
-      <mat-list-item role="listitem">- Disk Clean-up ($149.99)</mat-list-item> <br>
+      <mat-list-item role="listitem">- Spyware Removal ($99.90)</mat-list-item><br>
       <mat-list-item role="listitem">* Labor (number of hours * $50.00)</mat-list-item>
     </mat-list>
   </mat-card>

@@ -27,3 +27,12 @@ mat-card {
 .loss {
   color: rgb(232, 102, 46) !important;
 }
+.sales-container {
+  h2,
+  h1,
+  span,
+  .mat-list-item {
+    color: rgb(135, 135, 135) !important;
+    font-family: 'Lato', sans-serif !important;
+  }
+}
