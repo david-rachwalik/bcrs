@@ -21,23 +21,56 @@ export class PurchasesByServiceGraphComponent implements OnInit {
     this.labels = [];
 
 
-    /*
-        this.invoiceService.findPurchasesByServiceGraph().subscribe({
-          next: (res) => {
-            this.purchases = res.data;
 
-            console.log(this.purchases);
-            for (const item of this.purchases) {
-              console.log(item._id);
+    this.invoiceService.findPurchasesByServiceGraph().subscribe({
+      next: (res) => {
+        this.purchases = res.data;
 
-              let title = item._id.title;
-              let count = item.count;
+        console.log(this.purchases);
+        for (const item of this.purchases) {
+          console.log(item._id);
 
-              this.labels.push(title);
-              this.itemCount.push(count);
+          let title = item._id.title;
+          let count = item.count;
+
+          this.labels.push(title);
+          this.itemCount.push(count);
+        }
+        /* build object literal for PrimeNg Bar Graph */
+        this.data = {
+          labels: this.labels,
+          datasets: [
+            /* graph object */
+            {
+              backgroundColor: [
+                '#218B82',
+                '#C47482',
+                '#EEBAB2',
+                '#F5F3E7',
+                '#2CCED2',
+                '#E5DB9C',
+                '#E6A57E',
+              ],
+              hoverBackgroundColor: [
+                '#218B82',
+                '#C47482',
+                '#EEBAB2',
+                '#F5F3E7',
+                '#2CCED2',
+                '#E5DB9C',
+                '#E6A57E',
+              ],
+              data: this.itemCount
             }
-          }
-        }); */
+          ]
+        };
+        /* verify data object structure matches primeng expected format */
+        console.log('data object graph: ', this.data);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
     this.basicData = {
       labels: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul' ],
       datasets: [
@@ -51,8 +84,8 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         {
           label: 'Second Dataset',
           data: [ 28, 48, 40, 19, 86, 27, 90 ],
-          fill: false,
-          borderColor: '#a0d574',
+          fill: true,
+          borderColor: '#76CDCD',
           tension: .4
         }
       ]
