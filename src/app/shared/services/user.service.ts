@@ -24,7 +24,7 @@ type UsersResponse = BaseResponse<User[]> | ErrorResponse<User[]>;
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor (private http: HttpClient) { }
 
   // service layer to find all users
   findAllUsers(): Observable<UsersResponse> {
@@ -57,6 +57,7 @@ export class UserService {
       phoneNumber: user.phoneNumber,
       address: user.address,
       email: user.email,
+      role: user.role?.text ?? 'standard'
     });
   }
 

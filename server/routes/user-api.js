@@ -161,7 +161,7 @@ router.get('/:id', async (req, res) => {
  *                 type: string
  *               email:
  *                 type: string
- *               'role.text':
+ *               role:
  *                 type: string
  *     responses:
  *       '200':
@@ -213,7 +213,7 @@ router.put('/:id', async (req, res) => {
             console.log(savedUser);
             const saveUserResponse = new BaseResponse(
               200,
-              'Query successful',
+              'Update successful',
               savedUser,
             );
             res.json(saveUserResponse.toObject());

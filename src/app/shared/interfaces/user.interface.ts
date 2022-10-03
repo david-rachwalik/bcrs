@@ -1,3 +1,4 @@
+
 /*
 ============================================
 ; Title: Bob's Computer Repair Shop (Sprint 1)
@@ -8,7 +9,7 @@
 */
 // import statements
 import { SelectedSecurityQuestion } from "./selected-security-question.interface";
-
+import { Role } from 'src/app/shared/interfaces/role.interface';
 // export User interface
 export interface User {
   _id?: string;
@@ -20,6 +21,7 @@ export interface User {
   address: string;
   email: string;
   selectedSecurityQuestions?: SelectedSecurityQuestion[];
+  role?: Role;
 }
 
 

@@ -28,7 +28,7 @@ import { RoleService } from '../services/role.service';
 export class RoleGuard implements CanActivate {
   role: Role;
 
-  constructor(
+  constructor (
     private router: Router,
     private cookieService: CookieService,
     private roleService: RoleService,
@@ -57,7 +57,7 @@ export class RoleGuard implements CanActivate {
           if (res.data.text === 'admin') {
             return true;
           } else {
-            this.router.navigate(['/']);
+            this.router.navigate([ '/services' ]);
             return false;
           }
         }),

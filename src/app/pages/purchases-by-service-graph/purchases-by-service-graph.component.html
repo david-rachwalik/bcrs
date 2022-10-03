@@ -3,7 +3,7 @@
     <div fxLayout="column">
       <mat-card-subtitle>Last Month</mat-card-subtitle>
       <br>
-      <h1>$44345</h1> <br>
+      <h1>$44,345</h1> <br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
           <mat-icon>arrow_upward</mat-icon> +15% overall revenue
         </span> </mat-card-footer>
@@ -14,7 +14,7 @@
     <div fxLayout="column">
       <mat-card-subtitle>Last Week</mat-card-subtitle>
       <br>
-      <h1>$7345</h1> <br>
+      <h1>$7,345</h1> <br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="loss">
           <mat-icon>arrow_downward</mat-icon> -7%
         </span></mat-card-footer>
@@ -25,7 +25,7 @@
     <div fxLayout="column">
       <mat-card-subtitle>Quarterly</mat-card-subtitle>
       <br>
-      <h1>$94561</h1> <br>
+      <h1>$94,561</h1> <br>
       <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
           <mat-icon>arrow_upward</mat-icon> +95%
         </span></mat-card-footer>
@@ -47,7 +47,7 @@
 <br> <br>
 <div fxFlexAlign="row" fxLayoutAlign="space-between stretch">
   <mat-card fxFlex="74.4">
-    <h1>Sales</h1> <br> Total Revenue: ${{revenue}}
+    <h1>Sales</h1> <br> Total Revenue: <h1>${{revenue}}</h1>
     <p-chart type="pie" [data]="data" height="500" [options]="options2"></p-chart>
   </mat-card>
   <mat-card fxFlex="23" class="services">

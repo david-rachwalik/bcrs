@@ -37,9 +37,9 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
           this.labels.push(title);
           this.itemCount.push(count);
-          this.revenue += item._id.price;
+          this.revenue += (item._id.price * item.count);
         }
-        console.log(this.revenue);
+        this.revenue = parseFloat(this.revenue.toFixed(2));
         /* build object literal for PrimeNg Bar Graph */
         this.data = {
           labels: this.labels,
@@ -121,8 +121,24 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       plugins: {
         legend: {
           display: true,
-          position: 'left'
-
+          position: 'right',
+          labels: {
+            // This more specific font property overrides the global property
+            font: {
+              size: 16
+            },
+          },
+        },
+        tooltip: {
+          titleFont: {
+            size: 50
+          },
+          bodyFont: {
+            size: 20
+          },
+          footerFont: {
+            size: 20 // there is no footer by default
+          }
         }
       }
     };

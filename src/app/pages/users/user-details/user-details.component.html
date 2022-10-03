@@ -19,35 +19,49 @@
 
           <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['firstName'])" placeholder="First name" />
-            <mat-error class="error" *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched">
+            <mat-error class="error"
+              *ngIf="form.controls['firstName'].hasError('required') && form.controls['firstName'].touched">
               First name is a required field.
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['lastName'])" placeholder="Last name" />
-            <mat-error class="error" *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched">
+            <mat-error class="error"
+              *ngIf="form.controls['lastName'].hasError('required') && form.controls['lastName'].touched">
               Last name is a required field.
             </mat-error>
           </mat-form-field>
-
+          <mat-form-field>
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.text">{{role.text}}</mat-option>
+            </mat-select>
+            <mat-error class="error"
+              *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched">
+              Last name is a required field.
+            </mat-error>
+          </mat-form-field>
           <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['phoneNumber'])" placeholder="Phone number" />
-            <mat-error class="error" *ngIf="form.controls['phoneNumber'].hasError('required') && form.controls['phoneNumber'].touched">
+            <mat-error class="error"
+              *ngIf="form.controls['phoneNumber'].hasError('required') && form.controls['phoneNumber'].touched">
               Phone number is a required field.
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['address'])" placeholder="Address" />
-            <mat-error class="error" *ngIf="form.controls['address'].hasError('required') && form.controls['address'].touched">
+            <mat-error class="error"
+              *ngIf="form.controls['address'].hasError('required') && form.controls['address'].touched">
               Address is a required field.
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
             <input type="text" matInput [formControl]="$any(form.controls['email'])" placeholder="Email" />
-            <mat-error class="error" *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
+            <mat-error class="error"
+              *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched">
               Email is a required field.
             </mat-error>
             <mat-error class="error" *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched">
@@ -61,8 +75,8 @@
       <br>
       <!-- cancel and submit buttons -->
       <mat-card-actions align="end">
-        <button mat-raised-button (click)="cancel()" color="warm">Cancel</button>
-        <button mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
       </mat-card-actions>
 
     </form>

@@ -35,6 +35,7 @@ import { ResetPasswordFormComponent } from './shared/components/forms/reset-pass
 import { VerifySecurityQuestionsFormComponent } from './shared/components/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/components/forms/verify-username-form/verify-username-form.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { RoleGuard } from './shared/guards/role.guard';
 
 // routes
 const routes: Routes = [
@@ -73,6 +74,7 @@ const routes: Routes = [
       {
         path: 'roles',
         component: RoleListComponent,
+        canActivate: [ RoleGuard ]
       },
       {
         path: 'roles/:roleId',
@@ -95,7 +97,7 @@ const routes: Routes = [
         component: ServiceRepairComponent,
       },
     ],
-    canActivate: [AuthGuard], // Applies AuthGuard to routes
+    canActivate: [ AuthGuard ], // Applies AuthGuard to routes
   },
   {
     path: 'session',
@@ -146,6 +148,6 @@ const routes: Routes = [
       relativeLinkResolution: 'legacy',
     }),
   ],
-  exports: [RouterModule],
+  exports: [ RouterModule ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
