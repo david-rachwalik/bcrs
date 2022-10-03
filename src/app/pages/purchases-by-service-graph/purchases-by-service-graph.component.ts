@@ -1,5 +1,13 @@
+/*
+============================================
+; Title: Bob's Computer Repair Shop (Sprint 2)
+; Author: Professor Krasso
+; Date: 25 September 2022
+; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
+;===========================================
+*/
+
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { UIChart } from 'primeng/chart';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 
@@ -9,6 +17,7 @@ import { InvoiceService } from 'src/app/shared/services/invoice.service';
   styleUrls: [ './purchases-by-service-graph.component.scss' ]
 })
 export class PurchasesByServiceGraphComponent implements OnInit {
+  /* Local Variables */
   @ViewChild('chart') chart!: UIChart;
   /* local variables */
   purchases: any;
@@ -19,23 +28,22 @@ export class PurchasesByServiceGraphComponent implements OnInit {
   options: any;
   options2: any;
   revenue: number = 0;
-
   chooseGraphType: string = 'pie';
-  graphStyleControl = new FormControl('');
 
   constructor (private invoiceService: InvoiceService) {
+    /* Initialize graph structure Variables */
     this.purchases = {};
     this.data = {};
     this.itemCount = [];
     this.labels = [];
 
-
-
+    /* Call purchases api */
     this.invoiceService.findPurchasesByServiceGraph().subscribe({
       next: (res) => {
         this.purchases = res.data;
 
         console.log('purchases', this.purchases);
+        /* assigns values to graph structure variables */
         for (const item of this.purchases) {
           console.log(item._id);
 
@@ -44,8 +52,10 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
           this.labels.push(title);
           this.itemCount.push(count);
+          /* Counts total revenue */
           this.revenue += (item._id.price * item.count);
         }
+        /* 2 decimal points */
         this.revenue = parseFloat(this.revenue.toFixed(2));
         /* build object literal for PrimeNg Bar Graph */
         this.data = {
@@ -84,6 +94,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         console.log(e);
       }
     });
+    //* graph 1-4 basic structure and data */
     this.basicData = {
       labels: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul' ],
       datasets: [
@@ -107,6 +118,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         }
       ]
     };
+    /* applies options to graphs 1-4 */
     this.options = {
       scales: {
         x: {
@@ -125,6 +137,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         }
       }
     };
+    /* styling for Sales graph */
     this.options2 = {
       responsive: true,
       plugins: {
@@ -140,13 +153,13 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         },
         tooltip: {
           titleFont: {
-            size: 50
+            size: 40
           },
           bodyFont: {
-            size: 20
+            size: 15
           },
           footerFont: {
-            size: 20 // there is no footer by default
+            size: 15 // there is no footer by default
           }
         }
       }
@@ -157,6 +170,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
 
   }
 
+  /* Rerenders Sales graph with similar data  */
   updateChart(val: any) {
     console.log(val);
     this.chooseGraphType = val;
@@ -192,6 +206,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
             }
           ]
         };
+        /* refresh and reinitialize graph options */
         this.chart.refresh();
         this.updateOptions();
         /* verify data object structure matches primeng expected format */
@@ -203,6 +218,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
     });
   }
 
+  /* rerender options */
   updateOptions() {
     this.options2 = {
       plugins: {
@@ -216,6 +232,17 @@ export class PurchasesByServiceGraphComponent implements OnInit {
             },
           },
         },
+        tooltip: {
+          titleFont: {
+            size: 40
+          },
+          bodyFont: {
+            size: 15
+          },
+          footerFont: {
+            size: 15 // there is no footer by default
+          }
+        }
       },
       scales: {
         x: {
