@@ -37,6 +37,12 @@ mat-card {
   height: 17rem;
   box-shadow: 0px 23px 25px 0 #3c634a, 0 66px 15px 0px #ccc, 0 99px 5px 0px #fff !important;
   perspective: 1000px;
+  max-width: 20rem !important;
+  min-width: 20rem !important;
+  @media (max-width: 960px) {
+    padding: 2rem 3rem 0;
+    height: 37rem !important;
+  }
   .card-inner {
     position: relative;
     width: 100%;

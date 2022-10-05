@@ -8,9 +8,10 @@
 -->
 
 <!-- START 4 column Row Graphs -->
-<div fxFlexAlign="row wrap" fxLayoutAlign="space-between stretch" class="graphs-container">
+<div fxLayout="row wrap" fxFlexLayout.lt-md="column" fxLayoutAlign="space-between stretch"
+  fxLayoutAlign.lt-lg="start  center" class="graphs-container" fxLayoutGap="20px">
   <!------------- GRAPH 1 ----------- -->
-  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
     <div fxLayout="column">
       <mat-card-subtitle>Last Month</mat-card-subtitle>
       <br>
@@ -19,10 +20,10 @@
           <mat-icon>arrow_upward</mat-icon> +15% Overall Revenue
         </span> </mat-card-footer>
     </div>
-    <p-chart width="150" height="120" type="bar" [data]="basicData" [options]="options"></p-chart>
+    <p-chart class="charts" width="150" height="120" type="bar" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
   <!------------- GRAPH 2 ----------- -->
-  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
     <div fxLayout="column">
       <mat-card-subtitle>Last Week</mat-card-subtitle>
       <br>
@@ -34,7 +35,7 @@
     <p-chart width="150" height="120" type="line" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
   <!------------- GRAPH 3 ----------- -->
-  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
     <div fxLayout="column">
       <mat-card-subtitle>Quarterly</mat-card-subtitle>
       <br>
@@ -46,7 +47,7 @@
     <p-chart width="150" height="120" type="polarArea" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
   <!------------- GRAPH 4 ----------- -->
-  <mat-card fxFlex="23" fxLayoutAlign="space-around  center">
+  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
     <div fxLayout="column">
       <mat-card-subtitle>Orders</mat-card-subtitle>
       <br>
@@ -55,15 +56,16 @@
           <mat-icon>arrow_upward</mat-icon> +55% Per Week
         </span></mat-card-footer>
     </div>
-    <p-chart width="160px" height="130px" type="radar" [data]="basicData" [options]="options"></p-chart>
+    <p-chart width="150" height="120" type="radar" [data]="basicData" [options]="options"></p-chart>
   </mat-card>
 </div>
 <!-- END 4 Column graph -->
-<br> <br>
+<br>
 <!------------- row 2 ----------- -->
-<div class="sales-container" fxFlexAlign="row" fxLayoutAlign="space-between stretch">
+<div class="sales-container" fxLayout="row wrap" fxFlexLayout.lt-lg="column" fxLayoutAlign="space-between stretch"
+  fxLayoutGap="20px">
   <!-- BEGIN SALES GRAPH -->
-  <mat-card fxFlex="74.4">
+  <mat-card class="sales" fxFlex.lt-md="100%" fxFlex.gt-md="75%">
     <div>
       <h1 fxFlex>Sales</h1>
       <mat-button-toggle-group #group="matButtonToggleGroup" value="pie" (change)="updateChart($event.value)"
@@ -80,7 +82,7 @@
   </mat-card>
   <!-- END SALES GRAPH -->
   <!-- SERVICES OFFERED CARD -->
-  <mat-card fxFlex="23" class="services">
+  <mat-card fxFlex.lt-md="100%" fxFlex.gt-md="23%" class="services">
     <h1>Current Services We Offer</h1>
     <mat-list role="list">
       <mat-list-item role="listitem">- Disk Clean-up ($149.99)</mat-list-item>
