@@ -6,47 +6,67 @@
 ; Modified By: Joel Hartung, Allan Trejo, David Rachwalik
 ;===========================================
 -->
+
 <!-- contact container -->
 <div fxLayout="column">
   <!-- contact heading -->
   <div class="contact-heading">Get In Touch.</div>
   <div class="contact-subheading">We Would Love to Hear From You!</div>
+  <br /><br />
+
   <!-- begin 3 card col layout -->
-  <div fxLayoutAlign="center center" fxLayout="row wrap" fxLayout.lt-md="column " fxLayoutGap="10px">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20px grid">
     <!-- card 1 -->
-    <mat-card fxFlex="20" fxFlex.lt-lg="100%">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="pi pi-phone" style="font-size: 2rem"></i>
-          <br><br>
-          <mat-card-subtitle>Office <br>(123) 456-7890</mat-card-subtitle>
+    <div fxFlex="320px">
+      <mat-card>
+        <div class="card-inner">
+          <div class="card-front">
+            <i class="pi pi-phone" style="font-size: 2rem"></i>
+            <br /><br />
+            <mat-card-subtitle>
+              Office<br />
+              (123) 456-7890
+            </mat-card-subtitle>
+          </div>
+          <div class="card-back"><img src="assets/bcrs.png" alt=""></div>
         </div>
-        <div class="card-back"><img src="../../../assets/bcrs.png" alt=""></div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </div>
+
     <!-- card 2 -->
-    <mat-card fxFlex="20" fxFlex.lt-lg="100%">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="pi pi-map" style="font-size: 2rem"></i>
-          <br><br>
-          <mat-card-subtitle>Address <br> 1111 Main Street <br>
-            New York, NY 12312</mat-card-subtitle>
+    <div fxFlex="320px">
+      <mat-card>
+        <div class="card-inner">
+          <div class="card-front">
+            <i class="pi pi-map" style="font-size: 2rem"></i>
+            <br /><br />
+            <mat-card-subtitle>
+              Address<br />
+              1111 Main Street<br />
+              New York, NY 12312
+            </mat-card-subtitle>
+          </div>
+          <div class="card-back"><img src="assets/bcrs.png" alt=""></div>
         </div>
-        <div class="card-back"><img src="../../../assets/bcrs.png" alt=""></div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </div>
+
     <!-- card 3 -->
-    <mat-card fxFlex="20" fxFlex.lt-lg="100%">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="pi pi-envelope" style="font-size: 2rem"></i>
-          <br><br>
-          <mat-card-subtitle>Email <br> Bob@bcrs.com</mat-card-subtitle>
+    <div fxFlex="320px">
+      <mat-card>
+        <div class="card-inner">
+          <div class="card-front">
+            <i class="pi pi-envelope" style="font-size: 2rem"></i>
+            <br /><br />
+            <mat-card-subtitle>
+              Email<br />
+              Bob@bcrs.com
+            </mat-card-subtitle>
+          </div>
+          <div class="card-back"><img src="assets/bcrs.png" alt=""></div>
         </div>
-        <div class="card-back"><img src="../../../assets/bcrs.png" alt=""></div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </div>
 
   </div>
 </div>
