@@ -8,91 +8,68 @@
 -->
 
 <!-- START 4 column Row Graphs -->
-<div fxLayout="row wrap" fxFlexLayout.lt-md="column" fxLayoutAlign="space-between stretch"
-  fxLayoutAlign.lt-lg="start  center" class="graphs-container" fxLayoutGap="20px">
-  <!------------- GRAPH 1 ----------- -->
-  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
-    <div fxLayout="column">
-      <mat-card-subtitle>Last Month</mat-card-subtitle>
-      <br>
-      <h1>$44,345</h1> <br>
-      <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
-          <mat-icon>arrow_upward</mat-icon> +15% Overall Revenue
-        </span> </mat-card-footer>
-    </div>
-    <p-chart class="charts" width="150" height="120" type="bar" [data]="basicData" [options]="options"></p-chart>
-  </mat-card>
-  <!------------- GRAPH 2 ----------- -->
-  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
-    <div fxLayout="column">
-      <mat-card-subtitle>Last Week</mat-card-subtitle>
-      <br>
-      <h1>$7,345</h1> <br>
-      <mat-card-footer> <span fxLayoutAlign="center center" class="loss">
-          <mat-icon>arrow_downward</mat-icon> -7% Average
+<div class="graphs-container" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="20px grid">
+
+  <div *ngFor="let graph of graphDetails" fxFlex="100%" fxFlex.gt-xs="50%" fxFlex.gt-md="25%">
+    <mat-card>
+      <div fxLayout="row">
+        <div fxFlex>
+          <mat-card-subtitle>{{ graph.subtitle }}</mat-card-subtitle><br />
+          <h1 *ngIf="!graph.isCurrency">{{ graph.amount }}</h1>
+          <h1 *ngIf="graph.isCurrency">{{ graph.amount | currency }}</h1>
+        </div>
+
+        <p-chart class="charts" width="150" height="120" [type]="graph.type" [data]="basicData" [options]="options"></p-chart>
+      </div><br />
+
+      <mat-card-footer><span fxLayoutAlign="center center" [ngClass]="graph.footClass">
+          <mat-icon>{{ graph.footIcon }}</mat-icon> {{ graph.footText }}
         </span></mat-card-footer>
-    </div>
-    <p-chart width="150" height="120" type="line" [data]="basicData" [options]="options"></p-chart>
-  </mat-card>
-  <!------------- GRAPH 3 ----------- -->
-  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
-    <div fxLayout="column">
-      <mat-card-subtitle>Quarterly</mat-card-subtitle>
-      <br>
-      <h1>$94,561</h1> <br>
-      <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
-          <mat-icon>arrow_upward</mat-icon> +95% Performance
-        </span></mat-card-footer>
-    </div>
-    <p-chart width="150" height="120" type="polarArea" [data]="basicData" [options]="options"></p-chart>
-  </mat-card>
-  <!------------- GRAPH 4 ----------- -->
-  <mat-card fxLayout="row" fxFlex.lt-md="100%" fxFlex.md="45%" fxFlex.lg="23%" fxLayoutAlign="space-between  center">
-    <div fxLayout="column">
-      <mat-card-subtitle>Orders</mat-card-subtitle>
-      <br>
-      <h1>77</h1><br>
-      <mat-card-footer> <span fxLayoutAlign="center center" class="gain">
-          <mat-icon>arrow_upward</mat-icon> +55% Per Week
-        </span></mat-card-footer>
-    </div>
-    <p-chart width="150" height="120" type="radar" [data]="basicData" [options]="options"></p-chart>
-  </mat-card>
+
+    </mat-card>
+  </div>
+
 </div>
 <!-- END 4 Column graph -->
-<br>
-<!------------- row 2 ----------- -->
-<div class="sales-container" fxLayout="row wrap" fxFlexLayout.lt-lg="column" fxLayoutAlign="space-between stretch"
-  fxLayoutGap="20px">
-  <!-- BEGIN SALES GRAPH -->
-  <mat-card class="sales" fxFlex.lt-md="100%" fxFlex.gt-md="75%">
-    <div>
-      <h1 fxFlex>Sales</h1>
-      <mat-button-toggle-group #group="matButtonToggleGroup" value="pie" (change)="updateChart($event.value)"
-        aria-label="Font Style">
-        <mat-button-toggle value="pie">Pie</mat-button-toggle>
-        <mat-button-toggle value="doughnut">Doughnut</mat-button-toggle>
-        <mat-button-toggle value="polarArea">Polar Area</mat-button-toggle>
-      </mat-button-toggle-group>
+<br />
 
-    </div>
-    <br><span>Total Revenue: </span>
-    <h1>${{revenue}}</h1>
-    <p-chart #chart [type]="chooseGraphType" [data]=" data" height="500" [options]="options2"></p-chart>
-  </mat-card>
+
+<!------------- row 2 ----------- -->
+<div class="sales-container" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="20px grid">
+  <!-- BEGIN SALES GRAPH -->
+  <div fxFlex="100%" fxFlex.gt-md="75%">
+    <mat-card class="sales">
+      <div>
+        <h1 fxFlex>Sales</h1>
+        <mat-button-toggle-group #group="matButtonToggleGroup" value="pie" (change)="updateChart($event.value)" aria-label="Font Style">
+          <mat-button-toggle value="pie">Pie</mat-button-toggle>
+          <mat-button-toggle value="doughnut">Doughnut</mat-button-toggle>
+          <mat-button-toggle value="polarArea">Polar Area</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <br />
+      <span>Total Revenue: </span>
+      <h1>${{revenue}}</h1>
+      <p-chart #chart [type]="chooseGraphType" [data]=" data" height="500" [options]="options2"></p-chart>
+    </mat-card>
+  </div>
+
   <!-- END SALES GRAPH -->
   <!-- SERVICES OFFERED CARD -->
-  <mat-card fxFlex.lt-md="100%" fxFlex.gt-md="23%" class="services">
-    <h1>Current Services We Offer</h1>
-    <mat-list role="list">
-      <mat-list-item role="listitem">- Disk Clean-up ($149.99)</mat-list-item>
-      <mat-list-item role="listitem">- Keyboard Cleaning ($45.00)</mat-list-item>
-      <mat-list-item role="listitem">- PC Tune-up ($89.99)</mat-list-item>
-      <mat-list-item role="listitem">- Password Reset ($39.99)</mat-list-item>
-      <mat-list-item role="listitem">- RAM Upgrade ($129.99)</mat-list-item>
-      <mat-list-item role="listitem">- Software Installation (49.99)</mat-list-item>
-      <mat-list-item role="listitem">- Spyware Removal ($99.90)</mat-list-item><br>
-      <mat-list-item role="listitem">* Labor (number of hours * $50.00)</mat-list-item>
-    </mat-list>
-  </mat-card>
+  <div fxFlex="100%" fxFlex.gt-md="25%">
+    <mat-card class="services">
+      <h1>Current Services We Offer</h1>
+      <mat-list role="list">
+        <mat-list-item role="listitem">- Disk Clean-up ($149.99)</mat-list-item>
+        <mat-list-item role="listitem">- Keyboard Cleaning ($45.00)</mat-list-item>
+        <mat-list-item role="listitem">- PC Tune-up ($89.99)</mat-list-item>
+        <mat-list-item role="listitem">- Password Reset ($39.99)</mat-list-item>
+        <mat-list-item role="listitem">- RAM Upgrade ($129.99)</mat-list-item>
+        <mat-list-item role="listitem">- Software Installation (49.99)</mat-list-item>
+        <mat-list-item role="listitem">- Spyware Removal ($99.90)</mat-list-item><br />
+        <mat-list-item role="listitem">* Labor (number of hours * $50.00)</mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+
 </div>

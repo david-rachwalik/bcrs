@@ -13,10 +13,8 @@
 :host {
   display: block;
 }
+
 .graphs-container {
-  p-chart {
-    margin-left: 10px;
-  }
   h2,
   h1,
   span {
@@ -26,10 +24,8 @@
   span {
     font-size: 0.7rem;
   }
-  mat-card {
-    margin-bottom: 0.5rem;
-  }
 }
+
 mat-card {
   padding: 2rem 1rem;
 }

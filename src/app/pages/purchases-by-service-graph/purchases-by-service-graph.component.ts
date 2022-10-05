@@ -11,10 +11,20 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UIChart } from 'primeng/chart';
 import { InvoiceService } from 'src/app/shared/services/invoice.service';
 
+interface GraphDetail {
+  type: string;
+  subtitle: string;
+  amount: number;
+  isCurrency: boolean;
+  footClass: string;
+  footIcon: string;
+  footText: string;
+}
+
 @Component({
   selector: 'app-purchases-by-service-graph',
   templateUrl: './purchases-by-service-graph.component.html',
-  styleUrls: [ './purchases-by-service-graph.component.scss' ]
+  styleUrls: ['./purchases-by-service-graph.component.scss'],
 })
 export class PurchasesByServiceGraphComponent implements OnInit {
   /* Local Variables */
@@ -29,13 +39,15 @@ export class PurchasesByServiceGraphComponent implements OnInit {
   options2: any;
   revenue: number = 0;
   chooseGraphType: string = 'pie';
+  graphDetails: GraphDetail[];
 
-  constructor (private invoiceService: InvoiceService) {
+  constructor(private invoiceService: InvoiceService) {
     /* Initialize graph structure Variables */
     this.purchases = {};
     this.data = {};
     this.itemCount = [];
     this.labels = [];
+    this.graphDetails = this.loadGraphDetails();
 
     /* Call purchases api */
     this.invoiceService.findPurchasesByServiceGraph().subscribe({
@@ -53,13 +65,12 @@ export class PurchasesByServiceGraphComponent implements OnInit {
           this.labels.push(title);
           this.itemCount.push(count);
           /* Counts total revenue */
-          this.revenue += (item._id.price * item.count);
+          this.revenue += item._id.price * item.count;
         }
         /* 2 decimal points */
         this.revenue = parseFloat(this.revenue.toFixed(2));
         /* build object literal for PrimeNg Bar Graph */
         this.data = {
-
           labels: this.labels,
           datasets: [
             /* graph object */
@@ -83,59 +94,55 @@ export class PurchasesByServiceGraphComponent implements OnInit {
                 '#E5DB9C',
                 '#E6A57E',
               ],
-              data: this.itemCount
-            }
-          ]
+              data: this.itemCount,
+            },
+          ],
         };
         /* verify data object structure matches primeng expected format */
         console.log('data object graph: ', this.data);
       },
       error: (e) => {
         console.log(e);
-      }
+      },
     });
     //* graph 1-4 basic structure and data */
     this.basicData = {
-      labels: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul' ],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
       datasets: [
         {
           label: 'First Dataset',
-          data: [ 65, 59, 80, 81, 56 ],
+          data: [65, 59, 80, 81, 56],
           fill: false,
-          backgroundColor: [
-            'rgba(75, 192, 192, 0.5)',
-          ],
-          tension: .4
+          backgroundColor: ['rgba(75, 192, 192, 0.5)'],
+          tension: 0.4,
         },
         {
           label: 'Second Dataset',
-          data: [ 28, 48, 40, 19, 86 ],
+          data: [28, 48, 40, 19, 86],
           fill: true,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-          ],
-          tension: .4
-        }
-      ]
+          backgroundColor: ['rgba(255, 99, 132, 0.5)'],
+          tension: 0.4,
+        },
+      ],
     };
     /* applies options to graphs 1-4 */
     this.options = {
       scales: {
         x: {
-          display: false
+          display: false,
         },
         y: {
-          display: false
-        }
+          display: false,
+        },
       },
       plugins: {
         legend: {
           display: false,
           labels: {
-            color: 'rgb(255, 99, 132)'
-          }
-        }
-      }
+            color: 'rgb(255, 99, 132)',
+          },
+        },
+      },
     };
     /* styling for Sales graph */
     this.options2 = {
@@ -147,27 +154,66 @@ export class PurchasesByServiceGraphComponent implements OnInit {
           labels: {
             // This more specific font property overrides the global property
             font: {
-              size: 16
+              size: 16,
             },
           },
         },
         tooltip: {
           titleFont: {
-            size: 40
+            size: 40,
           },
           bodyFont: {
-            size: 15
+            size: 15,
           },
           footerFont: {
-            size: 15 // there is no footer by default
-          }
-        }
-      }
+            size: 15, // there is no footer by default
+          },
+        },
+      },
     };
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  loadGraphDetails(): GraphDetail[] {
+    return [
+      {
+        type: 'bar',
+        subtitle: 'Last Month',
+        amount: 44345,
+        isCurrency: true,
+        footClass: 'gain',
+        footIcon: 'arrow_upward',
+        footText: '+15% Overall Revenue',
+      },
+      {
+        type: 'line',
+        subtitle: 'Last Week',
+        amount: 7345,
+        isCurrency: true,
+        footClass: 'loss',
+        footIcon: 'arrow_downward',
+        footText: '-7% Average',
+      },
+      {
+        type: 'polarArea',
+        subtitle: 'Quarterly',
+        amount: 94561,
+        isCurrency: true,
+        footClass: 'gain',
+        footIcon: 'arrow_upward',
+        footText: '+95% Performance',
+      },
+      {
+        type: 'radar',
+        subtitle: 'Orders',
+        amount: 77,
+        isCurrency: false,
+        footClass: 'gain',
+        footIcon: 'arrow_upward',
+        footText: '+55% Per Week',
+      },
+    ];
   }
 
   /* Rerenders Sales graph with similar data  */
@@ -178,7 +224,6 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       next: (res) => {
         /* build object literal for PrimeNg Bar Graph */
         this.data = {
-
           labels: this.labels,
           datasets: [
             /* graph object */
@@ -202,9 +247,9 @@ export class PurchasesByServiceGraphComponent implements OnInit {
                 '#E5DB9C',
                 '#E6A57E',
               ],
-              data: this.itemCount
-            }
-          ]
+              data: this.itemCount,
+            },
+          ],
         };
         /* refresh and reinitialize graph options */
         this.chart.refresh();
@@ -214,7 +259,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       },
       error: (e) => {
         console.log(e);
-      }
+      },
     });
   }
 
@@ -228,27 +273,26 @@ export class PurchasesByServiceGraphComponent implements OnInit {
           labels: {
             // This more specific font property overrides the global property
             font: {
-              size: 16
+              size: 16,
             },
           },
         },
         tooltip: {
           titleFont: {
-            size: 40
+            size: 40,
           },
           bodyFont: {
-            size: 15
+            size: 15,
           },
           footerFont: {
-            size: 15 // there is no footer by default
-          }
-        }
+            size: 15, // there is no footer by default
+          },
+        },
       },
       scales: {
         x: {
-          display: false
+          display: false,
         },
-
       },
     };
   }
