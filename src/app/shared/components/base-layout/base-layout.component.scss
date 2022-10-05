@@ -40,6 +40,7 @@
   position: fixed;
   top: 0;
   z-index: 2;
+  height: 64px; /* override mat-toolbar below 600px width */
   width: 100vw;
   span {
     font-size: 14px;
