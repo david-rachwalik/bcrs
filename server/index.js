@@ -37,8 +37,13 @@ const InvoiceApi = require('./routes/invoice-api');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, '../dist/bcrs')));
-app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
+app.use(
+  express.static(path.join(__dirname, '../client-angular/dist/nodebucket')),
+);
+app.use(
+  '/',
+  express.static(path.join(__dirname, '../client-angular/dist/nodebucket')),
+);
 
 // openAPI options
 const options = {

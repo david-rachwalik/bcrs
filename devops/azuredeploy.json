@@ -1,0 +1,117 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "type": "string",
+      "defaultValue": "[uniqueString(resourceGroup().id)]",
+      "minLength": 2,
+      "metadata": {
+        "description": "Application name."
+      }
+    },
+    "linuxFxVersion": {
+      "type": "string",
+      "defaultValue": "NODE|lts",
+      "metadata": {
+        "description": "The Runtime stack of current web app"
+      }
+    },
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "defaultValue": "F1",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
+    }
+  },
+  "functions": [],
+  "variables": {
+    "location": "[resourceGroup().location]",
+    // "webAppName": "[format('webapp-{0}', parameters('appName'))]",
+    // "appServicePlanName": "[format('asp-{0}', parameters('appName'))]"
+    "appServicePlanName": "[format('asp-{0}_{1}', parameters('sku'), resourceGroup().location)]"
+  },
+  "resources": [
+    {
+      // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/serverfarms
+      // https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/app-service-docs-linux/azuredeploy.json
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2022-03-01",
+      "name": "[variables('appServicePlanName')]",
+      "location": "[variables('location')]",
+      "sku": {
+        "name": "[parameters('sku')]"
+      },
+      "kind": "linux",
+      "properties": {
+        "reserved": true
+      }
+    },
+    {
+      // https://learn.microsoft.com/en-us/azure/templates/microsoft.web/sites
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-03-01",
+      // "name": "[variables('webAppName')]",
+      "name": "[parameters('appName')]",
+      "location": "[variables('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+      ],
+      "properties": {
+        "httpsOnly": true,
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+        "siteConfig": {
+          "linuxFxVersion": "[parameters('linuxFxVersion')]",
+          "minTlsVersion": "1.2",
+          "ftpsState": "FtpsOnly",
+          "appSettings": [
+            // https://github.com/projectkudu/kudu/wiki/Configurable-settings#enabledisable-build-actions
+            // https://github.com/projectkudu/kudu/wiki/Customizing-deployments
+            {
+              "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+              "value": "true"
+            },
+            // Enable production-specific behavior, such as caching or error handling
+            // https://docs.npmjs.com/cli/v8/commands/npm-install#omit
+            {
+              "name": "NODE_ENV",
+              "value": "production"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "appServicePlanId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+    },
+    "webAppName": {
+      "type": "string",
+      "value": "[concat('https://', reference(parameters('appName')).defaultHostName)]"
+    },
+    "connectionStrings": {
+      "type": "array",
+      "value": "[coalesce(reference(parameters('appName')).siteConfig.connectionStrings, json('[]'))]"
+    }
+  }
+}

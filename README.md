@@ -1,37 +1,31 @@
-<h1>WEB 450 - Mastering the MEAN Stack Bootcamp</h1>
-<h2>Bob's Computer Repair Shop</h2>
-<h2>Contributors</h2>
-<ul>
-    <li>Richard Krasso</li>
-    <li>Joel Hartung</li>
-    <li>David Rachwalik</li>
-    <li>Allan Trejo</li>
-</ul>
+# BCRS - Bob's Computer Repair Shop
 
-# Bcrs
+## Web App ([repo](https://github.com/david-rachwalik/bcrs))
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
+WEB 450 - Mastering the MEAN Stack Bootcamp (Bellevue University)
 
-## Development server
+Bellevue University | Web Development [Degree](http://www.bellevue.edu/degrees/bachelor/web-development-bs 'Designed by developers for developers.')
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Contributors
 
-## Code scaffolding
+- Richard Krasso
+- Joel Hartung
+- David Rachwalik
+- Allan Trejo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Project Commands Used
 
-## Build
+Install linting (ESLint) & formatting (Prettier)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm i -D eslint prettier
+npm i -D eslint-config-prettier eslint-plugin-prettier
+npm i -D eslint-plugin-import eslint-config-airbnb-base eslint-config-airbnb-typescript
+npm i -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
+```
 
-## Running unit tests
+Install [Swagger](https://swagger.io) for use with [MongoDB](https://www.mongodb.com/docs)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm i swagger-jsdoc swagger-ui-express
+```
