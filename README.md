@@ -1,6 +1,6 @@
 # BCRS - Bob's Computer Repair Shop
 
-## Web App ([repo](https://github.com/david-rachwalik/bcrs))
+## Web App ([site](https://bcrs.azurewebsites.net), [repo](https://github.com/david-rachwalik/bcrs))
 
 WEB 450 - Mastering the MEAN Stack Bootcamp (Bellevue University)
 
