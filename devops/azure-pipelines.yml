@@ -42,7 +42,6 @@ stages:
 
           - script: |
               cd client-angular
-              export NODE_ENV=production
               npm install
             displayName: 'Install app dependencies'
 
