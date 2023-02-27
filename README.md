@@ -6,6 +6,8 @@ WEB 450 - Mastering the MEAN Stack Bootcamp (Bellevue University)
 
 Bellevue University | Web Development [Degree](http://www.bellevue.edu/degrees/bachelor/web-development-bs 'Designed by developers for developers.')
 
+_Class project repos:_ [jhartung](https://github.com/jhartung/bcrs), [lkendl](https://github.com/lkendl/bcrs)
+
 ## Contributors
 
 - Richard Krasso
